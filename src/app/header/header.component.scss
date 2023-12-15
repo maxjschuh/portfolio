@@ -1,0 +1,28 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 1000px;
+    max-width: calc(100vw - 200px);
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 29px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 23px;
+
+    &:hover {
+        color: #00BEE8;
+    }
+}
+
+#home-link {
+    font-size: 35px;
+}
