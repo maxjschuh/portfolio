@@ -1,0 +1,42 @@
+.project-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 35px;
+
+    .title {
+        font-weight: 700;
+        font-size: 32px;
+        color: #4B47FF;
+    }
+
+    .stack {
+        font-size: 23px;
+        color: #00BEE8;
+    }
+
+    .description {
+        color: white;
+        font-size: 16px;
+    }
+
+    .button-row {
+        display: flex;
+        gap: 86px;
+
+        button {
+            border-radius: 10px;
+            padding: 15px 30px;
+            color: white;
+        }
+    }
+
+    .button-live-test {
+        background-color: #4B47FF;
+    }
+
+    .button-github {
+        background-color: transparent;
+        border: 1px solid #00BEE8;
+    }
+}

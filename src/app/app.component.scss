@@ -23,3 +23,9 @@ app-skills {
     align-items: center;
     min-height: 100vh;
 }
+
+app-portfolio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

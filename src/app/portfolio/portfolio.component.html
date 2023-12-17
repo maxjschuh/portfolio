@@ -1,0 +1,12 @@
+<section id="portfolio-section-headline">
+    <div id="portfolio-bullet-line-left"></div>
+    <h2>Portfolio</h2>
+    <div id="portfolio-bullet-line-right"></div>
+
+</section>
+
+<summary>
+    This page is a sample of my work - please feel free to try them out.
+</summary>
+
+<app-portfolio-project *ngFor="let i of projects; let index = index;" [index]="index"></app-portfolio-project>
