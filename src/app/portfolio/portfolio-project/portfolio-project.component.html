@@ -1,13 +1,13 @@
 <div class="project-image">
-    <img src="{{ projects[index].image_path }}" alt="{{ projects[index].image_alt }} icon">
+    <img src="{{ project.image_path }}" alt="{{ project.image_alt }} icon">
 
 </div>
 
 <div class="project-info">
 
-    <span class="title"></span>
-    <span class="stack"></span>
-    <span class="description"></span>
+    <h3 class="title">{{ project.title }}</h3>
+    <span class="stack">{{ project.stack }}</span>
+    <span class="description">{{ project.description }}</span>
 
     <div class="button-row">
 

@@ -1,0 +1,133 @@
+#contact-headline {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 48px;
+    width: 100%;
+}
+
+#contact-bullet-line {
+    width: calc((100vw - 1000px) / 2 + 100px);
+    background-color: #00BEE8;
+    border-radius: 4px 0 0 4px;
+    height: 4px;
+}
+
+main {
+    display: flex;
+    gap: 100px;
+}
+
+#contact-left-column {
+    width: calc((100vw - 1000px) / 2 + 400px);
+
+    summary {
+        margin-left: calc((100vw - 1000px) / 2);
+    }
+}
+
+#contact-left-column-headline {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+#contact-left-column-bullet-line {
+    width: calc((100vw - 1000px) / 2 + 50px);
+    background-color: #1CE6B6;
+    border-radius: 0 4px 4px 0;
+    height: 4px;
+}
+
+#contact-right-column {
+    width: calc((100vw - 200px) / 2);
+    max-width: 500px;
+    padding-bottom: 80px;
+    position: relative;
+}
+
+#privacy-policy-checkbox {
+    display: flex;
+    align-items: center;
+
+    a {
+        color: #4B47FF;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    input {
+        height: 50px;
+        padding: 15px 25px;
+        border-radius: 10px;
+        border: 1px solid #4B47FF;
+        background-color: #141D2F;
+        color: white;
+        font-size: 16px;
+        font-family: 'Poppins';
+
+        &:hover {
+            border: 1px solid #1CE6B6;
+        }
+
+        &:active {
+            border: 1px solid #70E61C;
+        }
+
+        &::placeholder {
+            color: white;
+        }
+    }
+
+    textarea {
+        height: 50px;
+        padding: 15px 25px;
+        border-radius: 10px;
+        border: 1px solid #4B47FF;
+        background-color: #141D2F;
+        color: white;
+        font-size: 16px;
+        font-family: 'Poppins';
+        resize: vertical;
+
+        &:hover {
+            border: 1px solid #1CE6B6;
+        }
+
+        &::placeholder {
+            color: white;
+        }
+    }
+
+    img {
+        display: none;
+    }
+}
+
+#go-up-button {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+
+    &:hover {
+
+        cursor: pointer;
+
+        rect {
+            stroke: #00BEE8;
+        }
+
+        path {
+            fill: #00BEE8;
+        }
+    }
+}

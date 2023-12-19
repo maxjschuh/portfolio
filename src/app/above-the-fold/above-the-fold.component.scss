@@ -15,7 +15,7 @@ main {
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - $header-height);
-    z-index: 99;
+    z-index: 1;
 }
 
 #eyecatcher {
@@ -94,15 +94,16 @@ h1 {
     display: flex;
     align-items: center;
     gap: 32px;
+    z-index: 2;
 
     img {
         width: 30px;
         margin: 10px;
-    }
 
-    img:hover {
-        cursor: pointer;
-        transform: scale(1.4);
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.4);
+        }
     }
 }
 

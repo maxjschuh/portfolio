@@ -34,4 +34,6 @@ app-portfolio-project {
     display: flex;
     align-items: center;
     gap: 35px;
+    width: calc(100vw - 200px);
+    max-width: 1000px;
 }
