@@ -14,7 +14,8 @@
 
 
         <summary>
-            Contact me through this form, I am interested in hearing from you, knowing your ideas and contributing to your
+            Contact me through this form, I am interested in hearing from you, knowing your ideas and contributing to
+            your
             projects with my work.
 
             Need a Frontend developer? <strong>Contact me!</strong>
@@ -23,30 +24,47 @@
 
     <section id="contact-right-column">
 
-        <form>
+        <form (ngSubmit)="submitContactForm()">
             <div>
-                <input id="name" [(ngModel)]="name" (input)="validateInput('name')" type="text" required maxlength="99" placeholder="Your name" name="name">
-                <img id="name-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
-                <img id="name-checkmark" src="./assets/img/input_alert.svg" alt="input checkmark">
+                <input id="name" [(ngModel)]="name" (input)="validateInput('name')" type="text" placeholder="Your name"
+                    name="name">
+                <img id="name-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
+                <img id="name-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg" alt="input checkmark">
                 <span id="name-alert-text"></span>
             </div>
             <div>
-                <input id="email" [(ngModel)]="email" type="email" required maxlength="99" placeholder="Your email" name="email">
-                <img id="email-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
-                <img id="email-checkmark" src="./assets/img/input_alert.svg" alt="input checkmark">
+                <input id="email" [(ngModel)]="email" (input)="validateInput('email')" type="email"
+                    placeholder="Your email" name="email">
+                <img id="email-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
+                <img id="email-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg" alt="input checkmark">
                 <span id="email-alert-text"></span>
             </div>
             <div>
-                <textarea id="message" [(ngModel)]="message" type="text" required maxlength="999" placeholder="Your message" name="message"></textarea>
-                <img id="message-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
-                <img id="message-checkmark" src="./assets/img/input_alert.svg" alt="input checkmark">
+                <textarea id="message" [(ngModel)]="message" (input)="validateInput('message')" type="text"
+                    placeholder="Your message" name="message"></textarea>
+                <img id="message-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
+                <img id="message-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg" alt="input checkmark">
                 <span id="message-alert-text"></span>
             </div>
-            <div id="privacy-policy-checkbox">
-                <input type="checkbox">
-                I've read the
-                <a href="">privacy policy</a>
-                and agree to the processing of my data as outlined.
+            <div id="privacy-policy">
+
+                <div id="checkbox" (click)="togglePrivacyPolicyAcceptance()">
+                    <img id="checkbox-default" src="./assets/img/check_button_blue.svg"
+                        alt="checkbox">
+                    <img id="checkbox-hover" src="./assets/img/check_button_blue_hover.svg" alt="checkbox hovering">
+                    <img id="checkbox-selected" src="./assets/img/check_button_blue_selected.svg"
+                        alt="checkbox selected">
+                    <img id="checkbox-selected-hover" src="./assets/img/check_button_blue_selected_hover.svg"
+                        alt="checkbox selected hovering">
+                </div>
+
+                <span>
+                    I've read the
+                    <a href="">
+                        privacy policy
+                    </a>
+                    and agree to the processing of my data as outlined.
+                </span>
             </div>
 
             <button type="submit">Send message :)</button>

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from "@angular/forms";
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, AppComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
@@ -13,6 +14,7 @@ export class ContactComponent {
   name = '';
   email = '';
   message = '';
+  privacyPolicyAccepted = false;
 
   alerts = [
     {
@@ -57,4 +59,25 @@ export class ContactComponent {
 
   }
 
+  submitContactForm() {
+
+    console.log('here')
+
+  }
+
+  togglePrivacyPolicyAcceptance() {
+
+    this.toggleVisibilityOfElements(['checkbox-default'], this.privacyPolicyAccepted);
+    this.toggleVisibilityOfElements(['checkbox-selected'], !this.privacyPolicyAccepted);
+    
+    this.privacyPolicyAccepted = !this.privacyPolicyAccepted;
+  }
+
+  toggleVisibilityOfElements(ids: string[], showElements: boolean) {
+
+    ids.forEach(id => {
+
+      document.getElementById(id)?.classList.toggle('d-flex-important', showElements);
+    })
+  }
 }

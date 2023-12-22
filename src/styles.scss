@@ -10,6 +10,12 @@
     src: url('../src/assets/fonts/Poppins/Poppins-ExtraBold.ttf');
 }
 
+//Utility classes
+
+.d-flex-important {
+    display: flex !important;
+}
+
 body {
     font-family: 'Poppins';
     background-color: #141D2F;
@@ -35,8 +41,10 @@ button {
     }
 
     &:active {
-        background-color: white;
+        background-color: white !important;
         color: black;
+        padding: 15px 30px;
+        margin: 15px 15px;
     }
 }
 

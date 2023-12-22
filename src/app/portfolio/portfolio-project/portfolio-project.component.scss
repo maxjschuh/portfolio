@@ -1,8 +1,10 @@
 .project-info {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 35px;
+    width: calc((100vw - 235px) / 2);
+    max-width: 500px;    
 
     .title {
         color: #4B47FF;
@@ -21,12 +23,10 @@
     .button-row {
         display: flex;
         gap: 86px;
+    }
 
-        button {
-            border-radius: 10px;
-            padding: 15px 30px;
-            color: white;
-        }
+    a {
+        text-decoration: none;
     }
 
     .button-live-test {
@@ -36,5 +36,25 @@
     .button-github {
         background-color: transparent;
         border: 1px solid #00BEE8;
+
+        &:hover {
+            background-color: #00BEE8;
+        }
+
+        &:active {
+            color: #4B47FF;
+        }
+    }
+}
+
+.project-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc((100vw - 235px) / 2);
+    max-width: 500px;
+
+    img {
+        width: 100%;
     }
 }
