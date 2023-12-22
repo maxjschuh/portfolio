@@ -14,7 +14,7 @@
 
 
         <summary>
-            Contact me through this form, I am interested in hearing you, knowing your ideas and contributing to your
+            Contact me through this form, I am interested in hearing from you, knowing your ideas and contributing to your
             projects with my work.
 
             Need a Frontend developer? <strong>Contact me!</strong>
@@ -23,21 +23,21 @@
 
     <section id="contact-right-column">
 
-        <form action="">
+        <form>
             <div>
-                <input id="name" [(ngModel)]="name" (input)="logInput()" type="text" required maxlength="99" placeholder="Your name" name="name">
+                <input id="name" [(ngModel)]="name" (input)="validateInput('name')" type="text" required maxlength="99" placeholder="Your name" name="name">
                 <img id="name-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
                 <img id="name-checkmark" src="./assets/img/input_alert.svg" alt="input checkmark">
                 <span id="name-alert-text"></span>
             </div>
             <div>
-                <input id="email" type="email" required maxlength="99" placeholder="Your email">
+                <input id="email" [(ngModel)]="email" type="email" required maxlength="99" placeholder="Your email" name="email">
                 <img id="email-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
                 <img id="email-checkmark" src="./assets/img/input_alert.svg" alt="input checkmark">
                 <span id="email-alert-text"></span>
             </div>
             <div>
-                <textarea id="message" type="text" required maxlength="999" placeholder="Your message"></textarea>
+                <textarea id="message" [(ngModel)]="message" type="text" required maxlength="999" placeholder="Your message" name="message"></textarea>
                 <img id="message-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
                 <img id="message-checkmark" src="./assets/img/input_alert.svg" alt="input checkmark">
                 <span id="message-alert-text"></span>
@@ -49,7 +49,7 @@
                 and agree to the processing of my data as outlined.
             </div>
 
-            <button>Send message :)</button>
+            <button type="submit">Send message :)</button>
         </form>
 
         <svg id="go-up-button" width="39" height="39" viewBox="0 0 39 39" fill="none"

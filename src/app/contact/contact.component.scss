@@ -65,9 +65,23 @@ form {
     flex-direction: column;
     gap: 32px;
 
+    div {
+        position: relative;
+    }
+
+    img {
+        // display: block !important;
+        position: absolute;
+        width: 25px;
+        top: 29px;
+        right: 25px;
+    }
+
     input {
-        height: 50px;
-        padding: 15px 25px;
+        box-sizing: border-box;
+        height: 82px;
+        width: 100%;
+        padding: 15px 54px 15px 25px;
         border-radius: 10px;
         border: 1px solid #4B47FF;
         background-color: #141D2F;

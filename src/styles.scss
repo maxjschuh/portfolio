@@ -5,6 +5,11 @@
     src: url('../src/assets/fonts/Poppins/Poppins-Regular.ttf');
 }
 
+@font-face {
+    font-family: PoppinsExtrabold;
+    src: url('../src/assets/fonts/Poppins/Poppins-ExtraBold.ttf');
+}
+
 body {
     font-family: 'Poppins';
     background-color: #141D2F;
@@ -46,4 +51,9 @@ h3 {
     font-weight: 700;
     font-size: 32px;
     margin: 0;
+}
+
+app-logo {
+    font-family: 'PoppinsExtrabold';
+    font-size: 27px;
 }

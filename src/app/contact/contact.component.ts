@@ -11,25 +11,49 @@ import { FormsModule } from "@angular/forms";
 export class ContactComponent {
 
   name = '';
+  email = '';
+  message = '';
 
-  alertTexts = [
+  alerts = [
     {
-      input: 'name',
-      alertText: 'Your name is required'
+      inputId: 'name',
+      inputValue: this.name.trim(),
+      alertText: 'Your name is required',
+      disallowedCharacters: /[$"'`´\s\\]/
+
     },
     {
-      input: 'email',
+      inputId: 'email',
+      inputValue: this.email.trim(),
       alertText: 'Your email is required'
     },
     {
-      input: 'message',
+      inputId: 'message',
+      inputValue: this.message.trim(),
       alertText: 'Your message is empty'
     }
   ];
 
 
-  logInput() {
-    console.log(this.name);
+  validateInput(inputId: string) {
+
+    this.alerts.forEach(alert => {
+      
+      if (alert.inputId !== inputId) return;
+      
+      const alertId = `${inputId}-alert-text`;
+
+      // if (alert.regex.test(alert.inputValue)) {
+
+      //   const alertElement = document.getElementById(alertId);
+
+      //   if (!alertElement) return;
+        
+      //   alertElement.innerHTML = alert.alertText;
+      // }
+
+
+    });
 
   }
 
