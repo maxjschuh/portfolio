@@ -1,14 +1,5 @@
 $header-height: 125px;
 
-app-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #141D2F;
-    width: 100%;
-    padding: 36px 0;
-}
-
 main {
     display: flex;
     flex-direction: column;
@@ -123,4 +114,8 @@ h1 {
     top: 30vh;
     left: calc((100vw / 2) - 700px);
     height: 608px;
+}
+
+a {
+    text-decoration: none;
 }

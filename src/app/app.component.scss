@@ -1,3 +1,16 @@
+app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #141D2F;
+    padding: 36px 0;
+}
+
 app-above-the-fold {
     display: flex;
     flex-direction: column;

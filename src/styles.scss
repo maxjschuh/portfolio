@@ -10,6 +10,10 @@
     src: url('../src/assets/fonts/Poppins/Poppins-ExtraBold.ttf');
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 //Utility classes
 
 .d-flex-important {
