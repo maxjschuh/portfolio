@@ -135,32 +135,26 @@ form {
     #checkbox {
 
         width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         img {
             width: 24px;
-        }
-
-        #checkbox-selected,
-        #checkbox-hover,
-        #checkbox-selected-hover {
             display: none;
         }
 
         &:hover {
 
             cursor: pointer;
-
-            #checkbox-default,
-            #checkbox-selected {
-                display: none;
-            }
-
-            #checkbox-hover {
-                display: flex;
-            }
         }
     }
 }
+
+.d-flex-important {
+    display: flex !important;
+}
+
 
 #go-up-button {
     position: absolute;

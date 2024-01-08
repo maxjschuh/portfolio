@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { AppComponent } from '../../app.component';
+import { error } from 'node:console';
 
 @Component({
   selector: 'app-contact',
@@ -22,41 +23,44 @@ export class ContactComponent {
       inputValue: this.name.trim(),
       alertText: 'Your name is required',
       disallowedCharacters: /[$"'`´\s\\]/
-
     },
     {
       inputId: 'email',
       inputValue: this.email.trim(),
-      alertText: 'Your email is required'
+      alertText: 'Your email is required',
+      disallowedCharacters: /[$"'`´\s\\]/
     },
     {
       inputId: 'message',
       inputValue: this.message.trim(),
-      alertText: 'Your message is empty'
+      alertText: 'Your message is empty',
+      disallowedCharacters: /[$"'`´\s\\]/
     }
   ];
 
 
   validateInput(inputId: string) {
 
-    this.alerts.forEach(alert => {
+    for (let i = 0; i < this.alerts.length; i++) {
+      const alert = this.alerts[i];
 
       if (alert.inputId !== inputId) return;
 
       const alertId = `${inputId}-alert-text`;
+      const alertElement = document.getElementById(alertId);
 
-      // if (alert.regex.test(alert.inputValue)) {
+      if (!alertElement) throw new Error;
 
-      //   const alertElement = document.getElementById(alertId);
+      
+      if (alert.disallowedCharacters.test(alert.inputValue)) {
+        
+        alertElement.innerHTML = alert.alertText;
 
-      //   if (!alertElement) return;
+      } else {
+        alertElement.innerHTML = '';
+      }
 
-      //   alertElement.innerHTML = alert.alertText;
-      // }
-
-
-    });
-
+    }
   }
 
   submitContactForm() {
@@ -65,10 +69,47 @@ export class ContactComponent {
 
   }
 
+  handleCheckboxMouseover() {
+
+    this.toggleVisibilityOfElements(['checkbox-selected', 'checkbox-default'], false);
+
+    if (this.privacyPolicyAccepted) {
+
+      this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
+    } else {
+
+      this.toggleVisibilityOfElements(['checkbox-hover'], true);
+    }
+
+  }
+
+
+  handleCheckboxMouseout() {
+
+    this.toggleVisibilityOfElements(['checkbox-hover', 'checkbox-selected-hover'], false);
+
+    if (this.privacyPolicyAccepted) {
+
+      this.toggleVisibilityOfElements(['checkbox-selected'], true);
+    } else {
+
+      this.toggleVisibilityOfElements(['checkbox-default'], true);
+    }
+  }
+
+
   togglePrivacyPolicyAcceptance() {
 
-    this.toggleVisibilityOfElements(['checkbox-default'], this.privacyPolicyAccepted);
-    this.toggleVisibilityOfElements(['checkbox-selected'], !this.privacyPolicyAccepted);
+    if (this.privacyPolicyAccepted) {
+
+      this.toggleVisibilityOfElements(['checkbox-selected-hover'], false);
+      this.toggleVisibilityOfElements(['checkbox-hover'], true);
+    } else {
+
+
+      this.toggleVisibilityOfElements(['checkbox-hover'], false);
+      this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
+    }
 
     this.privacyPolicyAccepted = !this.privacyPolicyAccepted;
   }

@@ -26,21 +26,21 @@
 
         <form (ngSubmit)="submitContactForm()">
             <div>
-                <input id="name" [(ngModel)]="name" (input)="validateInput('name')" type="text" placeholder="Your name"
+                <input id="name" [(ngModel)]="alerts[0].inputValue" (input)="validateInput('name')" type="text" placeholder="Your name"
                     name="name">
                 <img id="name-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
                 <img id="name-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg" alt="input checkmark">
                 <span id="name-alert-text"></span>
             </div>
             <div>
-                <input id="email" [(ngModel)]="email" (input)="validateInput('email')" type="email"
+                <input id="email" [(ngModel)]="alerts[1].inputValue" (input)="validateInput('email')" type="email"
                     placeholder="Your email" name="email">
                 <img id="email-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
                 <img id="email-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg" alt="input checkmark">
                 <span id="email-alert-text"></span>
             </div>
             <div>
-                <textarea id="message" [(ngModel)]="message" (input)="validateInput('message')" type="text"
+                <textarea id="message" [(ngModel)]="alerts[2].inputValue" (input)="validateInput('message')" type="text"
                     placeholder="Your message" name="message"></textarea>
                 <img id="message-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
                 <img id="message-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg" alt="input checkmark">
@@ -48,9 +48,9 @@
             </div>
             <div id="privacy-policy">
 
-                <div id="checkbox" (click)="togglePrivacyPolicyAcceptance()">
+                <div id="checkbox" (click)="togglePrivacyPolicyAcceptance()" (mouseover)="handleCheckboxMouseover()" (mouseout)="handleCheckboxMouseout()">
                     <img id="checkbox-default" src="./assets/img/check_button_blue.svg"
-                        alt="checkbox">
+                        alt="checkbox" class="d-flex-important">
                     <img id="checkbox-hover" src="./assets/img/check_button_blue_hover.svg" alt="checkbox hovering">
                     <img id="checkbox-selected" src="./assets/img/check_button_blue_selected.svg"
                         alt="checkbox selected">
@@ -60,7 +60,7 @@
 
                 <span>
                     I've read the
-                    <a href="">
+                    <a href="./privacy-policy" target="_blank" rel="noopener noreferrer">
                         privacy policy
                     </a>
                     and agree to the processing of my data as outlined.
