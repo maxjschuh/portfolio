@@ -69,3 +69,27 @@ app-logo {
     font-family: 'PoppinsExtrabold';
     font-size: 27px;
 }
+
+/* ----------------------------------
+custom scrollbar
+---------------------------------- */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #141D2F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2C3646;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #29ABE2;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #091931;
+}

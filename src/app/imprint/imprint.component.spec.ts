@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AboveTheFoldComponent } from './above-the-fold.component';
+import { ImprintComponent } from './imprint.component';
 
-describe('AboveTheFoldComponent', () => {
-  let component: AboveTheFoldComponent;
-  let fixture: ComponentFixture<AboveTheFoldComponent>;
+describe('ImprintComponent', () => {
+  let component: ImprintComponent;
+  let fixture: ComponentFixture<ImprintComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AboveTheFoldComponent]
+      imports: [ImprintComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AboveTheFoldComponent);
+    fixture = TestBed.createComponent(ImprintComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
