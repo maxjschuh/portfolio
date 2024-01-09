@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { AppComponent } from '../../app.component';
-import { error } from 'node:console';
+import { Input } from '../../interfaces/input.interface';
 
 @Component({
   selector: 'app-contact',
@@ -12,62 +12,71 @@ import { error } from 'node:console';
 })
 export class ContactComponent {
 
-  name = '';
-  email = '';
-  message = '';
   privacyPolicyAccepted = false;
+  formValid = false;
+  checkboxAlertText = '';
 
-  alerts = [
+  inputs: Input[] = [
     {
       inputId: 'name',
-      inputValue: this.name.trim(),
-      alertText: 'Your name is required',
+      value: '',
+      alertText: '',
       disallowedCharacters: /[$"'`´\s\\]/
     },
     {
       inputId: 'email',
-      inputValue: this.email.trim(),
-      alertText: 'Your email is required',
+      value: '',
+      alertText: '',
       disallowedCharacters: /[$"'`´\s\\]/
     },
     {
       inputId: 'message',
-      inputValue: this.message.trim(),
-      alertText: 'Your message is empty',
+      value: '',
+      alertText: '',
       disallowedCharacters: /[$"'`´\s\\]/
     }
   ];
 
+  validateInput(input: Input) {
 
-  validateInput(inputId: string) {
+    if (input.disallowedCharacters.test(input.value)) {
 
-    for (let i = 0; i < this.alerts.length; i++) {
-      const alert = this.alerts[i];
+      input.alertText = 'Contains disallowed characters!';
+      this.formValid = false;
 
-      if (alert.inputId !== inputId) return;
+    } else if (!input.value) {
 
-      const alertId = `${inputId}-alert-text`;
-      const alertElement = document.getElementById(alertId);
+      input.alertText = `Your ${input.inputId} is required!`;
+      this.formValid = false;
 
-      if (!alertElement) throw new Error;
+    } else input.alertText = '';
+  }
 
-      
-      if (alert.disallowedCharacters.test(alert.inputValue)) {
-        
-        alertElement.innerHTML = alert.alertText;
+  async submitContactForm() {
 
-      } else {
-        alertElement.innerHTML = '';
-      }
+    this.formValid = this.privacyPolicyAccepted;
+    this.inputs.forEach(input => this.validateInput(input));
 
+    if (!this.privacyPolicyAccepted) {
+      this.checkboxAlertText = 'Please accept the privacy policy.';
+
+    } else if (this.formValid) {
+
+      // await this.sendEmail();
+      this.resetForm();
     }
-  }
-
-  submitContactForm() {
-
-    console.log('here')
 
   }
+
+  resetForm() {
+
+    this.inputs.forEach(input => input.value = '');
+
+    this.privacyPolicyAccepted = false;
+    this.toggleVisibilityOfElements(['checkbox-selected'], false);
+    this.toggleVisibilityOfElements(['checkbox-default'], true);
+  }
+
 
   handleCheckboxMouseover() {
 
@@ -80,7 +89,6 @@ export class ContactComponent {
 
       this.toggleVisibilityOfElements(['checkbox-hover'], true);
     }
-
   }
 
 
@@ -104,31 +112,39 @@ export class ContactComponent {
 
       this.toggleVisibilityOfElements(['checkbox-selected-hover'], false);
       this.toggleVisibilityOfElements(['checkbox-hover'], true);
-    } else {
+      this.checkboxAlertText = 'Please accept the privacy policy.';
 
+    } else {
 
       this.toggleVisibilityOfElements(['checkbox-hover'], false);
       this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
+      this.checkboxAlertText = '';
     }
 
     this.privacyPolicyAccepted = !this.privacyPolicyAccepted;
   }
+
 
   toggleVisibilityOfElements(ids: string[], showElements: boolean) {
 
     ids.forEach(id => {
 
       document.getElementById(id)?.classList.toggle('d-flex-important', showElements);
-    })
+    });
   }
 
   async sendEmail() {
 
     const url = "./../../send_mail.php";
+
     const data = {
-      name: this.name,
-      message: this.generateContactMessage(this.name, this.email, this.message)
+      name: this.inputs[0].value,
+      message: this.generateContactMessage(
+        this.inputs[0].value,
+        this.inputs[1].value,
+        this.inputs[2].value)
     };
+
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

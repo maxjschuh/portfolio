@@ -26,57 +26,69 @@
 
         <form (ngSubmit)="submitContactForm()">
             <div>
-                <input id="name" [(ngModel)]="alerts[0].inputValue" (input)="validateInput('name')" type="text" placeholder="Your name"
-                    name="name">
-                <img id="name-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
-                <img id="name-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg" alt="input checkmark">
-                <span id="name-alert-text"></span>
+                <input id="name" [(ngModel)]="inputs[0].value" (input)="validateInput(inputs[0])" type="text"
+                    placeholder="Your name" name="name">
+                <img id="name-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg"
+                    alt="input alert">
+                <img id="name-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg"
+                    alt="input checkmark">
+                <span id="name-alert-text" class="alert-text" [innerText]="inputs[0].alertText"></span>
             </div>
             <div>
-                <input id="email" [(ngModel)]="alerts[1].inputValue" (input)="validateInput('email')" type="email"
+                <input id="email" [(ngModel)]="inputs[1].value" (input)="validateInput(inputs[1])" type="email"
                     placeholder="Your email" name="email">
-                <img id="email-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
-                <img id="email-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg" alt="input checkmark">
-                <span id="email-alert-text"></span>
+                <img id="email-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg"
+                    alt="input alert">
+                <img id="email-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg"
+                    alt="input checkmark">
+                <span id="email-alert-text" class="alert-text" [innerText]="inputs[1].alertText"></span>
             </div>
             <div>
-                <textarea id="message" [(ngModel)]="alerts[2].inputValue" (input)="validateInput('message')" type="text"
+                <textarea id="message" [(ngModel)]="inputs[2].value" (input)="validateInput(inputs[2])" type="text"
                     placeholder="Your message" name="message"></textarea>
-                <img id="message-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg" alt="input alert">
-                <img id="message-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg" alt="input checkmark">
-                <span id="message-alert-text"></span>
+                <img id="message-alert-icon" class="input-alert-icon" src="./assets/img/input_checkmark.svg"
+                    alt="input alert">
+                <img id="message-checkmark" class="input-alert-icon" src="./assets/img/input_alert.svg"
+                    alt="input checkmark">
+                <span id="message-alert-text" class="alert-text" [innerText]="inputs[2].alertText"></span>
             </div>
             <div id="privacy-policy">
+                <div>
+                    <div id="checkbox" (click)="togglePrivacyPolicyAcceptance()" (mouseover)="handleCheckboxMouseover()"
+                        (mouseout)="handleCheckboxMouseout()">
+                        <img id="checkbox-default" src="./assets/img/check_button_blue.svg" alt="checkbox"
+                            class="d-flex-important">
+                        <img id="checkbox-hover" src="./assets/img/check_button_blue_hover.svg" alt="checkbox hovering">
+                        <img id="checkbox-selected" src="./assets/img/check_button_blue_selected.svg"
+                            alt="checkbox selected">
+                        <img id="checkbox-selected-hover" src="./assets/img/check_button_blue_selected_hover.svg"
+                            alt="checkbox selected hovering">
+                    </div>
 
-                <div id="checkbox" (click)="togglePrivacyPolicyAcceptance()" (mouseover)="handleCheckboxMouseover()" (mouseout)="handleCheckboxMouseout()">
-                    <img id="checkbox-default" src="./assets/img/check_button_blue.svg"
-                        alt="checkbox" class="d-flex-important">
-                    <img id="checkbox-hover" src="./assets/img/check_button_blue_hover.svg" alt="checkbox hovering">
-                    <img id="checkbox-selected" src="./assets/img/check_button_blue_selected.svg"
-                        alt="checkbox selected">
-                    <img id="checkbox-selected-hover" src="./assets/img/check_button_blue_selected_hover.svg"
-                        alt="checkbox selected hovering">
+                    <span>
+                        I've read the
+                        <a href="./privacy-policy" target="_blank" rel="noopener noreferrer">
+                            privacy policy
+                        </a>
+                        and agree to the processing of my data as outlined.
+                    </span>
+
                 </div>
-
-                <span>
-                    I've read the
-                    <a href="./privacy-policy" target="_blank" rel="noopener noreferrer">
-                        privacy policy
-                    </a>
-                    and agree to the processing of my data as outlined.
-                </span>
+                <span id="checkbox-alert-text" name="checkbox-alert-text" class="alert-text" [innerText]="checkboxAlertText"></span>
             </div>
 
             <button type="submit">Send message :)</button>
         </form>
 
-        <svg id="go-up-button" width="39" height="39" viewBox="0 0 39 39" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="37" height="37" rx="18.5" stroke="white" stroke-width="2" />
-            <path
-                d="M18 15.828L13.343 20.485C12.9525 20.8755 12.3194 20.8755 11.929 20.485C11.5385 20.0945 11.5385 19.4615 11.929 19.071L18.2928 12.7071C18.6834 12.3166 19.3165 12.3166 19.7071 12.7071L26.071 19.071C26.4614 19.4615 26.4614 20.0945 26.071 20.485C25.6805 20.8755 25.0474 20.8755 24.657 20.485L20 15.828L20 27C20 27.5523 19.5522 28 19 28C18.4477 28 18 27.5523 18 27L18 15.828Z"
-                fill="white" />
-        </svg>
+        <a href="#start">
+            <svg id="go-up-button" width="39" height="39" viewBox="0 0 39 39" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="1" width="37" height="37" rx="18.5" stroke="white" stroke-width="2" />
+                <path
+                    d="M18 15.828L13.343 20.485C12.9525 20.8755 12.3194 20.8755 11.929 20.485C11.5385 20.0945 11.5385 19.4615 11.929 19.071L18.2928 12.7071C18.6834 12.3166 19.3165 12.3166 19.7071 12.7071L26.071 19.071C26.4614 19.4615 26.4614 20.0945 26.071 20.485C25.6805 20.8755 25.0474 20.8755 24.657 20.485L20 15.828L20 27C20 27.5523 19.5522 28 19 28C18.4477 28 18 27.5523 18 27L18 15.828Z"
+                    fill="white" />
+            </svg>
+        </a>
     </section>
 
 </main>

@@ -66,6 +66,12 @@ form {
         display: none;
     }
 
+    .alert-text {
+        color: #E61C40;
+        font-size: 14px;
+        height: 17px;
+    }
+
     input {
         box-sizing: border-box;
         height: 82px;
@@ -119,8 +125,11 @@ form {
 }
 
 #privacy-policy {
+
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 8px;
 
     a {
@@ -132,9 +141,16 @@ form {
         }
     }
 
+    div {
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+
     #checkbox {
 
-        width: fit-content;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -145,7 +161,6 @@ form {
         }
 
         &:hover {
-
             cursor: pointer;
         }
     }
