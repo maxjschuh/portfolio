@@ -19,20 +19,29 @@ export class ContactComponent {
   inputs: Input[] = [
     {
       inputId: 'name',
+      style: '',
       value: '',
       alertText: '',
+      alertIconStyle: 'display: none',
+      checkmarkIconStyle: 'display: none',
       disallowedCharacters: /[$"'`´\s\\]/
     },
     {
       inputId: 'email',
+      style: '',
       value: '',
       alertText: '',
+      alertIconStyle: 'display: none',
+      checkmarkIconStyle: 'display: none',
       disallowedCharacters: /[$"'`´\s\\]/
     },
     {
       inputId: 'message',
+      style: '',
       value: '',
       alertText: '',
+      checkmarkIconStyle: 'display: none',
+      alertIconStyle: 'display: none',
       disallowedCharacters: /[$"'`´\s\\]/
     }
   ];
@@ -42,14 +51,23 @@ export class ContactComponent {
     if (input.disallowedCharacters.test(input.value)) {
 
       input.alertText = 'Contains disallowed characters!';
-      this.formValid = false;
 
     } else if (!input.value) {
 
       input.alertText = `Your ${input.inputId} is required!`;
-      this.formValid = false;
 
-    } else input.alertText = '';
+    } else {
+      input.alertText = '';
+      input.style = 'border-color: #70E61C';
+      input.alertIconStyle = '';
+      input.checkmarkIconStyle = 'display: flex';
+      return;
+    }
+
+    input.alertIconStyle = 'display: flex';
+    input.checkmarkIconStyle = 'display: none';
+    input.style = 'border-color: #E61C40';
+    this.formValid = false;
   }
 
   async submitContactForm() {
@@ -70,7 +88,12 @@ export class ContactComponent {
 
   resetForm() {
 
-    this.inputs.forEach(input => input.value = '');
+    this.inputs.forEach(input => {
+      input.value = '';
+      input.alertIconStyle = 'display: none';
+      input.checkmarkIconStyle = 'display: none';
+      input.style = '';
+    });
 
     this.privacyPolicyAccepted = false;
     this.toggleVisibilityOfElements(['checkbox-selected'], false);

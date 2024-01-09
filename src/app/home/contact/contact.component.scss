@@ -67,6 +67,7 @@ form {
     }
 
     .alert-text {
+        display: flex;
         color: #E61C40;
         font-size: 14px;
         height: 17px;
@@ -85,11 +86,11 @@ form {
         font-family: 'Poppins';
 
         &:hover {
-            border: 1px solid #1CE6B6;
+            border-color: #1CE6B6;
         }
 
-        &:active {
-            border: 1px solid #70E61C;
+        &:focus {
+            border-color: #1CE6B6 !important;
         }
 
         &::placeholder {
