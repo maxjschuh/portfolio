@@ -26,7 +26,7 @@
 
         <form (ngSubmit)="submitContactForm()">
             <div>
-                <input id="name" [(ngModel)]="inputs[0].value" (input)="validateInput(inputs[0])" [style]="inputs[0].style" type="text"
+                <input id="name" [(ngModel)]="inputs[0].value" (input)="validateInput(inputs[0], false)" [style]="inputs[0].style" type="text"
                     placeholder="Your name" name="name">
                 <img id="name-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[0].alertIconStyle" src="./assets/img/input_alert.svg">
                 <img id="name-checkmark" class="input-alert-icon" src="./assets/img/input_checkmark.svg"
@@ -34,7 +34,7 @@
                 <span id="name-alert-text" class="alert-text" [innerText]="inputs[0].alertText"></span>
             </div>
             <div>
-                <input id="email" [(ngModel)]="inputs[1].value" (input)="validateInput(inputs[1])" [style]="inputs[1].style" type="email"
+                <input id="email" [(ngModel)]="inputs[1].value" (input)="validateInput(inputs[1], false)" [style]="inputs[1].style" type="email"
                     placeholder="Your email" name="email">
                 <img id="email-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[1].alertIconStyle" src="./assets/img/input_alert.svg">
                 <img id="email-checkmark" class="input-alert-icon" src="./assets/img/input_checkmark.svg"
@@ -42,7 +42,7 @@
                 <span id="email-alert-text" class="alert-text" [innerText]="inputs[1].alertText"></span>
             </div>
             <div>
-                <textarea id="message" [(ngModel)]="inputs[2].value" (input)="validateInput(inputs[2])" [style]="inputs[2].style" type="text"
+                <textarea id="message" [(ngModel)]="inputs[2].value" (input)="validateInput(inputs[2], false)" [style]="inputs[2].style" type="text"
                     placeholder="Your message" name="message"></textarea>
                 <img id="message-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[2].alertIconStyle" src="./assets/img/input_alert.svg">
                 <img id="message-checkmark" class="input-alert-icon" src="./assets/img/input_checkmark.svg"
@@ -65,8 +65,7 @@
                     <span>
                         I've read the
                         <a href="./privacy-policy" target="_blank" rel="noopener noreferrer">
-                            privacy policy
-                        </a>
+                            privacy policy</a>
                         and agree to the processing of my data as outlined.
                     </span>
 
@@ -74,7 +73,9 @@
                 <span id="checkbox-alert-text" name="checkbox-alert-text" class="alert-text" [innerText]="checkboxAlertText"></span>
             </div>
 
-            <button type="submit">Send message :)</button>
+            <!-- <button type="submit" [ngStyle]="" [disabled]="!inputs[0].valid || !inputs[1].valid || !inputs[3].valid">Send message :)</button> -->
+
+            <button type="submit" [ngStyle]="">Send message :)</button>
         </form>
 
         <a href="#start">

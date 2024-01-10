@@ -90,6 +90,7 @@ form {
         }
 
         &:focus {
+            outline: none !important;
             border-color: #1CE6B6 !important;
         }
 
@@ -112,7 +113,12 @@ form {
         resize: none;
 
         &:hover {
-            border: 1px solid #1CE6B6;
+            border-color: #1CE6B6;
+        }
+
+        &:focus {
+            outline: none !important;
+            border-color: #1CE6B6 !important;
         }
 
         &::placeholder {

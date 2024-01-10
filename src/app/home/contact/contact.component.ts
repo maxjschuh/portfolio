@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { AppComponent } from '../../app.component';
 import { Input } from '../../interfaces/input.interface';
+import { CommonModule } from '@angular/common';
+import { InputUserFeedback } from '../../interfaces/input-user-feedback.interface';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule, AppComponent],
+  imports: [CommonModule, FormsModule, AppComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
@@ -22,77 +24,118 @@ export class ContactComponent {
       style: '',
       value: '',
       alertText: '',
-      alertIconStyle: 'display: none',
-      checkmarkIconStyle: 'display: none',
-      disallowedCharacters: /[$"'`´\s\\]/
+      alertIconStyle: '',
+      checkmarkIconStyle: '',
+      disallowedCharacters: /[$"'`´\s\\]/,
+      valid: false
     },
     {
       inputId: 'email',
       style: '',
       value: '',
       alertText: '',
-      alertIconStyle: 'display: none',
-      checkmarkIconStyle: 'display: none',
-      disallowedCharacters: /[$"'`´\s\\]/
+      alertIconStyle: '',
+      checkmarkIconStyle: '',
+      disallowedCharacters: /[$"'`´\s\\]/,
+      valid: false
     },
     {
       inputId: 'message',
       style: '',
       value: '',
       alertText: '',
-      checkmarkIconStyle: 'display: none',
-      alertIconStyle: 'display: none',
-      disallowedCharacters: /[$"'`´\s\\]/
+      checkmarkIconStyle: '',
+      alertIconStyle: '',
+      disallowedCharacters: /[$"'`´\s\\]/,
+      valid: false
     }
   ];
 
-  validateInput(input: Input) {
+  inputUserFeedbacks: InputUserFeedback[] = [
+    {
+      feedbackType: 'default',
+      borderStyle: '',
+      checkmarkIconStyle: '',
+      alertIconStyle: '',
+      inputValid: false
+    },
+    {
+      feedbackType: 'invalid',
+      borderStyle: 'border-color: #E61C40',
+      checkmarkIconStyle: '',
+      alertIconStyle: 'display: flex',
+      inputValid: false
+    },
+    {
+      feedbackType: 'valid',
+      borderStyle: 'border-color: #70E61C',
+      checkmarkIconStyle: 'display: flex',
+      alertIconStyle: '',
+      inputValid: true
+    }
+  ];
 
-    if (input.disallowedCharacters.test(input.value)) {
 
-      input.alertText = 'Contains disallowed characters!';
+  validateInput(input: Input, formSubmission: boolean) {
+
+    if (!formSubmission && !input.value) {
+
+      this.setUserFeedbackForInput(input, '', 'default');
 
     } else if (!input.value) {
 
-      input.alertText = `Your ${input.inputId} is required!`;
+      const alertText = `Your ${input.inputId} is required!`;
+      this.setUserFeedbackForInput(input, alertText, 'invalid');
 
-    } else {
-      input.alertText = '';
-      input.style = 'border-color: #70E61C';
-      input.alertIconStyle = '';
-      input.checkmarkIconStyle = 'display: flex';
-      return;
-    }
+    } else if (input.disallowedCharacters.test(input.value)) {
 
-    input.alertIconStyle = 'display: flex';
-    input.checkmarkIconStyle = 'display: none';
-    input.style = 'border-color: #E61C40';
-    this.formValid = false;
+      const alertText = 'Contains disallowed characters!';
+      this.setUserFeedbackForInput(input, alertText, 'invalid');
+
+    } else this.setUserFeedbackForInput(input, '', 'valid');
   }
+
+
+  setUserFeedbackForInput(input: Input, alertText: string, feedbackType: string) {
+
+    this.inputUserFeedbacks.forEach(userFeedback => {
+
+      if (userFeedback.feedbackType !== feedbackType) return;
+
+      input.alertText = alertText;
+      input.style = userFeedback.borderStyle;
+      input.checkmarkIconStyle = userFeedback.checkmarkIconStyle;
+      input.alertIconStyle = userFeedback.alertIconStyle;
+      input.valid = userFeedback.inputValid;
+
+      if (!userFeedback.inputValid) this.formValid = false;
+
+    });
+  }
+
 
   async submitContactForm() {
 
     this.formValid = this.privacyPolicyAccepted;
-    this.inputs.forEach(input => this.validateInput(input));
+    this.inputs.forEach(input => this.validateInput(input, true));
 
     if (!this.privacyPolicyAccepted) {
       this.checkboxAlertText = 'Please accept the privacy policy.';
 
     } else if (this.formValid) {
 
-      // await this.sendEmail();
+      await this.sendEmail();
       this.resetForm();
     }
-
   }
+
 
   resetForm() {
 
     this.inputs.forEach(input => {
+      
       input.value = '';
-      input.alertIconStyle = 'display: none';
-      input.checkmarkIconStyle = 'display: none';
-      input.style = '';
+      this.setUserFeedbackForInput(input, '', 'default');
     });
 
     this.privacyPolicyAccepted = false;
@@ -108,10 +151,8 @@ export class ContactComponent {
     if (this.privacyPolicyAccepted) {
 
       this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
-    } else {
 
-      this.toggleVisibilityOfElements(['checkbox-hover'], true);
-    }
+    } else this.toggleVisibilityOfElements(['checkbox-hover'], true);
   }
 
 
@@ -135,7 +176,6 @@ export class ContactComponent {
 
       this.toggleVisibilityOfElements(['checkbox-selected-hover'], false);
       this.toggleVisibilityOfElements(['checkbox-hover'], true);
-      this.checkboxAlertText = 'Please accept the privacy policy.';
 
     } else {
 
@@ -156,6 +196,7 @@ export class ContactComponent {
     });
   }
 
+
   async sendEmail() {
 
     const url = "./../../send_mail.php";
@@ -168,13 +209,15 @@ export class ContactComponent {
         this.inputs[2].value)
     };
 
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(data)
-    };
+    console.log(data);
 
-    await fetch(url, options);
+    // const options = {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //   body: new URLSearchParams(data)
+    // };
+
+    // await fetch(url, options);
   }
 
 

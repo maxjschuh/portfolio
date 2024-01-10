@@ -5,5 +5,6 @@ export interface Input {
     alertText: string,
     alertIconStyle: string,
     checkmarkIconStyle: string,
-    disallowedCharacters: RegExp
+    disallowedCharacters: RegExp,
+    valid: boolean
   }
