@@ -52,6 +52,7 @@ h1 {
     font-size: 23px;
     color: white;
     transform: rotate(90deg);
+    z-index: 4;
 
     &:hover {
         cursor: pointer;

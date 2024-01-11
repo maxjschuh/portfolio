@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PortfolioProject } from '../../../interfaces/portfolio-project.interface';
 
 @Component({
   selector: 'app-portfolio-project',

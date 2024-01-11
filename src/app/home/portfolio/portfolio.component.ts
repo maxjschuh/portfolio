@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { PortfolioProjectComponent } from './portfolio-project/portfolio-project.component';
+import { PortfolioProject } from '../../interfaces/portfolio-project.interface';
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [PortfolioProjectComponent, NgFor],
+  imports: [CommonModule, PortfolioProjectComponent, NgFor],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss'
 })
 export class PortfolioComponent {
 
-  projects = [
+  projects: PortfolioProject[] =  [
     {
       title: 'Join',
       stack: 'JavaScript | HTML | CSS',
@@ -29,16 +30,6 @@ export class PortfolioComponent {
       image_path: './assets/img/laptop_mockup.png',
       image_alt: 'El Pollo Loco Mockup',
       style: 'flex-direction: row-reverse;',
-      test_link: '#',
-      github_link: '#'
-    },
-    {
-      title: 'Pokedex',
-      stack: 'JavaScript | HTML | CSS',
-      description: 'Gotta catch \'em all!',
-      image_path: './assets/img/laptop_mockup.png',
-      image_alt: 'Pokedex Mockup',
-      style: '',
       test_link: '#',
       github_link: '#'
     }

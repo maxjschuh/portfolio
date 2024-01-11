@@ -2,7 +2,7 @@
 
 ########### CONFIG ###############
 
-$recipient = "maximilianschuh@gmx.de";
+$recipient = "max@mjschuh.com";
 $message = $_POST["message"];
 $name = $_POST["name"];
 $subject = "New message from " . $name;

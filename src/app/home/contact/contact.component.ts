@@ -251,7 +251,7 @@ export class ContactComponent {
       <body>
           <div class="container">
               <h1>New message from ${name}
-                <a href="mailto:${email}"></a>
+                href="mailto:${email}"></a>
               </h1>
               <p>${message}</p>
               </div>
