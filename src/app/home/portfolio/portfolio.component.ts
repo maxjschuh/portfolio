@@ -16,21 +16,21 @@ export class PortfolioComponent {
     {
       title: 'Join',
       stack: 'JavaScript | HTML | CSS',
-      description: 'Task manager inspired by the Kanban System. Create and organize tasks using drag and drop functions, assign users and categories.',
-      image_path: './assets/img/laptop_mockup.png',
+      description: `Join is a easy to use CRUD-App in form of a project management tool. Its core function is a Kanban Board, on which users can switch tasks between columns by drag-and-drop. Tasks can be enriched with various additional data such as assignees, subtasks and labels. <br> Join was created in a team of 4 web development trainees, in which I was responsible for the Kanban Board subpage. `,
+      image_path: './assets/img/mockups/join_mockup_v1.png',
       image_alt: 'Join Mockup',
       style: '',
-      test_link: '#',
+      test_link: 'https://join.mjschuh.com/',
       github_link: '#'
     },
     {
       title: 'El Pollo Loco',
       stack: 'JavaScript | HTML | CSS',
-      description: 'A simple Jump-and-Run game based on an object-oriented approach. Help Pepe to find coins and salsa bottles to fight the enemy chicken.',
-      image_path: './assets/img/laptop_mockup.png',
+      description: 'El Pollo Loco is a Jump-and-Run game in a wild west themed world. It features animated characters, a randomly generated level and random endboss behaviour. Players can use mouse, keyboard or touch controls. For El Pollo Loco I took an object-oriented approach to allow for easier maintenance and modular expandability of the code.',
+      image_path: './assets/img/mockups/pollo-loco_mockup_v1.png',
       image_alt: 'El Pollo Loco Mockup',
       style: 'flex-direction: row-reverse;',
-      test_link: '#',
+      test_link: 'https://el-pollo-loco.mjschuh.com/',
       github_link: '#'
     }
   ];
