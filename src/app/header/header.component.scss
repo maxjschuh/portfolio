@@ -22,10 +22,10 @@ a {
     &:hover {
         color: #00BEE8;
 
-
+        .inactive {
+            width: 55px !important;
+        }
     }
-
-
 
     div {
         border-radius: 0px 4px 4px 0;
@@ -33,19 +33,9 @@ a {
         width: 0px;
         background-color: #4B47FF;
         transition: all 125ms;
-
-
     }
 }
 
 .active {
     width: 55px !important;
-}
-
-.inactive {
-
-    &:hover {
-
-        width: 55px !important;
-    }
 }
