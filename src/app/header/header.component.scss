@@ -22,16 +22,30 @@ a {
     &:hover {
         color: #00BEE8;
 
-        div {
-            width: 55px;
-        }
+
     }
+
+
 
     div {
         border-radius: 0px 4px 4px 0;
         height: 4px;
-        width: 0;
+        width: 0px;
         background-color: #4B47FF;
         transition: all 125ms;
+
+
+    }
+}
+
+.active {
+    width: 55px !important;
+}
+
+.inactive {
+
+    &:hover {
+
+        width: 55px !important;
     }
 }

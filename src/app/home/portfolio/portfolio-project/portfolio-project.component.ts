@@ -10,6 +10,6 @@ import { PortfolioProject } from '../../../interfaces/portfolio-project.interfac
 })
 export class PortfolioProjectComponent {
 
-  @Input() project: any;
+  @Input() project!: PortfolioProject;
   
 }
