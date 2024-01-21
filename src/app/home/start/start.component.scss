@@ -42,16 +42,17 @@ h1 {
 }
 
 #scroll-call-to-action {
+    // transform: rotate(90deg);
+    writing-mode: vertical-lr;
     position: absolute;
     bottom: 90px;
-    right: 48px;
+    right: calc((100vw - 1000px) / 2);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 3px;
     font-size: 23px;
     color: white;
-    transform: rotate(90deg);
     z-index: 3;
 
     &:hover {
@@ -75,7 +76,6 @@ h1 {
 #scroll-call-to-action svg {
     width: 24px;
     height: 24px;
-    transform: rotate(-90deg);
 }
 
 #social-media {
@@ -110,11 +110,21 @@ h1 {
     height: 4px;
 }
 
-#shadow-left {
+.shadow {
     position: absolute;
-    top: 30vh;
-    left: calc((100vw / 2) - 700px);
+    top: 20vh;
     height: 608px;
+}
+
+#shadow-left {
+    // left: calc((100vw / 2) - 900px);
+    left: -330px;
+    rotate: 90deg;
+}
+
+#shadow-right {
+    // right: calc((100vw / 2) - 900px);
+    right: -300px;
 }
 
 a {

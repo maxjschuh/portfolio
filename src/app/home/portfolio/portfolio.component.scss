@@ -36,4 +36,14 @@ app-portfolio-project {
     gap: 35px;
     width: calc(100vw - 200px);
     max-width: 1000px;
+    z-index: 1;
+}
+
+#shadow {
+    position: absolute;
+    transform: scaleX(-1);
+    width: 630px;
+    height: 750px;
+    left: 0;
+    top: 50%;
 }

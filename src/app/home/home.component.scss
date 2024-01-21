@@ -29,6 +29,7 @@ app-portfolio {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    position: relative;
 }
 
 app-contact {
@@ -36,4 +37,5 @@ app-contact {
     flex-direction: column;
     align-items: flex-start;
     min-height: 100vh;
+    position: relative;
 }

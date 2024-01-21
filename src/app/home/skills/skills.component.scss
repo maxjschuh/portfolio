@@ -53,3 +53,13 @@ app-skill-icon {
     height: 4px;
     flex: 1;
 }
+
+.shadow {
+    position: absolute;
+    width: 430px;
+    // rotate: -130deg;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+    
+    left: -250px;
+}
