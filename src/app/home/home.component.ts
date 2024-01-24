@@ -1,4 +1,4 @@
-import { Component, ViewChild, HostListener, ElementRef } from '@angular/core';
+import { Component, ViewChild, HostListener, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { SkillsComponent } from './skills/skills.component';
@@ -14,16 +14,18 @@ import { ScrollLocationOnPageService } from '../services/scroll-location-on-page
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
 
   constructor(private scrollLocationService: ScrollLocationOnPageService) { }
 
-  // @ViewChild('start', { read: ElementRef }) startElementRef!: ElementRef;
-  // @ViewChild('about', { read: ElementRef }) aboutElementRef!: ElementRef;
-  // @ViewChild('contact', { read: ElementRef }) contactElementRef!: ElementRef;
-
   @ViewChild('skills', { read: ElementRef }) skillsElementRef!: ElementRef;
   @ViewChild('portfolio', { read: ElementRef }) portfolioElementRef!: ElementRef;
+
+
+  ngAfterViewInit() {
+
+    // this.updateScrollPosition();
+  }
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {

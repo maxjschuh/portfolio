@@ -9,6 +9,11 @@
     This page is a sample of my work - please feel free to try them out.
 </summary>
 
-<app-portfolio-project *ngFor="let i of projects; let index = index;" [project]="projects[index]" [style]="projects[index].style"></app-portfolio-project>
+@for (project of projects; track $index) {
+
+    <app-portfolio-project [project]="projects[$index]" [style]="projects[$index].style"></app-portfolio-project>
+}
+
+<!-- <app-portfolio-project *ngFor="let i of projects; let index = index;" [project]="projects[index]" [style]="projects[index].style"></app-portfolio-project> -->
 
 <img id="shadow" src="./assets/img/shadows/shadow_purple_3.svg" alt="purple shadow">

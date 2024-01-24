@@ -125,6 +125,7 @@ export class ContactComponent {
     } else if (this.formValid) {
 
       await this.sendEmail();
+      console.log('mail sent');
       this.resetForm();
     }
   }
@@ -211,13 +212,13 @@ export class ContactComponent {
 
     console.log(data);
 
-    // const options = {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //   body: new URLSearchParams(data)
-    // };
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data)
+    };
 
-    // await fetch(url, options);
+    await fetch(url, options);
   }
 
 
@@ -250,8 +251,8 @@ export class ContactComponent {
       </head>
       <body>
           <div class="container">
-              <h1>New message from ${name}
-                href="mailto:${email}"></a>
+              <h1>New message from
+                <a href="mailto:${email}">${name}</a>
               </h1>
               <p>${message}</p>
               </div>

@@ -7,6 +7,6 @@ import { BehaviorSubject } from 'rxjs';
 export class ScrollLocationOnPageService {
 
   public currentScroll = new BehaviorSubject<any>({
-    section: 'about'
+    section: ''
   });
 }

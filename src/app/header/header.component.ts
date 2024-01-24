@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LogoComponent } from '../logo/logo.component';
 import { ScrollLocationOnPageService } from '../services/scroll-location-on-page/scroll-location-on-page.service';
@@ -45,7 +45,9 @@ export class HeaderComponent implements OnInit {
     } else if (currentSection === 'skills') {
       this.navlinks[1].classlist = 'active';
 
-    } else this.navlinks[2].classlist = 'active';
+    } else if (currentSection === 'portfolio') {
+      this.navlinks[2].classlist = 'active';
+    }
   }
 
 }

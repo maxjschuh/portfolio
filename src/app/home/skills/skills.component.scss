@@ -42,8 +42,8 @@ app-skill-icon {
 }
 
 #skills-summary {
-    width: 500px;
-    max-width: calc((100vw - 200px) / 2);
+    width: calc((100vw - 200px) / 2);
+    max-width: 500px;
 
 }
 
@@ -57,9 +57,7 @@ app-skill-icon {
 .shadow {
     position: absolute;
     width: 430px;
-    // rotate: -130deg;
     -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
-    
+    transform: scaleY(-1);    
     left: -250px;
 }
