@@ -21,7 +21,7 @@ export class PortfolioComponent {
       image_alt: 'Join Mockup',
       style: '',
       test_link: 'https://join.mjschuh.com/',
-      github_link: '#'
+      github_link: 'https://github.com/maxjschuh/join-2.0'
     },
     {
       title: 'El Pollo Loco',
@@ -31,7 +31,7 @@ export class PortfolioComponent {
       image_alt: 'El Pollo Loco Mockup',
       style: 'flex-direction: row-reverse;',
       test_link: 'https://el-pollo-loco.mjschuh.com/',
-      github_link: '#'
+      github_link: 'https://github.com/maxjschuh/el-pollo-loco'
     }
   ];
 }

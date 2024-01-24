@@ -17,6 +17,7 @@ export class ContactComponent {
   privacyPolicyAccepted = false;
   formValid = false;
   checkboxAlertText = '';
+  submitButtonText = 'Send message :)';
 
   inputs: Input[] = [
     {
@@ -124,7 +125,13 @@ export class ContactComponent {
 
     } else if (this.formValid) {
 
-      await this.sendEmail();
+      this.submitButtonText = `&#10004; Your message has been sent`;
+      
+      setTimeout(() => {
+        this.submitButtonText = 'Send message :)';
+      }, 2000);
+
+      // await this.sendEmail();
       console.log('mail sent');
       this.resetForm();
     }
@@ -200,8 +207,6 @@ export class ContactComponent {
 
   async sendEmail() {
 
-    const url = "./../../send_mail.php";
-
     const data = {
       name: this.inputs[0].value,
       message: this.generateContactMessage(
@@ -210,15 +215,13 @@ export class ContactComponent {
         this.inputs[2].value)
     };
 
-    console.log(data);
-
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(data)
     };
 
-    await fetch(url, options);
+    await fetch('./../../send_mail.php', options);
   }
 
 

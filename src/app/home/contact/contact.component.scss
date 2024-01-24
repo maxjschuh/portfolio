@@ -58,7 +58,6 @@ form {
     }
 
     .input-alert-icon {
-        // display: block !important;
         position: absolute;
         width: 25px;
         top: 29px;
@@ -77,7 +76,7 @@ form {
         box-sizing: border-box;
         height: 82px;
         width: 100%;
-        padding: 15px 54px 15px 25px;
+        padding: 15px 56px 15px 25px;
         border-radius: 10px;
         border: 1px solid #4B47FF;
         background-color: #141D2F;
@@ -103,7 +102,7 @@ form {
         box-sizing: border-box;
         height: 202px;
         width: 100%;
-        padding: 15px 25px;
+        padding: 15px 56px 15px 25px;
         border-radius: 10px;
         border: 1px solid #4B47FF;
         background-color: #141D2F;
@@ -128,6 +127,7 @@ form {
 
     button {
         width: fit-content;
+        transition: all 125ms;
     }
 }
 

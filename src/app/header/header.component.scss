@@ -39,3 +39,61 @@ a {
 .active {
     width: 55px !important;
 }
+
+.burger-menu {
+    position: relative;
+    width: 30px;
+    height: 30px;
+
+    .burger-menu-layer {
+        position: absolute;
+        left: 0;
+        background-color: white;
+        width: 30px;
+        height: 4px;
+        border-radius: 4px;
+    }
+
+    #burger-menu-layer-top {
+        top: 0;
+        transform: rotate(0);
+        transition: all 500ms;
+    }
+
+    #burger-menu-layer-middle {
+        top: calc(50% - 2px);
+        left: 0;
+        transition: all 500ms;
+    }
+
+    #burger-menu-layer-bottom {
+        bottom: 0;
+        transition: all 500ms;
+    }
+
+    &:hover {
+
+        cursor: pointer;
+    }
+}
+
+.burger-menu-expanded {
+
+    #burger-menu-layer-top {
+        transform: rotate(45deg);
+        top: calc(50% - 2px);
+        transition: all 500ms;
+    }
+
+    #burger-menu-layer-middle {
+        width: 0;
+        left: 50%;
+        transition: all 500ms;
+    }
+
+    #burger-menu-layer-bottom {
+        transform: rotate(-45deg);
+        top: calc(50% - 2px);
+        transition: all 500ms;
+    }
+}

@@ -12,7 +12,10 @@ import { ScrollLocationOnPageService } from '../services/scroll-location-on-page
 })
 export class HeaderComponent implements OnInit {
 
+
   constructor(private scrollLocationService: ScrollLocationOnPageService) { }
+
+  burgerMenuClassList = ['burger-menu'];
 
   navlinks = [
     {
@@ -48,6 +51,15 @@ export class HeaderComponent implements OnInit {
     } else if (currentSection === 'portfolio') {
       this.navlinks[2].classlist = 'active';
     }
+  }
+
+  setBurgerMenu() {
+
+    if (this.burgerMenuClassList.includes('burger-menu-expanded')) {
+      
+      this.burgerMenuClassList = ['burger-menu'];
+
+    } else this.burgerMenuClassList.push('burger-menu-expanded');
   }
 
 }

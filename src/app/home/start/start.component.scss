@@ -42,7 +42,6 @@ h1 {
 }
 
 #scroll-call-to-action {
-    // transform: rotate(90deg);
     writing-mode: vertical-lr;
     position: absolute;
     bottom: 90px;
@@ -117,13 +116,11 @@ h1 {
 }
 
 #shadow-left {
-    // left: calc((100vw / 2) - 900px);
     left: -330px;
     rotate: 90deg;
 }
 
 #shadow-right {
-    // right: calc((100vw / 2) - 900px);
     right: -300px;
 }
 

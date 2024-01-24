@@ -19,4 +19,11 @@
             <div [classList]="navlinks[2].classlist"></div>
         </a>
     </nav>
+
+    <div (click)="setBurgerMenu()" [ngClass]="burgerMenuClassList">
+        <div id="burger-menu-layer-top" class="burger-menu-layer"></div>
+        <div id="burger-menu-layer-middle" class="burger-menu-layer"></div>
+        <div id="burger-menu-layer-bottom" class="burger-menu-layer"></div>
+    </div>
+
 </header>
