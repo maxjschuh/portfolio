@@ -125,7 +125,7 @@ export class ContactComponent {
 
     } else if (this.formValid) {
 
-      this.submitButtonText = `&#10004; Your message has been sent`;
+      this.submitButtonText = '&#10004; Your message has been sent';
       
       setTimeout(() => {
         this.submitButtonText = 'Send message :)';

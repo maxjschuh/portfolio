@@ -1,4 +1,4 @@
-header {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -74,10 +74,22 @@ a {
     &:hover {
 
         cursor: pointer;
+
+        .burger-menu-layer {
+            background-color: #00BEE8;
+        }
     }
 }
 
+#nav-link-contact {
+    display: none;
+}
+
 .burger-menu-expanded {
+
+    #nav-links {
+        display: flex;
+    }
 
     #burger-menu-layer-top {
         transform: rotate(45deg);
@@ -95,5 +107,41 @@ a {
         transform: rotate(-45deg);
         top: calc(50% - 2px);
         transition: all 500ms;
+    }
+
+    nav {
+        position: fixed;
+        top: 116px;
+        left: 0;
+        background-color: #414856;
+        height: calc(100vh - 116px);
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #nav-link-contact {
+        display: flex;
+    }
+}
+
+#nav-links {
+    display: flex;
+}
+
+#burger-menu {
+    display: none;
+}
+
+@media (max-width: 750px) {
+
+    #nav-links {
+        display: none;
+    }
+
+    #burger-menu {
+        display: flex;
     }
 }
