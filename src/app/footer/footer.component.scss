@@ -1,54 +1,66 @@
 main {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     width: calc(100vw - 200px);
     max-width: 1000px;
-}
 
-#footer-left-column {
-    display: flex;
-    flex-direction: column;
+    #footer-main-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
 
-    a {
-        text-decoration: none;
-        color: white;
-        font-size: 23px;
-        min-width: 56px;
-    
-        &:hover {
-            color: #00BEE8;
-    
-            div {
-                width: 55px;
+        #footer-middle-column {
+            font-size: 23px;
+        }
+
+        #footer-social-media {
+            display: flex;
+            align-items: center;
+            gap: 42px;
+            text-decoration: none;
+
+            img {
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.4);
+                }
             }
         }
-    
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+    }
+}
+
+#footer-imprint-link {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    min-width: 56px;
+
+    &:hover {
+        color: #00BEE8;
+
         div {
-            border-radius: 0px 4px 4px 0;
-            height: 4px;
-            width: 0;
-            background-color: #4B47FF;
-            transition: all 125ms;
+            width: 55px;
         }
     }
-}
 
-#footer-middle-column {
-    font-size: 23px;
-}
+    div {
+        border-radius: 0px 4px 4px 0;
+        height: 4px;
+        width: 0;
+        background-color: #4B47FF;
+        transition: all 125ms;
+    }
 
-#footer-social-media {
-    display: flex;
-    align-items: center;
-    gap: 42px;
-
-    img {
-
-        &:hover {
-            cursor: pointer;
-            transform: scale(1.4);
-        }
+    @media (max-width: 600px) {
+        display: flex;
+        justify-content: center;
+        margin-top: 24px;
     }
 }
-

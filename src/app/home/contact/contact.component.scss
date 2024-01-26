@@ -51,11 +51,14 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 14px;
 
     div {
         position: relative;
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
     }
 
     .input-alert-icon {
@@ -124,12 +127,18 @@ form {
         &::placeholder {
             color: white;
         }
+
+
     }
 
     button {
         width: fit-content;
         transition: all 125ms;
     }
+}
+
+textarea ~ .input-alert-icon {
+    top: 25px;
 }
 
 #privacy-policy {
@@ -152,6 +161,7 @@ form {
     div {
         width: fit-content;
         display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 16px;
