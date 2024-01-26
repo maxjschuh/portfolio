@@ -111,10 +111,10 @@ a {
 
     nav {
         position: fixed;
-        top: 116px;
+        top: var(--header-height);
         left: 0;
         background-color: #414856;
-        height: calc(100vh - 116px);
+        height: calc(100vh - var(--header-height));
         width: 100vw;
         display: flex;
         flex-direction: column;
