@@ -16,6 +16,7 @@
 main {
     display: flex;
     gap: 100px;
+    z-index: 1;
 }
 
 #contact-left-column {

@@ -19,7 +19,7 @@ export class PortfolioComponent {
       description: `Join is a easy to use CRUD-App in form of a project management tool. Its core function is a Kanban Board, on which users can switch tasks between columns by drag-and-drop. Tasks can be enriched with various additional data such as assignees, subtasks and labels. <br> Join was created in a team of 4 web development trainees, in which I was responsible for the Kanban Board subpage. `,
       image_path: './assets/img/mockups/join_mockup_v1.png',
       image_alt: 'Join Mockup',
-      style: '',
+      class: '',
       test_link: 'https://join.mjschuh.com/',
       github_link: 'https://github.com/maxjschuh/join-2.0'
     },
@@ -29,7 +29,7 @@ export class PortfolioComponent {
       description: 'El Pollo Loco is a Jump-and-Run game in a wild west themed world. It features animated characters, a randomly generated level and random endboss behaviour. Players can use mouse, keyboard or touch controls. For El Pollo Loco I took an object-oriented approach to allow for easier maintenance and modular expandability of the code.',
       image_path: './assets/img/mockups/pollo-loco_mockup_v1.png',
       image_alt: 'El Pollo Loco Mockup',
-      style: 'flex-direction: row-reverse;',
+      class: 'flex-row-reverse',
       test_link: 'https://el-pollo-loco.mjschuh.com/',
       github_link: 'https://github.com/maxjschuh/el-pollo-loco'
     }

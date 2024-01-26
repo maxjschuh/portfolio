@@ -37,13 +37,36 @@ app-portfolio-project {
     width: calc(100vw - 200px);
     max-width: 1000px;
     z-index: 1;
+
+    @media (max-width: 750px) {
+
+        display: flex;
+        flex-direction: column !important;
+        text-align: center;
+        width: 100%;
+    }
 }
 
-#shadow {
+.shadow {
     position: absolute;
+}
+
+#shadow-purple {
     transform: scaleX(-1);
     width: 630px;
     height: 750px;
-    left: 0;
-    top: 50%;
+    left: -200px;
+    top: 5%;
+}
+
+#shadow-blue {
+    transform: scaleX(-1);
+    width: 430;
+    height: 950px;
+    right: -400px;
+    bottom: 5%;
+}
+
+.flex-row-reverse {
+    flex-direction: row-reverse;
 }

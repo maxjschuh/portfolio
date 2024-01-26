@@ -11,7 +11,9 @@
 
 @for (project of projects; track $index) {
 
-    <app-portfolio-project [project]="projects[$index]" [style]="projects[$index].style"></app-portfolio-project>
+    <app-portfolio-project [project]="projects[$index]" [ngClass]="projects[$index].class"></app-portfolio-project>
 }
 
-<img id="shadow" src="./assets/img/shadows/shadow_purple_3.svg" alt="purple shadow">
+<img id="shadow-purple" class="shadow" src="./assets/img/shadows/shadow_purple_3.svg" alt="purple shadow">
+
+<img id="shadow-blue" class="shadow" src="./assets/img/shadows/shadow_blue_1.svg" alt="blue shadow">

@@ -4,7 +4,7 @@ export interface PortfolioProject {
     description: string,
     image_path: string,
     image_alt: string,
-    style: string,
+    class: string,
     test_link: string,
     github_link: string
 }

@@ -14,6 +14,13 @@ html {
     scroll-behavior: smooth;
 }
 
+//Variables
+
+:root {
+    --header-height: 116px;
+}
+
+
 //Utility classes
 
 body {
@@ -82,7 +89,7 @@ app-home {
 app-privacy-policy {
     display: block;
     width: calc(100vw - 200px);
-    max-width: 1000px;    
+    max-width: 1000px;
     margin-top: 116px;
     padding: 50px 0;
 }
@@ -90,7 +97,7 @@ app-privacy-policy {
 app-imprint {
     display: block;
     width: calc(100vw - 200px);
-    max-width: 1000px;    
+    max-width: 1000px;
     margin-top: 116px;
     padding: 50px 0;
 }

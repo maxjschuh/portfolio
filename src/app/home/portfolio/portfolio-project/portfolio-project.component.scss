@@ -45,6 +45,18 @@
             color: #4B47FF;
         }
     }
+
+    @media (max-width: 750px) {
+        width: 100%;
+
+        .description {
+            text-align: left;
+        }
+
+        .button-row {
+            justify-content: center;
+        }
+    }
 }
 
 .project-image {
