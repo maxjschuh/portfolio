@@ -27,6 +27,10 @@ main {
     @media (max-width: 900px) {
         font-size: 57px;
     }
+
+    @media (max-width: 650px) {
+        font-size: 42px;
+    }
 }
 
 #eyecatcher-horizontal {
@@ -48,6 +52,10 @@ h1 {
     @media (max-width: 900px) {
         font-size: 80px;
     }
+
+    @media (max-width: 650px) {
+        font-size: 60px;
+    }
 }
 
 #eyecatcher-horizontal-profession {
@@ -63,6 +71,10 @@ h1 {
 
     @media (max-width: 900px) {
         font-size: 40px;
+    }
+
+    @media (max-width: 650px) {
+        font-size: 30px;
     }
 }
 
@@ -106,8 +118,8 @@ h1 {
         right: 100px;
     }
 
-    @media (max-width: 1200px) {
-        right: 0;
+    @media (max-width: 1000px) {
+        right: var(--responsive-vertical-side-padding);
     }
 
     @keyframes wiggle {
@@ -159,6 +171,10 @@ h1 {
     background-color: #00BEE8;
     border-radius: 0 4px 4px 0;
     height: 4px;
+
+    @media (max-width: 1000px) {
+        width: var(--responsive-vertical-side-padding);
+    }
 }
 
 .shadow {

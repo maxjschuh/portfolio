@@ -7,43 +7,47 @@
 
     <section id="contact-left-column">
 
-        <div id="contact-left-column-headline">
-            <div id="contact-left-column-bullet-line"></div>
-            <h3>Got a problem to solve?</h3>
-        </div>
-        
-        <summary>
-            Contact me through this form, I am interested in hearing from you, knowing your ideas and contributing to
-            your
-            projects with my work.
+        <div id="contact-left-column-bullet-line"></div>
 
-            Need a Frontend developer? <strong>Contact me!</strong>
-        </summary>
+        <div id="contact-left-column-text">
+
+            <h3>Got a problem to solve?</h3>
+
+            <summary>
+                Need a Frontend developer? <strong>Contact me!</strong>
+            </summary>
+        </div>
+
+
     </section>
 
     <section id="contact-right-column">
 
         <form (ngSubmit)="submitContactForm()">
             <div>
-                <input id="name" [(ngModel)]="inputs[0].value" (input)="validateInput(inputs[0], false)" [style]="inputs[0].style" type="text"
-                    placeholder="Your name" name="name" autocomplete="name">
-                <img id="name-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[0].alertIconStyle" src="./assets/img/input_alert.svg">
+                <input id="name" [(ngModel)]="inputs[0].value" (input)="validateInput(inputs[0], false)"
+                    [style]="inputs[0].style" type="text" placeholder="Your name" name="name" autocomplete="name">
+                <img id="name-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[0].alertIconStyle"
+                    src="./assets/img/input_alert.svg">
                 <img id="name-checkmark" class="input-alert-icon" src="./assets/img/input_checkmark.svg"
                     alt="input checkmark" [style]="inputs[0].checkmarkIconStyle">
                 <span id="name-alert-text" class="alert-text" [innerText]="inputs[0].alertText"></span>
             </div>
             <div>
-                <input id="email" [(ngModel)]="inputs[1].value" (input)="validateInput(inputs[1], false)" [style]="inputs[1].style" type="email"
-                    placeholder="Your email" name="email" autocomplete="email">
-                <img id="email-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[1].alertIconStyle" src="./assets/img/input_alert.svg">
+                <input id="email" [(ngModel)]="inputs[1].value" (input)="validateInput(inputs[1], false)"
+                    [style]="inputs[1].style" type="email" placeholder="Your email" name="email" autocomplete="email">
+                <img id="email-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[1].alertIconStyle"
+                    src="./assets/img/input_alert.svg">
                 <img id="email-checkmark" class="input-alert-icon" src="./assets/img/input_checkmark.svg"
                     alt="input checkmark" [style]="inputs[1].checkmarkIconStyle">
                 <span id="email-alert-text" class="alert-text" [innerText]="inputs[1].alertText"></span>
             </div>
             <div>
-                <textarea id="message" [(ngModel)]="inputs[2].value" (input)="validateInput(inputs[2], false)" [style]="inputs[2].style" type="text"
-                    placeholder="Your message" name="message" autocomplete="off"></textarea>
-                <img id="message-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[2].alertIconStyle" src="./assets/img/input_alert.svg">
+                <textarea id="message" [(ngModel)]="inputs[2].value" (input)="validateInput(inputs[2], false)"
+                    [style]="inputs[2].style" type="text" placeholder="Your message" name="message"
+                    autocomplete="off"></textarea>
+                <img id="message-alert-icon" class="input-alert-icon" alt="input alert"
+                    [style]="inputs[2].alertIconStyle" src="./assets/img/input_alert.svg">
                 <img id="message-checkmark" class="input-alert-icon" src="./assets/img/input_checkmark.svg"
                     alt="input checkmark" [style]="inputs[2].checkmarkIconStyle">
                 <span id="message-alert-text" class="alert-text" [innerText]="inputs[2].alertText"></span>
@@ -69,7 +73,8 @@
                     </span>
 
                 </div>
-                <span id="checkbox-alert-text" name="checkbox-alert-text" class="alert-text" [innerText]="checkboxAlertText"></span>
+                <span id="checkbox-alert-text" name="checkbox-alert-text" class="alert-text"
+                    [innerText]="checkboxAlertText"></span>
             </div>
 
             <button type="submit" [ngStyle]="" [innerHTML]="submitButtonText">asdasdasd</button>

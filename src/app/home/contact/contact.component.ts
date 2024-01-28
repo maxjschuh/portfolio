@@ -27,7 +27,7 @@ export class ContactComponent {
       alertText: '',
       alertIconStyle: '',
       checkmarkIconStyle: '',
-      disallowedCharacters: /[$"'`´\s\\]/,
+      disallowedCharacters: /[$"'`´\\]/,
       valid: false
     },
     {
@@ -47,7 +47,7 @@ export class ContactComponent {
       alertText: '',
       checkmarkIconStyle: '',
       alertIconStyle: '',
-      disallowedCharacters: /[$"'`´\s\\]/,
+      disallowedCharacters: /[$"'`´\\]/,
       valid: false
     }
   ];
