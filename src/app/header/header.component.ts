@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private scrollLocationService: ScrollLocationOnPageService) { }
 
-  burgerMenuClassList = ['header'];
+  burgerMenuClassList = ['header', 'burger-menu-hidden'];
 
   navlinks = [
     {
@@ -55,10 +55,11 @@ export class HeaderComponent implements OnInit {
 
   setBurgerMenu() {
 
-    if (this.burgerMenuClassList.includes('burger-menu-expanded')) {
-      
-      this.burgerMenuClassList = ['header'];
+    if (window.innerWidth > 750) return;
 
+    if (this.burgerMenuClassList.includes('burger-menu-expanded')) {
+
+      this.burgerMenuClassList = ['header', 'burger-menu-hidden'];
     } else this.burgerMenuClassList.push('burger-menu-expanded');
   }
 

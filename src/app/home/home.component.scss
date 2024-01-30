@@ -2,14 +2,16 @@ app-start {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: calc(100vh - var(--header-height));
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding-top: var(--header-height);
 }
 
 app-about-me {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    padding-top: var(--header-height);
     background-image: url('../../../src/assets/img/curved_separator.svg');
     background-size: 100% auto;
     background-repeat: no-repeat;
@@ -21,14 +23,18 @@ app-skills {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    padding-top: var(--header-height);
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
 }
 
 app-portfolio {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    padding-top: var(--header-height);
     position: relative;
 }
 
@@ -37,4 +43,5 @@ app-contact {
     flex-direction: column;
     align-items: flex-start;
     position: relative;
+    padding-top: var(--header-height);
 }

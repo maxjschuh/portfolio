@@ -18,6 +18,22 @@
             Portfolio
             <div [classList]="navlinks[2].classlist"></div>
         </a>
+    </nav>
+
+    <nav id="nav-links">
+
+        <a href="#about" (click)="setBurgerMenu()">
+            About me
+            <div [classList]="navlinks[0].classlist"></div>
+        </a>
+        <a href="#skills" (click)="setBurgerMenu()">
+            Skills
+            <div [classList]="navlinks[1].classlist"></div>
+        </a>
+        <a href="#portfolio" (click)="setBurgerMenu()">
+            Portfolio
+            <div [classList]="navlinks[2].classlist"></div>
+        </a>
         <a id="nav-link-contact" href="#contact" (click)="setBurgerMenu()">
             Contact
             <div class="inactive"></div>
