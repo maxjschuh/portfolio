@@ -9,24 +9,23 @@ app-start {
 
 app-about-me {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding-top: var(--header-height);
-    background-image: url('../../../src/assets/img/curved_separator.svg');
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    background-position: 0 50vh;
     color: white;
 }
 
 app-skills {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     padding-top: var(--header-height);
 
     @media (max-width: 800px) {
         flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
     }
 }
 

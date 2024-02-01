@@ -1,4 +1,4 @@
-.header {
+header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -19,6 +19,17 @@ a {
     font-size: 23px;
     min-width: 56px;
 
+    div {
+        border-radius: 0px 4px 4px 0;
+        height: 4px;
+        width: 0px;
+        background-color: #4B47FF;
+    }
+
+    .active {
+        width: 55px !important;
+    }
+
     &:hover {
         color: #00BEE8;
 
@@ -26,23 +37,35 @@ a {
             width: 55px !important;
         }
     }
+}
 
-    div {
-        border-radius: 0px 4px 4px 0;
-        height: 4px;
-        width: 0px;
-        background-color: #4B47FF;
+#nav-links-landscape-mode {
+
+    @media (max-width: 800px) {
+        display: none;
     }
 }
 
-.active {
-    width: 55px !important;
+#nav-links-portrait-mode {
+    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    background-color: #414856;
+    height: calc(100vh - var(--header-height));
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+
 
 .burger-menu {
     position: relative;
     width: 30px;
     height: 30px;
+    display: none;
 
     .burger-menu-layer {
         position: absolute;
@@ -78,46 +101,23 @@ a {
             background-color: #00BEE8;
         }
     }
-}
 
-#nav-link-contact {
-    display: none;
-}
-
-#nav-links {
-    display: flex;
-}
-
-#burger-menu {
-    display: none;
-}
-
-@media (max-width: 750px) {
-
-    #burger-menu {
+    @media (max-width: 800px) {
         display: flex;
     }
-
-    .burger-menu-hidden {
-
-        #nav-links {
-            visibility: hidden;    
-            opacity: 0;
-            transition: opacity 3s ease;
-        }
-    }
 }
 
 
+.nav-links-portrait-mode-fade-in {
+
+    #nav-links-portrait-mode {
+
+        display: flex;
+        opacity: 0;
+    }
+}
 
 .burger-menu-expanded {
-    
-    
-    #nav-links {
-        visibility: visible;
-        opacity: 1;
-        transition: opacity 3s ease;
-    }
 
     #burger-menu-layer-top {
         transform: rotate(45deg);
@@ -137,21 +137,19 @@ a {
         transition: all 500ms;
     }
 
-    nav {
-        position: fixed;
-        top: var(--header-height);
-        left: 0;
-        background-color: #414856;
-        height: calc(100vh - var(--header-height));
-        width: 100vw;
+    #nav-links-portrait-mode {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #nav-link-contact {
-        display: flex;
-        flex-direction: column;
+        opacity: 1;
+        transition: all 250ms;
     }
 }
+
+.nav-links-portrait-mode-fade-out {
+
+    #nav-links-portrait-mode {
+
+        opacity: 0;
+        transition: opacity 250ms;
+    }
+}
+

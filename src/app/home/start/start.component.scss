@@ -179,17 +179,17 @@ h1 {
 
 .shadow {
     position: absolute;
-    top: 20vh;
-    height: 608px;
+    width: var(--section-start-shadow-width);
+    top: calc(50vh - (var(--section-start-shadow-width) / 2));
 }
 
 #shadow-left {
-    left: -330px;
+    left: calc(-0.54 * var(--section-start-shadow-width));
     rotate: 90deg;
 }
 
 #shadow-right {
-    right: -300px;
+    right: calc(-0.45 * var(--section-start-shadow-width));
 }
 
 a {

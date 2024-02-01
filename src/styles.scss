@@ -26,6 +26,8 @@ html {
     --responsive-vertical-main-padding: 200px;
     --responsive-vertical-side-padding: 100px;
 
+    --section-start-shadow-width: 35vw;
+
     @media (max-width: 800px) {
         --responsive-vertical-main-padding: 0;
         --responsive-vertical-side-padding: 50px;

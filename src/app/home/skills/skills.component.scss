@@ -22,17 +22,19 @@ app-skill-icon {
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    padding-right: 550px;
     width: calc(100vw - 200px);
-    max-width: 1000px;
+    max-width: 450px;
     gap: 40px;
+
+    @media (max-width: 800px) {
+        width: 100vw;
+        max-width: unset;
+    }
 }
 
 #skills-right-column {
     box-sizing: border-box;
-    position: absolute;
-    right: 0;
-    width: calc(100vw / 2);
+    width: 50vw;
     padding-left: 35px;
     display: flex;
     flex-direction: column;
