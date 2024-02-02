@@ -27,7 +27,7 @@ export class ContactComponent {
       alertText: '',
       alertIconStyle: '',
       checkmarkIconStyle: '',
-      disallowedCharacters: /[$"'`´\\]/,
+      disallowedCharacters: /^['"`´\\]*$/,
       valid: false
     },
     {
@@ -37,7 +37,7 @@ export class ContactComponent {
       alertText: '',
       alertIconStyle: '',
       checkmarkIconStyle: '',
-      disallowedCharacters: /[$"'`´\s\\]/,
+      disallowedCharacters: /[^A-Za-z0-9@_.-]/,
       valid: false
     },
     {
@@ -47,7 +47,7 @@ export class ContactComponent {
       alertText: '',
       checkmarkIconStyle: '',
       alertIconStyle: '',
-      disallowedCharacters: /[$"'`´\\]/,
+      disallowedCharacters: /^['"`´\\]*$/,
       valid: false
     }
   ];
@@ -79,23 +79,42 @@ export class ContactComponent {
 
   validateInput(input: Input, formSubmission: boolean) {
 
-    if (!formSubmission && !input.value) {
+    const trimmedInput = input.value.trim();
+
+    if (!formSubmission && !trimmedInput) {
 
       this.setUserFeedbackForInput(input, '', 'default');
 
-    } else if (!input.value) {
+    } else if (!trimmedInput) {
 
       const alertText = `Your ${input.inputId} is required!`;
       this.setUserFeedbackForInput(input, alertText, 'invalid');
 
-    } else if (input.disallowedCharacters.test(input.value)) {
-
+    } else if (input.disallowedCharacters.test(trimmedInput)) {
+      
       const alertText = 'Contains disallowed characters!';
       this.setUserFeedbackForInput(input, alertText, 'invalid');
 
     } else this.setUserFeedbackForInput(input, '', 'valid');
+
   }
 
+  testForEmailPattern(input: Input, formSubmission: boolean) {
+
+    const expectedPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const trimmedInput = input.value.trim();
+
+    if (input.alertText || !trimmedInput) return;
+
+    if (!expectedPattern.test(trimmedInput) && !formSubmission) {
+      this.setUserFeedbackForInput(input, '', 'default');
+
+    } else if (!expectedPattern.test(trimmedInput)) {
+      
+      const alertText = 'Please enter a valid email!';
+      this.setUserFeedbackForInput(input, alertText, 'invalid');
+    }
+  }
 
   setUserFeedbackForInput(input: Input, alertText: string, feedbackType: string) {
 
@@ -119,6 +138,7 @@ export class ContactComponent {
 
     this.formValid = this.privacyPolicyAccepted;
     this.inputs.forEach(input => this.validateInput(input, true));
+    this.testForEmailPattern(this.inputs[1], true);
 
     if (!this.privacyPolicyAccepted) {
       this.checkboxAlertText = 'Please accept the privacy policy.';
@@ -126,7 +146,7 @@ export class ContactComponent {
     } else if (this.formValid) {
 
       this.submitButtonText = '&#10004; Your message has been sent';
-      
+
       setTimeout(() => {
         this.submitButtonText = 'Send message :)';
       }, 2000);
@@ -141,7 +161,7 @@ export class ContactComponent {
   resetForm() {
 
     this.inputs.forEach(input => {
-      
+
       input.value = '';
       this.setUserFeedbackForInput(input, '', 'default');
     });
