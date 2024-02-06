@@ -27,11 +27,13 @@ export class HomeComponent implements AfterViewInit {
     // this.updateScrollPosition();
   }
 
+  
   @HostListener('window:scroll', ['$event'])
   onScroll() {
 
     this.updateScrollPosition();
   }
+
 
   updateScrollPosition() {
 
@@ -50,6 +52,7 @@ export class HomeComponent implements AfterViewInit {
     } else this.setNewScrollPosition('about');
 
   }
+
 
   setNewScrollPosition(scrollPosition: string) {
 

@@ -27,7 +27,7 @@ export class ContactComponent {
       alertText: '',
       alertIconStyle: '',
       checkmarkIconStyle: '',
-      disallowedCharacters: /^['"`´\\]*$/,
+      disallowedCharacters: /['"`´\\]/,
       valid: false
     },
     {
@@ -47,7 +47,7 @@ export class ContactComponent {
       alertText: '',
       checkmarkIconStyle: '',
       alertIconStyle: '',
-      disallowedCharacters: /^['"`´\\]*$/,
+      disallowedCharacters: /['"`´\\]/,
       valid: false
     }
   ];
@@ -110,7 +110,7 @@ export class ContactComponent {
       this.setUserFeedbackForInput(input, '', 'default');
 
     } else if (!expectedPattern.test(trimmedInput)) {
-      
+
       const alertText = 'Please enter a valid email!';
       this.setUserFeedbackForInput(input, alertText, 'invalid');
     }

@@ -7,7 +7,7 @@
 
     <h3 class="title">{{ project.title }}</h3>
     <span class="stack">{{ project.stack }}</span>
-    <span class="description">{{ project.description }}</span>
+    <span class="description" [innerHTML]="project.description"></span>
 
     <div class="button-row">
 
