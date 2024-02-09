@@ -25,8 +25,12 @@ export class SkillIconComponent {
 
   @Input() index: number = 0;
 
-  getSrc() {
+
+  /**
+   * Adds the path to the image for a skill icon.
+   * @returns the image source path for the skill icon image
+   */
+  getSrc(): string {
     return `./assets/img/skills-icons/${this.skills[this.index].toLowerCase()}.svg`;
   }
-
 }

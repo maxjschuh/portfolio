@@ -25,10 +25,12 @@ app-skill-icon {
     width: calc(100vw - 200px);
     max-width: 450px;
     gap: 40px;
+    z-index: 1;
 
     @media (max-width: 800px) {
         width: 100vw;
         max-width: unset;
+        justify-content: flex-start;
     }
 }
 
@@ -42,6 +44,7 @@ app-skill-icon {
     justify-content: center;
     gap: 32px;
     color: white;
+    z-index: 1;
 
     div {
         display: flex;

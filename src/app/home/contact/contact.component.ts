@@ -77,7 +77,12 @@ export class ContactComponent {
   ];
 
 
-  validateInput(input: Input, formSubmission: boolean) {
+  /**
+   * Validates the value of a input field that is passed as parameter and sets the feedback accordingly.
+   * @param input object that contains information about the input field that should be validated
+   * @param formSubmission true when the user submissed the form, false for validation on input
+   */
+  validateInput(input: Input, formSubmission: boolean): void {
 
     const trimmedInput = input.value.trim();
 
@@ -91,7 +96,7 @@ export class ContactComponent {
       this.setUserFeedbackForInput(input, alertText, 'invalid');
 
     } else if (input.disallowedCharacters.test(trimmedInput)) {
-      
+
       const alertText = 'Contains disallowed characters!';
       this.setUserFeedbackForInput(input, alertText, 'invalid');
 
@@ -99,7 +104,14 @@ export class ContactComponent {
 
   }
 
-  testForEmailPattern(input: Input, formSubmission: boolean) {
+
+  /**
+   * Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.
+   * @param input object that contains information about the input field that should be validated
+   * @param formSubmission true when the user submissed the form, false for validation on input
+   * @returns if the input field is empty
+   */
+  testForEmailPattern(input: Input, formSubmission: boolean): void {
 
     const expectedPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const trimmedInput = input.value.trim();
@@ -116,7 +128,14 @@ export class ContactComponent {
     }
   }
 
-  setUserFeedbackForInput(input: Input, alertText: string, feedbackType: string) {
+
+  /**
+   * Sets the feedback for an input field in the style of the passed parameters.
+   * @param input object that contains information about the input field for which the feedback should be set
+   * @param alertText text of the feedback that should be shown
+   * @param feedbackType one of three feedback types: 'default', 'invalid', 'valid'
+   */
+  setUserFeedbackForInput(input: Input, alertText: string, feedbackType: string): void {
 
     this.inputUserFeedbacks.forEach(userFeedback => {
 
@@ -134,6 +153,9 @@ export class ContactComponent {
   }
 
 
+  /**
+   * Is called on submitting the contact form. Validates the input fields, waits for the email to be sent and afterwards resets the contact form.
+   */
   async submitContactForm() {
 
     this.formValid = this.privacyPolicyAccepted;
@@ -158,7 +180,10 @@ export class ContactComponent {
   }
 
 
-  resetForm() {
+  /**
+   * Empties the input fields of the contact form and hides the feedback alerts.
+   */
+  resetForm():void {
 
     this.inputs.forEach(input => {
 
@@ -172,7 +197,10 @@ export class ContactComponent {
   }
 
 
-  handleCheckboxMouseover() {
+  /**
+   * Event handler for when the mouse hovers over the privacy policy checkbox.
+   */
+  handleCheckboxMouseover():void {
 
     this.toggleVisibilityOfElements(['checkbox-selected', 'checkbox-default'], false);
 
@@ -184,7 +212,10 @@ export class ContactComponent {
   }
 
 
-  handleCheckboxMouseout() {
+  /**
+   * Event handler for when the mouse leaves the privacy policy checkbox.
+   */
+  handleCheckboxMouseout():void {
 
     this.toggleVisibilityOfElements(['checkbox-hover', 'checkbox-selected-hover'], false);
 
@@ -198,7 +229,10 @@ export class ContactComponent {
   }
 
 
-  togglePrivacyPolicyAcceptance() {
+  /**
+   * Toggles the checkmark in the privacy policy checkbox.
+   */
+  togglePrivacyPolicyAcceptance():void {
 
     if (this.privacyPolicyAccepted) {
 
@@ -216,7 +250,12 @@ export class ContactComponent {
   }
 
 
-  toggleVisibilityOfElements(ids: string[], showElements: boolean) {
+  /**
+   * Toggles the visibilty of the elements with the passed ids.
+   * @param ids array of element ids
+   * @param showElements true for showing the elements, false for hiding them
+   */
+  toggleVisibilityOfElements(ids: string[], showElements: boolean):void {
 
     ids.forEach(id => {
 
@@ -225,6 +264,9 @@ export class ContactComponent {
   }
 
 
+  /**
+   * Extracts the values from the contact form input fields and calls a php script for sending a mail with the collected information.
+   */
   async sendEmail() {
 
     const data = {
@@ -244,7 +286,14 @@ export class ContactComponent {
     await fetch('./../../send_mail.php', options);
   }
 
-
+  
+  /**
+   * Generates an html template for an email with the passed parameters.
+   * @param name of the person that sends the contact request
+   * @param email of the person that sends the contact request
+   * @param message message of the contact request
+   * @returns html template for email to site admin
+   */
   generateContactMessage(name: string, email: string, message: string): string {
 
     return /*html*/ `

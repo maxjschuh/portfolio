@@ -1,7 +1,9 @@
 <section id="skills-left-column">
 
+    @for (skill of skills; track $index) {
 
-    <app-skill-icon *ngFor="let i of skills; let index = index;" [index]="index"></app-skill-icon>
+    <app-skill-icon [index]="$index"></app-skill-icon>
+    }
 </section>
 
 <section id="skills-right-column">
