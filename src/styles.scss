@@ -12,6 +12,7 @@
 
 html {
     scroll-behavior: smooth;
+    cursor: pointer;
 }
 
 * {
@@ -38,6 +39,7 @@ html {
 //Utility classes
 
 body {
+    cursor: default;
     font-family: 'Poppins';
     background-color: #141D2F;
     margin: 0;
@@ -56,14 +58,15 @@ button {
 
     &:hover {
         cursor: pointer;
-        background-color: rgba(75, 71, 255, 1);
+        // background-color: rgba(75, 71, 255, 1);
         padding: 20px 40px;
         margin: 10px 5px;
+        background: linear-gradient(#4B47FF, #00BEE8);
     }
 
     &:active {
-        background-color: white !important;
-        color: black;
+        // background-color: white !important;
+        background: rgba(75, 71, 255, 1);
         padding: 15px 30px;
         margin: 15px 15px;
     }
@@ -150,19 +153,14 @@ custom scrollbar
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #2C3646;
+    border-radius: 100vw;
+    background: #00BEE8;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #29ABE2;
+    background: linear-gradient(#4B47FF, #00BEE8);
 }
 
 ::-webkit-scrollbar-thumb:active {
-    background: #091931;
-}
-
-@supports (scrollbar-color: #2C3646 #141D2F) {
-    * {
-        scrollbar-color: #2C3646 #141D2F;
-    }
+    background: #4B47FF;
 }

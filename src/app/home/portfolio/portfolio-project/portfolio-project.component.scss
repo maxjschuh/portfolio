@@ -4,7 +4,7 @@
     justify-content: flex-start;
     gap: 35px;
     width: calc((100vw - 235px) / 2);
-    max-width: 500px;    
+    max-width: 500px;
 
     .title {
         color: #4B47FF;
@@ -30,18 +30,27 @@
     }
 
     .button-live-test {
-        background-color: #4B47FF;
-    }
-
-    .button-github {
-        background-color: transparent;
-        border: 1px solid #00BEE8;
+        background: #4B47FF;
 
         &:hover {
-            background-color: #00BEE8;
+            background: linear-gradient(#00BEE8, #4B47FF);
         }
 
         &:active {
+            background: #00BEE8;
+        }
+    }
+
+    .button-github {
+        background: transparent;
+        border: 1px solid #00BEE8;
+
+        &:hover {
+            background: #00BEE8;
+        }
+
+        &:active {
+            background: white;
             color: #4B47FF;
         }
     }
