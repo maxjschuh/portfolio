@@ -25,7 +25,7 @@
 
         <form (ngSubmit)="submitContactForm()">
             <div>
-                <input id="name" [(ngModel)]="inputs[0].value" (input)="validateInput(inputs[0], false)"
+                <input id="name" [(ngModel)]="inputs[0].value" (input)="handleInput(inputs[0])"
                     [style]="inputs[0].style" type="text" placeholder="Your name" name="name" autocomplete="name">
                 <img id="name-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[0].alertIconStyle"
                     src="./assets/img/input_alert.svg">
@@ -34,7 +34,7 @@
                 <span id="name-alert-text" class="alert-text" [innerText]="inputs[0].alertText"></span>
             </div>
             <div>
-                <input id="email" [(ngModel)]="inputs[1].value" (input)="validateInput(inputs[1], false); testForEmailPattern(inputs[1], false)" (focusout)="testForEmailPattern(inputs[1], true)"
+                <input id="email" [(ngModel)]="inputs[1].value" (input)="handleInput(inputs[1])" (focusout)="testForEmailPattern(inputs[1], false); setUserFeedbackForInput(inputs[1])"
                     [style]="inputs[1].style" type="email" placeholder="Your email" name="email" autocomplete="email">
                 <img id="email-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[1].alertIconStyle"
                     src="./assets/img/input_alert.svg">
@@ -43,7 +43,7 @@
                 <span id="email-alert-text" class="alert-text" [innerText]="inputs[1].alertText"></span>
             </div>
             <div>
-                <textarea id="message" [(ngModel)]="inputs[2].value" (input)="validateInput(inputs[2], false)"
+                <textarea id="message" [(ngModel)]="inputs[2].value" (input)="handleInput(inputs[2])"
                     [style]="inputs[2].style" type="text" placeholder="Your message" name="message"
                     autocomplete="off"></textarea>
                 <img id="message-alert-icon" class="input-alert-icon" alt="input alert"
@@ -74,10 +74,13 @@
 
                 </div>
                 <span id="checkbox-alert-text" name="checkbox-alert-text" class="alert-text"
-                    [innerText]="checkboxAlertText"></span>
+                    [innerText]="checkboxes[0].alertText"></span>
             </div>
 
-            <button type="submit" [ngStyle]="" [innerHTML]="submitButtonText">asdasdasd</button>
+            <button type="submit" [style]="submitButtonStyle" >
+                <div *ngIf="currentlySendingMail" class="lds-dual-ring"></div>
+                <div [innerHTML]="submitButtonText"></div>
+            </button>
         </form>
 
         <a href="#start">

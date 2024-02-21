@@ -1,80 +1,78 @@
 import { Component } from '@angular/core';
+import { CommonModule, NgIf } from '@angular/common';
 import { FormsModule } from "@angular/forms";
 import { AppComponent } from '../../app.component';
 import { Input } from '../../interfaces/input.interface';
-import { CommonModule } from '@angular/common';
-import { InputUserFeedback } from '../../interfaces/input-user-feedback.interface';
+import { Checkbox } from '../../interfaces/checkbox.interface';
+import { inputs, checkboxes, userFeedbacks } from "./contact.data"
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppComponent],
+  imports: [CommonModule, FormsModule, AppComponent, NgIf],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
 
-  privacyPolicyAccepted = false;
-  formValid = false;
-  checkboxAlertText = '';
+  inputs = inputs;
+  checkboxes = checkboxes;
+  userFeedbacks = userFeedbacks;
   submitButtonText = 'Send message :)';
+  submitButtonStyle = 'background: rgba(182, 182, 182, 1)';
+  currentlySendingMail = false;
 
-  inputs: Input[] = [
-    {
-      inputId: 'name',
-      style: '',
-      value: '',
-      alertText: '',
-      alertIconStyle: '',
-      checkmarkIconStyle: '',
-      disallowedCharacters: /['"`´\\]/,
-      valid: false
-    },
-    {
-      inputId: 'email',
-      style: '',
-      value: '',
-      alertText: '',
-      alertIconStyle: '',
-      checkmarkIconStyle: '',
-      disallowedCharacters: /[^A-Za-z0-9@_.-]/,
-      valid: false
-    },
-    {
-      inputId: 'message',
-      style: '',
-      value: '',
-      alertText: '',
-      checkmarkIconStyle: '',
-      alertIconStyle: '',
-      disallowedCharacters: /['"`´\\]/,
-      valid: false
-    }
-  ];
 
-  inputUserFeedbacks: InputUserFeedback[] = [
-    {
-      feedbackType: 'default',
-      borderStyle: '',
-      checkmarkIconStyle: '',
-      alertIconStyle: '',
-      inputValid: false
-    },
-    {
-      feedbackType: 'invalid',
-      borderStyle: 'border-color: #E61C40',
-      checkmarkIconStyle: '',
-      alertIconStyle: 'display: flex',
-      inputValid: false
-    },
-    {
-      feedbackType: 'valid',
-      borderStyle: 'border-color: #70E61C',
-      checkmarkIconStyle: 'display: flex',
-      alertIconStyle: '',
-      inputValid: true
-    }
-  ];
+  handleInput(input: Input) {
+
+    this.validateAllInputs(false);
+    this.setUserFeedbackForInput(input);
+
+    let submitButtonReady = true;
+
+    this.inputs.forEach(input => {
+
+      if (input.currentFeedback !== 'valid') submitButtonReady = false;
+
+    });
+
+    this.colorSubmitButton(submitButtonReady);
+  }
+
+
+  colorSubmitButton(submitButtonReady: boolean) {
+
+    if (submitButtonReady) this.submitButtonStyle = '';
+
+    else this.submitButtonStyle = 'background: rgba(182, 182, 182, 1)';
+  }
+
+
+  validateAllCheckboxes() {
+
+    this.checkboxes.forEach(checkbox => {
+
+      this.validateCheckbox(checkbox);
+    });
+  }
+
+
+  validateCheckbox(checkbox: Checkbox) {
+
+    if (checkbox.checkboxAccepted) {
+
+      checkbox.currentFeedback = 'checkbox-unaccepted';
+
+    } else checkbox.currentFeedback = 'default';
+  }
+
+  validateAllInputs(formSubmission: boolean) {
+
+    this.inputs.forEach(input => {
+
+      this.validateInput(input, formSubmission);
+    });
+  }
 
 
   /**
@@ -86,22 +84,23 @@ export class ContactComponent {
 
     const trimmedInput = input.value.trim();
 
-    if (!formSubmission && !trimmedInput) {
+    if (!trimmedInput) {
 
-      this.setUserFeedbackForInput(input, '', 'default');
+      input.currentFeedback = 'default';
 
-    } else if (!trimmedInput) {
+    } else if (!trimmedInput && formSubmission) {
 
-      const alertText = `Your ${input.inputId} is required!`;
-      this.setUserFeedbackForInput(input, alertText, 'invalid');
+      input.currentFeedback = 'empty';
 
     } else if (input.disallowedCharacters.test(trimmedInput)) {
 
-      const alertText = 'Contains disallowed characters!';
-      this.setUserFeedbackForInput(input, alertText, 'invalid');
+      input.currentFeedback = 'invalid';
 
-    } else this.setUserFeedbackForInput(input, '', 'valid');
+    } else if (input.id === 'email') {
 
+      this.testForEmailPattern(input, !formSubmission);
+
+    } else input.currentFeedback = 'valid';
   }
 
 
@@ -111,20 +110,18 @@ export class ContactComponent {
    * @param formSubmission true when the user submissed the form, false for validation on input
    * @returns if the input field is empty
    */
-  testForEmailPattern(input: Input, formSubmission: boolean): void {
+  testForEmailPattern(input: Input, focus: boolean): void {
 
     const expectedPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const trimmedInput = input.value.trim();
 
-    if (input.alertText || !trimmedInput) return;
+    if (focus) {
+      input.currentFeedback = 'default';
+    } else if (expectedPattern.test(trimmedInput)) {
+      input.currentFeedback = 'valid';
 
-    if (!expectedPattern.test(trimmedInput) && !formSubmission) {
-      this.setUserFeedbackForInput(input, '', 'default');
-
-    } else if (!expectedPattern.test(trimmedInput)) {
-
-      const alertText = 'Please enter a valid email!';
-      this.setUserFeedbackForInput(input, alertText, 'invalid');
+    } else {
+      input.currentFeedback = 'invalid-email';
     }
   }
 
@@ -132,24 +129,35 @@ export class ContactComponent {
   /**
    * Sets the feedback for an input field in the style of the passed parameters.
    * @param input object that contains information about the input field for which the feedback should be set
-   * @param alertText text of the feedback that should be shown
    * @param feedbackType one of three feedback types: 'default', 'invalid', 'valid'
    */
-  setUserFeedbackForInput(input: Input, alertText: string, feedbackType: string): void {
+  setUserFeedbackForInput(input: Input): void {
 
-    this.inputUserFeedbacks.forEach(userFeedback => {
+    this.userFeedbacks.forEach(userFeedback => {
 
-      if (userFeedback.feedbackType !== feedbackType) return;
+      if (userFeedback.feedbackType !== input.currentFeedback) return;
 
-      input.alertText = alertText;
+      input.alertText = userFeedback.feedbackText(input.id);
       input.style = userFeedback.borderStyle;
       input.checkmarkIconStyle = userFeedback.checkmarkIconStyle;
       input.alertIconStyle = userFeedback.alertIconStyle;
-      input.valid = userFeedback.inputValid;
-
-      if (!userFeedback.inputValid) this.formValid = false;
-
     });
+  }
+
+
+  formReadyToSubmit() {
+
+    this.inputs.forEach(input => {
+
+      if (input.currentFeedback !== 'valid') return;
+    });
+
+    this.checkboxes.forEach(checkbox => {
+
+      if (checkbox.currentFeedback !== 'valid') return;
+    });
+
+    return true;
   }
 
 
@@ -158,95 +166,127 @@ export class ContactComponent {
    */
   async submitContactForm() {
 
-    this.formValid = this.privacyPolicyAccepted;
-    this.inputs.forEach(input => this.validateInput(input, true));
-    this.testForEmailPattern(this.inputs[1], true);
+    // this.validateAllInputs(true);
+    // this.validateAllCheckboxes();
 
-    if (!this.privacyPolicyAccepted) {
-      this.checkboxAlertText = 'Please accept the privacy policy.';
+    // if (!this.formReadyToSubmit()) return;
 
-    } else if (this.formValid) {
 
-      this.submitButtonText = '&#10004; Your message has been sent';
+    await this.handleFetchRequest();
 
-      setTimeout(() => {
-        this.submitButtonText = 'Send message :)';
-      }, 2000);
-
-      // await this.sendEmail();
-      console.log('mail sent');
-      this.resetForm();
-    }
+    this.resetForm();
   }
+
+  async handleFetchRequest() {
+
+    this.submitButtonText = 'Sending mail';
+    this.currentlySendingMail = true;
+    const startTime = Date.now();
+
+    // let response = await this.sendEmail();
+
+    // if (!response.ok) {
+
+    //   this.currentlySendingMail = false;
+
+    //   this.submitButtonText = 'Server error! Please try again later!';
+
+    //   setTimeout(() => {
+    //     this.submitButtonText = 'Send message :)';
+    //   }, 5000);
+
+    //   return;
+    // }
+
+    const duration = Date.now() - startTime;
+
+    // if (duration < 2000) 
+    
+    setTimeout(() => { 
+      console.log('asgdjagsd')
+      this.currentlySendingMail = false;
+      this.submitButtonText = '&#10004; Your message has been sent';
+    }, 2000);
+
+
+
+
+    setTimeout(() => {
+      this.submitButtonText = 'Send message :)';
+    }, 7000);
+
+  }
+
 
 
   /**
    * Empties the input fields of the contact form and hides the feedback alerts.
    */
-  resetForm():void {
+  resetForm(): void {
 
     this.inputs.forEach(input => {
 
       input.value = '';
-      this.setUserFeedbackForInput(input, '', 'default');
+      input.currentFeedback = 'default';
+      this.setUserFeedbackForInput(input);
     });
 
-    this.privacyPolicyAccepted = false;
-    this.toggleVisibilityOfElements(['checkbox-selected'], false);
-    this.toggleVisibilityOfElements(['checkbox-default'], true);
+    // this.privacyPolicyAccepted = false;
+    // this.toggleVisibilityOfElements(['checkbox-selected'], false);
+    // this.toggleVisibilityOfElements(['checkbox-default'], true);
   }
 
 
   /**
    * Event handler for when the mouse hovers over the privacy policy checkbox.
    */
-  handleCheckboxMouseover():void {
+  handleCheckboxMouseover(): void {
 
-    this.toggleVisibilityOfElements(['checkbox-selected', 'checkbox-default'], false);
+    // this.toggleVisibilityOfElements(['checkbox-selected', 'checkbox-default'], false);
 
-    if (this.privacyPolicyAccepted) {
+    // if (this.privacyPolicyAccepted) {
 
-      this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
+    //   this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
 
-    } else this.toggleVisibilityOfElements(['checkbox-hover'], true);
+    // } else this.toggleVisibilityOfElements(['checkbox-hover'], true);
   }
 
 
   /**
    * Event handler for when the mouse leaves the privacy policy checkbox.
    */
-  handleCheckboxMouseout():void {
+  handleCheckboxMouseout(): void {
 
-    this.toggleVisibilityOfElements(['checkbox-hover', 'checkbox-selected-hover'], false);
+    // this.toggleVisibilityOfElements(['checkbox-hover', 'checkbox-selected-hover'], false);
 
-    if (this.privacyPolicyAccepted) {
+    // if (this.privacyPolicyAccepted) {
 
-      this.toggleVisibilityOfElements(['checkbox-selected'], true);
-    } else {
+    //   this.toggleVisibilityOfElements(['checkbox-selected'], true);
+    // } else {
 
-      this.toggleVisibilityOfElements(['checkbox-default'], true);
-    }
+    //   this.toggleVisibilityOfElements(['checkbox-default'], true);
+    // }
   }
 
 
   /**
    * Toggles the checkmark in the privacy policy checkbox.
    */
-  togglePrivacyPolicyAcceptance():void {
+  togglePrivacyPolicyAcceptance(): void {
 
-    if (this.privacyPolicyAccepted) {
+    // if (this.privacyPolicyAccepted) {
 
-      this.toggleVisibilityOfElements(['checkbox-selected-hover'], false);
-      this.toggleVisibilityOfElements(['checkbox-hover'], true);
+    //   this.toggleVisibilityOfElements(['checkbox-selected-hover'], false);
+    //   this.toggleVisibilityOfElements(['checkbox-hover'], true);
 
-    } else {
+    // } else {
 
-      this.toggleVisibilityOfElements(['checkbox-hover'], false);
-      this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
-      this.checkboxAlertText = '';
-    }
+    //   this.toggleVisibilityOfElements(['checkbox-hover'], false);
+    //   this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
+    //   this.checkboxAlertText = '';
+    // }
 
-    this.privacyPolicyAccepted = !this.privacyPolicyAccepted;
+    // this.privacyPolicyAccepted = !this.privacyPolicyAccepted;
   }
 
 
@@ -255,7 +295,7 @@ export class ContactComponent {
    * @param ids array of element ids
    * @param showElements true for showing the elements, false for hiding them
    */
-  toggleVisibilityOfElements(ids: string[], showElements: boolean):void {
+  toggleVisibilityOfElements(ids: string[], showElements: boolean): void {
 
     ids.forEach(id => {
 
@@ -283,10 +323,10 @@ export class ContactComponent {
       body: new URLSearchParams(data)
     };
 
-    await fetch('./../../send_mail.php', options);
+    return await fetch('./../../send_mail.php', options);
   }
 
-  
+
   /**
    * Generates an html template for an email with the passed parameters.
    * @param name of the person that sends the contact request

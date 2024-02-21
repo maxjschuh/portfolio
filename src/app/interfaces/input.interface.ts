@@ -1,10 +1,10 @@
 export interface Input {
-    inputId: string,
-    style: string,
+    id: string,
+    style: string | undefined,
     value: string,
     alertText: string,
-    alertIconStyle: string,
-    checkmarkIconStyle: string,
+    alertIconStyle: string | undefined,
+    checkmarkIconStyle: string | undefined,
     disallowedCharacters: RegExp,
-    valid: boolean
+    currentFeedback: 'default' | 'invalid' | 'empty' | 'invalid-email' | 'valid'
   }
