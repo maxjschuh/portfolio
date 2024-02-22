@@ -2,6 +2,7 @@ import { Input } from '../../interfaces/input.interface';
 import { Checkbox } from '../../interfaces/checkbox.interface';
 import { userFeedback } from '../../interfaces/user-feedback.interface';
 
+export const EMAIL_PATTERN = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 export let inputs: Input[] = [
     {

@@ -10,7 +10,7 @@ import { SkillsComponent } from '../skills.component';
 })
 export class SkillIconComponent {
 
-  skills = [
+  skills: string[] = [
     'Angular',
     'TypeScript',
     'JavaScript',

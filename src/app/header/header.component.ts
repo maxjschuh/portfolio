@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
   /**
    * Subscribes to the scroll location service that emits the current scroll position.
    */
-  ngOnInit():void {
+  ngOnInit(): void {
 
     this.scrollLocationService.currentScroll.subscribe((newValue) => {
 
@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
    * Sets the style of the navigation links in the header as either active or inactive depending on the current scroll position
    * @param currentSection the section that is currently visible in the viewport
    */
-  setNavLinks(currentSection: string):void {
+  setNavLinks(currentSection: string): void {
 
     this.navlinks.forEach(navlink => navlink.classlist = 'inactive');
 
@@ -65,7 +65,7 @@ export class HeaderComponent implements OnInit {
   /**
    * Sets the style of the burger menu icon as expanded or collapsed.
    */
-  setBurgerMenu():void {
+  setBurgerMenu(): void {
 
     if (this.burgerMenuClassList.includes('burger-menu-expanded')) {
 

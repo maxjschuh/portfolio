@@ -15,7 +15,6 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 })
 export class AppComponent {
   title = 'Max Schuh | Portfolio';
-
-
+  
 }
 

@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
 import { FormsModule } from "@angular/forms";
-import { AppComponent } from '../../app.component';
 import { Input } from '../../interfaces/input.interface';
 import { Checkbox } from '../../interfaces/checkbox.interface';
-import { inputs, checkboxes, userFeedbacks } from "./contact.data"
+import { inputs, checkboxes, userFeedbacks, EMAIL_PATTERN } from "./contact.data"
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppComponent, NgIf],
+  imports: [CommonModule, FormsModule, NgIf],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
@@ -18,55 +17,59 @@ export class ContactComponent {
   inputs = inputs;
   checkboxes = checkboxes;
   userFeedbacks = userFeedbacks;
-  submitButtonText = 'Send message :)';
+  submitButtonText = 'Send message';
   submitButtonStyle = 'background: rgba(182, 182, 182, 1)';
   currentlySendingMail = false;
 
-
-  handleInput(input: Input) {
-
-    this.validateAllInputs(false);
-    this.setUserFeedbackForInput(input);
-
-    let submitButtonReady = true;
-
-    this.inputs.forEach(input => {
-
-      if (input.currentFeedback !== 'valid') submitButtonReady = false;
-
-    });
-
-    this.colorSubmitButton(submitButtonReady);
+  sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
 
-  colorSubmitButton(submitButtonReady: boolean) {
+  handleInput(input: Input): void {
 
-    if (submitButtonReady) this.submitButtonStyle = '';
+    this.validateInput(input, false);
+    this.setUserFeedbackForInput(input);
+
+    this.colorSubmitButton();
+  }
+
+
+  colorSubmitButton(): void {
+
+    if (this.formReadyToSubmit()) this.submitButtonStyle = '';
 
     else this.submitButtonStyle = 'background: rgba(182, 182, 182, 1)';
   }
 
 
-  validateAllCheckboxes() {
+  validateAllCheckboxes(formSubmission: boolean): void {
 
     this.checkboxes.forEach(checkbox => {
 
-      this.validateCheckbox(checkbox);
+      this.validateCheckbox(checkbox, formSubmission);
     });
   }
 
 
-  validateCheckbox(checkbox: Checkbox) {
+  validateCheckbox(checkbox: Checkbox, formSubmission: boolean): void {
 
-    if (checkbox.checkboxAccepted) {
+    if (!checkbox.checkboxAccepted && formSubmission) {
 
       checkbox.currentFeedback = 'checkbox-unaccepted';
 
-    } else checkbox.currentFeedback = 'default';
+    } else if (!checkbox.checkboxAccepted) {
+
+      checkbox.currentFeedback = 'default';
+      
+    } else {
+      
+      checkbox.currentFeedback = 'valid';
+    }
   }
 
-  validateAllInputs(formSubmission: boolean) {
+
+  validateAllInputs(formSubmission: boolean): void {
 
     this.inputs.forEach(input => {
 
@@ -84,13 +87,13 @@ export class ContactComponent {
 
     const trimmedInput = input.value.trim();
 
-    if (!trimmedInput) {
-
-      input.currentFeedback = 'default';
-
-    } else if (!trimmedInput && formSubmission) {
+    if (!trimmedInput && formSubmission) {
 
       input.currentFeedback = 'empty';
+
+    } else if (!trimmedInput) {
+
+      input.currentFeedback = 'default';
 
     } else if (input.disallowedCharacters.test(trimmedInput)) {
 
@@ -112,15 +115,18 @@ export class ContactComponent {
    */
   testForEmailPattern(input: Input, focus: boolean): void {
 
-    const expectedPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const trimmedInput = input.value.trim();
 
     if (focus) {
+
       input.currentFeedback = 'default';
-    } else if (expectedPattern.test(trimmedInput)) {
+
+    } else if (EMAIL_PATTERN.test(trimmedInput)) {
+
       input.currentFeedback = 'valid';
 
     } else {
+
       input.currentFeedback = 'invalid-email';
     }
   }
@@ -145,76 +151,85 @@ export class ContactComponent {
   }
 
 
-  formReadyToSubmit() {
+  setAllUserFeedbacks(): void {
 
-    this.inputs.forEach(input => {
-
-      if (input.currentFeedback !== 'valid') return;
+    inputs.forEach(input => {
+      this.setUserFeedbackForInput(input);
     });
 
-    this.checkboxes.forEach(checkbox => {
-
-      if (checkbox.currentFeedback !== 'valid') return;
+    checkboxes.forEach(checkbox => {
+      this.setUserFeedbackForCheckbox(checkbox);
     });
-
-    return true;
   }
 
+
+  setUserFeedbackForCheckbox(checkbox: Checkbox): void {
+
+    this.userFeedbacks.forEach(userFeedback => {
+
+      if (userFeedback.feedbackType !== checkbox.currentFeedback) return;
+
+      checkbox.alertText = userFeedback.feedbackText(checkbox.id);
+    });
+  }
+
+
+  formReadyToSubmit(): boolean {
+
+    const requiredFields = [...inputs, ...checkboxes];
+    let formReady = true;
+
+    requiredFields.forEach(requiredField => {
+
+      if (requiredField.currentFeedback !== 'valid') formReady = false;
+    });
+
+    return formReady;
+  }
 
   /**
    * Is called on submitting the contact form. Validates the input fields, waits for the email to be sent and afterwards resets the contact form.
    */
-  async submitContactForm() {
+  async submitContactForm(): Promise<void> {
 
-    // this.validateAllInputs(true);
-    // this.validateAllCheckboxes();
+    this.validateAllInputs(true);
+    this.validateAllCheckboxes(true);
 
-    // if (!this.formReadyToSubmit()) return;
+    if (!this.formReadyToSubmit()) {
 
+      this.setAllUserFeedbacks();
+      return;
+    }
 
+    this.submitButtonText = 'Sending mail';
+    this.currentlySendingMail = true;
     await this.handleFetchRequest();
 
     this.resetForm();
   }
 
-  async handleFetchRequest() {
 
-    this.submitButtonText = 'Sending mail';
-    this.currentlySendingMail = true;
+  async handleFetchRequest(): Promise<void> {
+
     const startTime = Date.now();
+    const response = await this.sendEmail();
 
-    // let response = await this.sendEmail();
+    const requestDuration = Date.now() - startTime;
 
-    // if (!response.ok) {
+    if (requestDuration < 1500) await this.sleep(1500 - requestDuration);
 
-    //   this.currentlySendingMail = false;
+    if (!response.ok) {
 
-    //   this.submitButtonText = 'Server error! Please try again later!';
+      this.submitButtonText = 'Server error! Please try again later.';
 
-    //   setTimeout(() => {
-    //     this.submitButtonText = 'Send message :)';
-    //   }, 5000);
+    } else {
 
-    //   return;
-    // }
-
-    const duration = Date.now() - startTime;
-
-    // if (duration < 2000) 
-    
-    setTimeout(() => { 
-      console.log('asgdjagsd')
-      this.currentlySendingMail = false;
       this.submitButtonText = '&#10004; Your message has been sent';
-    }, 2000);
+    }
 
-
-
-
-    setTimeout(() => {
-      this.submitButtonText = 'Send message :)';
-    }, 7000);
-
+    this.currentlySendingMail = false;
+    await this.sleep(5000);
+    this.submitButtonText = 'Send message';
   }
 
 
@@ -231,9 +246,9 @@ export class ContactComponent {
       this.setUserFeedbackForInput(input);
     });
 
-    // this.privacyPolicyAccepted = false;
-    // this.toggleVisibilityOfElements(['checkbox-selected'], false);
-    // this.toggleVisibilityOfElements(['checkbox-default'], true);
+    this.checkboxes[0].checkboxAccepted = false;
+    this.toggleVisibilityOfElements(['checkbox-selected'], false);
+    this.toggleVisibilityOfElements(['checkbox-default'], true);
   }
 
 
@@ -242,13 +257,13 @@ export class ContactComponent {
    */
   handleCheckboxMouseover(): void {
 
-    // this.toggleVisibilityOfElements(['checkbox-selected', 'checkbox-default'], false);
+    this.toggleVisibilityOfElements(['checkbox-selected', 'checkbox-default'], false);
 
-    // if (this.privacyPolicyAccepted) {
+    if (this.checkboxes[0].checkboxAccepted) {
 
-    //   this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
+      this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
 
-    // } else this.toggleVisibilityOfElements(['checkbox-hover'], true);
+    } else this.toggleVisibilityOfElements(['checkbox-hover'], true);
   }
 
 
@@ -257,16 +272,19 @@ export class ContactComponent {
    */
   handleCheckboxMouseout(): void {
 
-    // this.toggleVisibilityOfElements(['checkbox-hover', 'checkbox-selected-hover'], false);
+    this.toggleVisibilityOfElements(['checkbox-hover', 'checkbox-selected-hover'], false);
 
-    // if (this.privacyPolicyAccepted) {
+    if (this.checkboxes[0].checkboxAccepted) {
 
-    //   this.toggleVisibilityOfElements(['checkbox-selected'], true);
-    // } else {
+      this.toggleVisibilityOfElements(['checkbox-selected'], true);
+    } else {
 
-    //   this.toggleVisibilityOfElements(['checkbox-default'], true);
-    // }
+      this.toggleVisibilityOfElements(['checkbox-default'], true);
+    }
   }
+
+
+
 
 
   /**
@@ -274,19 +292,23 @@ export class ContactComponent {
    */
   togglePrivacyPolicyAcceptance(): void {
 
-    // if (this.privacyPolicyAccepted) {
+    let checkbox = checkboxes[0];
 
-    //   this.toggleVisibilityOfElements(['checkbox-selected-hover'], false);
-    //   this.toggleVisibilityOfElements(['checkbox-hover'], true);
+    if (checkbox.checkboxAccepted) {
 
-    // } else {
+      this.toggleVisibilityOfElements(['checkbox-selected-hover'], false);
+      this.toggleVisibilityOfElements(['checkbox-hover'], true);
 
-    //   this.toggleVisibilityOfElements(['checkbox-hover'], false);
-    //   this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
-    //   this.checkboxAlertText = '';
-    // }
+    } else {
 
-    // this.privacyPolicyAccepted = !this.privacyPolicyAccepted;
+      this.toggleVisibilityOfElements(['checkbox-hover'], false);
+      this.toggleVisibilityOfElements(['checkbox-selected-hover'], true);
+    }
+
+    checkbox.checkboxAccepted = !checkbox.checkboxAccepted;
+    this.validateCheckbox(checkbox, false);
+    this.setUserFeedbackForCheckbox(checkbox);
+    this.colorSubmitButton();
   }
 
 
@@ -307,7 +329,7 @@ export class ContactComponent {
   /**
    * Extracts the values from the contact form input fields and calls a php script for sending a mail with the collected information.
    */
-  async sendEmail() {
+  async sendEmail(): Promise<Response> {
 
     const data = {
       name: this.inputs[0].value,
