@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { Input } from '../../interfaces/input.interface';
 import { Checkbox } from '../../interfaces/checkbox.interface';
 import { inputs, checkboxes, userFeedbacks, EMAIL_PATTERN } from "./contact.data"
+import { sendEmail } from './contact.send-mail';
 
 @Component({
   selector: 'app-contact',
@@ -19,13 +20,14 @@ export class ContactComponent {
   userFeedbacks = userFeedbacks;
   submitButtonText = 'Send message';
   submitButtonStyle = 'background: rgba(182, 182, 182, 1)';
+  submitButtonDisabled = false;
   currentlySendingMail = false;
 
-  sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
 
-
+  /**
+   * Is called when the user makes an input in one of the input fields.
+   * @param input object with information about the input field where the input happened
+   */
   handleInput(input: Input): void {
 
     this.validateInput(input, false);
@@ -35,54 +37,11 @@ export class ContactComponent {
   }
 
 
-  colorSubmitButton(): void {
-
-    if (this.formReadyToSubmit()) this.submitButtonStyle = '';
-
-    else this.submitButtonStyle = 'background: rgba(182, 182, 182, 1)';
-  }
-
-
-  validateAllCheckboxes(formSubmission: boolean): void {
-
-    this.checkboxes.forEach(checkbox => {
-
-      this.validateCheckbox(checkbox, formSubmission);
-    });
-  }
-
-
-  validateCheckbox(checkbox: Checkbox, formSubmission: boolean): void {
-
-    if (!checkbox.checkboxAccepted && formSubmission) {
-
-      checkbox.currentFeedback = 'checkbox-unaccepted';
-
-    } else if (!checkbox.checkboxAccepted) {
-
-      checkbox.currentFeedback = 'default';
-      
-    } else {
-      
-      checkbox.currentFeedback = 'valid';
-    }
-  }
-
-
-  validateAllInputs(formSubmission: boolean): void {
-
-    this.inputs.forEach(input => {
-
-      this.validateInput(input, formSubmission);
-    });
-  }
-
-
   /**
-   * Validates the value of a input field that is passed as parameter and sets the feedback accordingly.
-   * @param input object that contains information about the input field that should be validated
-   * @param formSubmission true when the user submissed the form, false for validation on input
-   */
+  * Validates the value of a input field that is passed as parameter and sets the feedback variable accordingly.
+  * @param input object that contains information about the input field that should be validated
+  * @param formSubmission true when the user submissed the form, false for validation on input
+  */
   validateInput(input: Input, formSubmission: boolean): void {
 
     const trimmedInput = input.value.trim();
@@ -108,35 +67,9 @@ export class ContactComponent {
 
 
   /**
-   * Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.
-   * @param input object that contains information about the input field that should be validated
-   * @param formSubmission true when the user submissed the form, false for validation on input
-   * @returns if the input field is empty
-   */
-  testForEmailPattern(input: Input, focus: boolean): void {
-
-    const trimmedInput = input.value.trim();
-
-    if (focus) {
-
-      input.currentFeedback = 'default';
-
-    } else if (EMAIL_PATTERN.test(trimmedInput)) {
-
-      input.currentFeedback = 'valid';
-
-    } else {
-
-      input.currentFeedback = 'invalid-email';
-    }
-  }
-
-
-  /**
-   * Sets the feedback for an input field in the style of the passed parameters.
-   * @param input object that contains information about the input field for which the feedback should be set
-   * @param feedbackType one of three feedback types: 'default', 'invalid', 'valid'
-   */
+  * Adjusts borders, icons and feedback text accordingly to the current feedback property of a specific input that is passed as parameter.
+  * @param input object that contains information about the input field for which the feedback should be set
+  */
   setUserFeedbackForInput(input: Input): void {
 
     this.userFeedbacks.forEach(userFeedback => {
@@ -151,29 +84,42 @@ export class ContactComponent {
   }
 
 
-  setAllUserFeedbacks(): void {
+  /**
+   * In case the form is ready to submit, the submit button background is colored in blue, otherwise in grey.
+   */
+  colorSubmitButton(): void {
 
-    inputs.forEach(input => {
-      this.setUserFeedbackForInput(input);
-    });
+    if (this.formReadyToSubmit()) this.submitButtonStyle = '';
 
-    checkboxes.forEach(checkbox => {
-      this.setUserFeedbackForCheckbox(checkbox);
-    });
+    else this.submitButtonStyle = 'background: rgba(182, 182, 182, 1)';
   }
 
 
-  setUserFeedbackForCheckbox(checkbox: Checkbox): void {
+  /**
+  * Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.
+  * @param input object that contains information about the input field that should be validated
+  * @param formSubmission true when the user submissed the form, false for validation on input
+  * @returns if the input field is empty
+  */
+  testForEmailPattern(input: Input, focus: boolean): void {
 
-    this.userFeedbacks.forEach(userFeedback => {
+    const trimmedInput = input.value.trim();
 
-      if (userFeedback.feedbackType !== checkbox.currentFeedback) return;
+    if (focus) input.currentFeedback = 'default';
 
-      checkbox.alertText = userFeedback.feedbackText(checkbox.id);
-    });
+    else if (EMAIL_PATTERN.test(trimmedInput)) {
+
+      input.currentFeedback = 'valid';
+
+    } else input.currentFeedback = 'invalid-email';
+
   }
 
 
+  /**
+   * Tests if the contact form is ready to be submitted, i.e. all input fields and checkboxes are valid.
+   * @returns true if the contact form may be submitted, false if not
+   */
   formReadyToSubmit(): boolean {
 
     const requiredFields = [...inputs, ...checkboxes];
@@ -187,9 +133,10 @@ export class ContactComponent {
     return formReady;
   }
 
+
   /**
-   * Is called on submitting the contact form. Validates the input fields, waits for the email to be sent and afterwards resets the contact form.
-   */
+  * Is called on submitting the contact form. Validates the input fields, waits for the email to be sent and afterwards resets the contact form.
+  */
   async submitContactForm(): Promise<void> {
 
     this.validateAllInputs(true);
@@ -201,6 +148,7 @@ export class ContactComponent {
       return;
     }
 
+    this.submitButtonDisabled = true;
     this.submitButtonText = 'Sending mail';
     this.currentlySendingMail = true;
     await this.handleFetchRequest();
@@ -209,10 +157,91 @@ export class ContactComponent {
   }
 
 
+  /**
+   * Iterates through the checkboxes array and calls the validateCheckbox() function for every item.
+   * @param formSubmission true if the checkbox should be validated for a form submission, i.e. an unaccepted checkbox leads to the "checkbox-unaccepted" feedback instead of the "default" feedback
+   */
+  validateAllCheckboxes(formSubmission: boolean): void {
+
+    this.checkboxes.forEach(checkbox => {
+
+      this.validateCheckbox(checkbox, formSubmission);
+    });
+  }
+
+
+  /**
+   * Tests if a checkbox is accepted and sets the feedback property accordingly.
+   * @param checkbox object that contains information about the checkbox that should be validated
+   * @param formSubmission true if the checkbox should be validated for a form submission, i.e. an unaccepted checkbox leads to the "checkbox-unaccepted" feedback instead of the "default" feedback
+   */
+  validateCheckbox(checkbox: Checkbox, formSubmission: boolean): void {
+
+    if (!checkbox.checkboxAccepted && formSubmission) {
+
+      checkbox.currentFeedback = 'checkbox-unaccepted';
+
+    } else if (!checkbox.checkboxAccepted) {
+
+      checkbox.currentFeedback = 'default';
+
+    } else {
+
+      checkbox.currentFeedback = 'valid';
+    }
+  }
+
+
+  /**
+   * Iterates through the inputs array and calls the validateInput() function for every item.
+   * @param formSubmission true if the input should be validated for a form submission, i.e. an empty input leads to the "empty" feedback instead of the "default" feedback
+   */
+  validateAllInputs(formSubmission: boolean): void {
+
+    this.inputs.forEach(input => {
+
+      this.validateInput(input, formSubmission);
+    });
+  }
+
+
+  /**
+   * Iterates through the inputs and the checkboxes arrays and calls the corresponding function that updates the feedback styling for every item.
+   */
+  setAllUserFeedbacks(): void {
+
+    inputs.forEach(input => {
+      this.setUserFeedbackForInput(input);
+    });
+
+    checkboxes.forEach(checkbox => {
+      this.setUserFeedbackForCheckbox(checkbox);
+    });
+  }
+
+
+  /**
+   * Adjusts the feedback text accordingly to the current feedback property of a specific checkbox that is passed as parameter.
+   * @param checkbox object that contains information about the checkbox for which the feedback should be set
+   */
+  setUserFeedbackForCheckbox(checkbox: Checkbox): void {
+
+    this.userFeedbacks.forEach(userFeedback => {
+
+      if (userFeedback.feedbackType !== checkbox.currentFeedback) return;
+
+      checkbox.alertText = userFeedback.feedbackText(checkbox.id);
+    });
+  }
+
+
+  /**
+   * Handles the send mail request from the contact form. Gives feedback about success or failure via the text on the submit button.
+   */
   async handleFetchRequest(): Promise<void> {
 
     const startTime = Date.now();
-    const response = await this.sendEmail();
+    const response = await sendEmail(this.inputs);
 
     const requestDuration = Date.now() - startTime;
 
@@ -233,6 +262,15 @@ export class ContactComponent {
   }
 
 
+  /**
+  * Lets the script execution pause for a desired time.
+  * @param ms time in milliseconds for which the pause should last
+  * @returns Promise
+  */
+  sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
 
   /**
    * Empties the input fields of the contact form and hides the feedback alerts.
@@ -249,6 +287,9 @@ export class ContactComponent {
     this.checkboxes[0].checkboxAccepted = false;
     this.toggleVisibilityOfElements(['checkbox-selected'], false);
     this.toggleVisibilityOfElements(['checkbox-default'], true);
+
+    this.colorSubmitButton();
+    this.submitButtonDisabled = false;
   }
 
 
@@ -282,9 +323,6 @@ export class ContactComponent {
       this.toggleVisibilityOfElements(['checkbox-default'], true);
     }
   }
-
-
-
 
 
   /**
@@ -323,76 +361,5 @@ export class ContactComponent {
 
       document.getElementById(id)?.classList.toggle('d-flex-important', showElements);
     });
-  }
-
-
-  /**
-   * Extracts the values from the contact form input fields and calls a php script for sending a mail with the collected information.
-   */
-  async sendEmail(): Promise<Response> {
-
-    const data = {
-      name: this.inputs[0].value,
-      message: this.generateContactMessage(
-        this.inputs[0].value,
-        this.inputs[1].value,
-        this.inputs[2].value)
-    };
-
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(data)
-    };
-
-    return await fetch('./../../send_mail.php', options);
-  }
-
-
-  /**
-   * Generates an html template for an email with the passed parameters.
-   * @param name of the person that sends the contact request
-   * @param email of the person that sends the contact request
-   * @param message message of the contact request
-   * @returns html template for email to site admin
-   */
-  generateContactMessage(name: string, email: string, message: string): string {
-
-    return /*html*/ `
-          <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>New Message from ${name}</title>
-          <style>
-              body {
-                  font-family: Arial, sans-serif;
-                  margin: 0;
-                  padding: 0;
-                  background-color: #f4f4f4;
-              }
-          
-              .container {
-                  max-width: 600px;
-                  margin: 20px auto;
-                  padding: 20px;
-                  background-color: #fff;
-                  border-radius: 5px;
-                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-              }
-          </style>
-      </head>
-      <body>
-          <div class="container">
-              <h1>New message from
-                <a href="mailto:${email}">${name}</a>
-              </h1>
-              <p>${message}</p>
-              </div>
-          </div>
-      </body>
-      </html>
-  `;
   }
 }
