@@ -10,14 +10,14 @@
     src: url('../src/assets/fonts/Poppins/Poppins-ExtraBold.ttf');
 }
 
-html {
-    scroll-behavior: smooth;
-    cursor: pointer;
-}
-
 * {
     transition: all 75ms;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
 
 //Variables
 
@@ -39,7 +39,6 @@ html {
 //Utility classes
 
 body {
-    cursor: default;
     font-family: 'Poppins';
     background-color: #141D2F;
     margin: 0;
@@ -58,14 +57,12 @@ button {
 
     &:hover {
         cursor: pointer;
-        // background-color: rgba(75, 71, 255, 1);
         padding: 20px 40px;
         margin: 10px 5px;
         background: linear-gradient(#4B47FF, #00BEE8);
     }
 
     &:active {
-        // background-color: white !important;
         background: rgba(75, 71, 255, 1);
         padding: 15px 30px;
         margin: 15px 15px;
@@ -150,11 +147,13 @@ custom scrollbar
 
 ::-webkit-scrollbar-track {
     background: #141D2F;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar-thumb {
     border-radius: 100vw;
     background: #00BEE8;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar-thumb:hover {

@@ -10,20 +10,7 @@ import { SkillsComponent } from '../skills.component';
 })
 export class SkillIconComponent {
 
-  skills: string[] = [
-    'Angular',
-    'TypeScript',
-    'JavaScript',
-    'HTML',
-    'CSS',
-    'Firebase',
-    'GIT',
-    'REST-Api',
-    'Scrum',
-    'Material'
-  ];
-
-  @Input() index: number = 0;
+  @Input() skill: string = '';
 
 
   /**
@@ -31,6 +18,6 @@ export class SkillIconComponent {
    * @returns the image source path for the skill icon image
    */
   getSrc(): string {
-    return `./assets/img/skills-icons/${this.skills[this.index].toLowerCase()}.svg`;
+    return `./assets/img/skills-icons/${this.skill.toLowerCase()}.svg`;
   }
 }
