@@ -14,13 +14,13 @@ h2 {
 #portfolio-bullet-line-left {
     background-color: #4B47FF;
     border-radius: 4px 0 0 4px;
-    height: 4px;
+    height: var(--bullet-line-height);
     width: 109px;
 }
 
 #portfolio-bullet-line-right {
     background-color: #4B47FF;
-    height: 4px;
+    height: var(--bullet-line-height);
     flex: 1;
 }
 

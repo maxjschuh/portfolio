@@ -170,7 +170,7 @@ h1 {
     width: calc((100vw - 1000px) / 2);
     background-color: #00BEE8;
     border-radius: 0 4px 4px 0;
-    height: 4px;
+    height: var(--bullet-line-height);
 
     @media (max-width: 1000px) {
         width: var(--responsive-vertical-side-padding);

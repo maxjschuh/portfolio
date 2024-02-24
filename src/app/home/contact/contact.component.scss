@@ -9,46 +9,57 @@
         width: calc((100vw - 1000px) / 2 + 100px);
         background-color: #00BEE8;
         border-radius: 4px 0 0 4px;
-        height: 4px;
+        height: var(--bullet-line-height);
     }
 }
 
-
-
 main {
+    width: 100%;
     display: flex;
     gap: 100px;
     z-index: 1;
 
     #contact-left-column {
-        width: calc((100vw - 100px) / 2);
+        width: calc(50vw - 50px);
         display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 40px;
 
-        #contact-left-column-text {
+        #contact-left-column-first-row {
+            width: 100%;
             display: flex;
-            flex-direction: column;
-            gap: 48px;
+            flex-direction: row;
+            align-items: center;
+
+            #contact-left-column-bullet-line {
+                width: calc(50vw - 524px);
+                background-color: #1CE6B6;
+                border-radius: 0 4px 4px 0;
+                height: var(--bullet-line-height);
+                margin-right: 24px;
+            
+                @media (max-width: 1000px) {
+                    width: calc(var(--responsive-vertical-side-padding) - 24px);
+                }
+            }
+
+        }
+
+        #contact-left-column-second-row {
+            width: calc(50vw - var(--responsive-vertical-side-padding) - 50px);
+            max-width: 450px;
         }
     }
 }
 
 
 
-#contact-left-column-bullet-line {
-    width: calc((100vw - 1000px) / 2 - 24px);
-    background-color: #1CE6B6;
-    border-radius: 0 4px 4px 0;
-    height: 4px;
-    margin-right: 24px;
 
-    @media (max-width: 1000px) {
-        width: calc(var(--responsive-vertical-side-padding) - 24px);
-    }
-}
 
 #contact-right-column {
-    width: calc((100vw - 200px) / 2);
-    max-width: 500px;
+    width: calc(50vw - var(--responsive-vertical-side-padding) - 50px);
+    max-width: 450px;
     padding-bottom: 80px;
     position: relative;
 }
@@ -200,7 +211,6 @@ textarea~.input-alert-icon {
     display: flex !important;
 }
 
-
 #go-up-button {
     position: absolute;
     right: 8px;
@@ -229,7 +239,7 @@ textarea~.input-alert-icon {
 }
 
 
-
+//Loading animation on form submit button
 .lds-dual-ring {
     display: inline-block;
 }
