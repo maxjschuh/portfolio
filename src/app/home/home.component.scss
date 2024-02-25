@@ -20,6 +20,7 @@ app-skills {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 50px;
     padding-top: var(--header-height);
 
     @media (max-width: 800px) {
@@ -41,6 +42,7 @@ app-contact {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 32px;
     position: relative;
     padding-top: var(--header-height);
 }

@@ -39,13 +39,13 @@ export class HomeComponent implements AfterViewInit {
 
     const topPosSkills = this.skillsElementRef.nativeElement.getBoundingClientRect().top;
     const topPosPortfolio = this.portfolioElementRef.nativeElement.getBoundingClientRect().top;
-    const windowVerticalCenter = window.innerHeight / 2;
+    const windowFirstThird = window.innerHeight / 3;
 
-    if (topPosPortfolio < windowVerticalCenter) {
+    if (topPosPortfolio < windowFirstThird) {
 
       this.setNewScrollPosition('portfolio');
 
-    } else if (topPosSkills < windowVerticalCenter) {
+    } else if (topPosSkills < windowFirstThird) {
 
       this.setNewScrollPosition('skills');
 

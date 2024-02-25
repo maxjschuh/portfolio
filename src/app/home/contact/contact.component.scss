@@ -2,14 +2,15 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 48px;
     width: 100%;
+    margin-bottom: 24px;
 
     #contact-bullet-line {
-        width: calc((100vw - 1000px) / 2 + 100px);
+        width: calc((100vw - 1000px) / 2 + 269px);
         background-color: #00BEE8;
         border-radius: 4px 0 0 4px;
         height: var(--bullet-line-height);
+        margin-left: 48px;
     }
 }
 
