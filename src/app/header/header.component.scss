@@ -2,9 +2,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    width: 1000px;
-    max-width: calc(100vw - var(--responsive-vertical-main-padding));
+    width: calc(100vw - var(--responsive-vertical-main-padding));
+    max-width: var(--main-content-width);
     color: white;
+
+    @media (max-width: 800px) {
+        align-items: center;
+    }
 }
 
 nav {
@@ -20,7 +24,7 @@ a {
     min-width: 56px;
 
     div {
-        border-radius: 0px 4px 4px 0;
+        border-radius: 0px var(--bullet-line-height) var(--bullet-line-height) 0;
         height: 4px;
         width: 0px;
         background-color: #4B47FF;
@@ -58,8 +62,6 @@ a {
     align-items: center;
     justify-content: center;
 }
-
-
 
 .burger-menu {
     position: relative;
@@ -152,4 +154,3 @@ a {
         transition: opacity 250ms;
     }
 }
-

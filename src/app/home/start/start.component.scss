@@ -3,6 +3,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 24px;
     min-height: calc(100vh - var(--header-height));
     z-index: 1;
 }
@@ -12,8 +13,8 @@ main {
     justify-content: center;
     align-items: center;
     color: white;
-    width: 1000px;
-    max-width: calc(100vw - var(--responsive-vertical-main-padding));
+    width: calc(100vw - var(--responsive-vertical-main-padding));
+    max-width: var(--main-content-width);
 }
 
 #eyecatcher-vertical {
@@ -81,8 +82,8 @@ h1 {
 #scroll-call-to-action {
     writing-mode: vertical-lr;
     position: absolute;
-    bottom: 20px;
-    right: calc((100vw - 1000px) / 2);
+    bottom: 40px;
+    right: calc((100vw - var(--main-content-width)) / 2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,7 +119,7 @@ h1 {
         right: 100px;
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: var(--main-content-width)) {
         right: var(--responsive-vertical-side-padding);
     }
 
@@ -145,37 +146,39 @@ h1 {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 20px;
+    bottom: 40px;
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 42px;
     z-index: 2;
 
     a {
         text-decoration: none;
+        display: flex;
+        align-items: center;
     }
 
     img {
-        width: 30px;
-        padding: 10px;
 
         &:hover {
             cursor: pointer;
             transform: scale(1.4);
         }
     }
-}
 
-#social-media-bullet-line {
-    width: calc((100vw - 1000px) / 2);
-    background-color: #00BEE8;
-    border-radius: 0 4px 4px 0;
-    height: var(--bullet-line-height);
-
-    @media (max-width: 1000px) {
-        width: var(--responsive-vertical-side-padding);
+    #social-media-bullet-line {
+        width: calc((100vw - var(--main-content-width)) / 2 - 42px);
+        background-color: #00BEE8;
+        border-radius: 0 var(--bullet-line-height) var(--bullet-line-height) 0;
+        height: var(--bullet-line-height);
+    
+        @media (max-width: 1400px) {
+            width: calc(var(--responsive-vertical-side-padding) - 42px);
+        }
     }
 }
+
+
 
 .shadow {
     position: absolute;

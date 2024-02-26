@@ -1,7 +1,8 @@
 main {
-    width: 1000px;
-    max-width: calc(100vw - 200px);
+    width: calc(100vw - var(--responsive-vertical-main-padding));
+    max-width: var(--main-content-width);
     display: flex;
+    gap: 100px;
 
     @media (max-width: 800px) {
         flex-direction: column-reverse;
@@ -15,7 +16,7 @@ main {
     justify-content: center;
     align-items: flex-start;
     gap: 35px;
-    width: 500px
+    width: calc(50% - 50px);
 }
 
 .about-me-details {
@@ -35,7 +36,7 @@ main {
 }
 
 .about-me-right-column {
-    width: 500px;
+    width: calc(50% - 50px);
     position: relative;
 
     img {

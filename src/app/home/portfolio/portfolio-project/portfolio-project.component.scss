@@ -4,7 +4,7 @@
     justify-content: flex-start;
     gap: 35px;
     width: calc((100vw - 235px) / 2);
-    max-width: 500px;
+    max-width: 550px;
 
     .title {
         color: #4B47FF;
@@ -30,7 +30,9 @@
     }
 
     .button-live-test {
+        box-sizing: content-box;
         background: #4B47FF;
+        width: 86px;
 
         &:hover {
             background: linear-gradient(#00BEE8, #4B47FF);
@@ -73,7 +75,7 @@
     justify-content: center;
     align-items: center;
     width: calc((100vw - 235px) / 2);
-    max-width: 450px;
+    max-width: 550px;
 
     img {
         width: 100%;

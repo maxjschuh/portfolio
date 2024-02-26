@@ -1,7 +1,7 @@
 <section id="portfolio-section-headline">
-    <div id="portfolio-bullet-line-left"></div>
     <h2>Portfolio</h2>
-    <div id="portfolio-bullet-line-right"></div>
+
+    <div id="portfolio-bullet-line"></div>
 
 </section>
 
@@ -9,10 +9,15 @@
     This page is a sample of my work - please feel free to try them out.
 </summary>
 
-@for (project of projects; track $index) {
+<main>
 
-    <app-portfolio-project [project]="projects[$index]" [ngClass]="projects[$index].class"></app-portfolio-project>
-}
+    @for (project of projects; track $index) {
+    
+        <app-portfolio-project [project]="projects[$index]" [ngClass]="projects[$index].class"></app-portfolio-project>
+    }
+
+</main>
+
 
 <img id="shadow-purple" class="shadow" src="./assets/img/shadows/shadow_purple_3.svg" alt="purple shadow">
 

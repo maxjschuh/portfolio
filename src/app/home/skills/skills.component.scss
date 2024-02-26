@@ -19,11 +19,10 @@ app-skill-icon {
 #skills-left-column {
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    width: calc(100vw - 200px);
-    max-width: 450px;
+    width: calc((100vw - var(--responsive-vertical-main-padding)) / 2 - 50px);
+    max-width: 550px;
     gap: 40px;
     z-index: 1;
 
@@ -68,7 +67,7 @@ app-skill-icon {
 
 #skills-bullet-line {
     background-color: #1CE6B6;
-    border-radius: 4px 0 0 4px;
+    border-radius: var(--bullet-line-height) 0 0 var(--bullet-line-height);
     height: var(--bullet-line-height);
     flex: 1;
 }

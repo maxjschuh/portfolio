@@ -5,6 +5,7 @@ app-start {
     box-sizing: border-box;
     min-height: 100vh;
     padding-top: var(--header-height);
+    position: relative;
 }
 
 app-about-me {

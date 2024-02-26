@@ -6,9 +6,9 @@
     margin-bottom: 24px;
 
     #contact-bullet-line {
-        width: calc((100vw - 1000px) / 2 + 269px);
+        width: calc((100vw - var(--main-content-width)) / 2 + 269px);
         background-color: #00BEE8;
-        border-radius: 4px 0 0 4px;
+        border-radius: var(--bullet-line-height) 0 0 var(--bullet-line-height);
         height: var(--bullet-line-height);
         margin-left: 48px;
     }
@@ -34,13 +34,13 @@ main {
             align-items: center;
 
             #contact-left-column-bullet-line {
-                width: calc(50vw - 524px);
+                width: calc((100vw - var(--main-content-width)) / 2 - 24px);
                 background-color: #1CE6B6;
-                border-radius: 0 4px 4px 0;
+                border-radius: 0 var(--bullet-line-height) var(--bullet-line-height) 0;
                 height: var(--bullet-line-height);
                 margin-right: 24px;
             
-                @media (max-width: 1000px) {
+                @media (max-width: 1400px) {
                     width: calc(var(--responsive-vertical-side-padding) - 24px);
                 }
             }
@@ -49,7 +49,7 @@ main {
 
         #contact-left-column-second-row {
             width: calc(50vw - var(--responsive-vertical-side-padding) - 50px);
-            max-width: 450px;
+            max-width: 550px;
         }
     }
 }
@@ -60,7 +60,7 @@ main {
 
 #contact-right-column {
     width: calc(50vw - var(--responsive-vertical-side-padding) - 50px);
-    max-width: 450px;
+    max-width: 550px;
     padding-bottom: 80px;
     position: relative;
 }
