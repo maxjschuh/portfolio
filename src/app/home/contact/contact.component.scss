@@ -1,16 +1,24 @@
 #contact-headline {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
     width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     margin-bottom: 24px;
 
+    h2 {
+        padding: 0 48px;
+        background-color: #141D2F;
+    }
+
     #contact-bullet-line {
-        width: calc((100vw - var(--main-content-width)) / 2 + 269px);
+        width: 50vw;
         background-color: #00BEE8;
-        border-radius: var(--bullet-line-height) 0 0 var(--bullet-line-height);
         height: var(--bullet-line-height);
-        margin-left: 48px;
+        position: absolute;
+        right: 0;
+        top: calc(50% - (var(--bullet-line-height) / 2));
+        z-index: -1;
     }
 }
 

@@ -31,9 +31,11 @@ export class ContactComponent {
   handleInput(input: Input): void {
 
     this.validateInput(input, false);
-    this.setUserFeedbackForInput(input);
-
     this.colorSubmitButton();
+
+    if (input.id === 'email' && input.currentFeedback !== 'valid') return;
+
+    this.setUserFeedbackForInput(input);
   }
 
 
@@ -60,7 +62,7 @@ export class ContactComponent {
 
     } else if (input.id === 'email') {
 
-      this.testForEmailPattern(input, !formSubmission);
+      this.testForEmailPattern(input);
 
     } else input.currentFeedback = 'valid';
   }
@@ -96,23 +98,18 @@ export class ContactComponent {
 
 
   /**
-  * Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.
-  * @param input object that contains information about the input field that should be validated
-  * @param formSubmission true when the user submissed the form, false for validation on input
-  * @returns if the input field is empty
-  */
-  testForEmailPattern(input: Input, focus: boolean): void {
+   * Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.
+   * @param input object that contains information about the input field that should be validated
+   */
+  testForEmailPattern(input: Input): void {
 
     const trimmedInput = input.value.trim();
 
-    if (focus) input.currentFeedback = 'default';
-
-    else if (EMAIL_PATTERN.test(trimmedInput)) {
+    if (EMAIL_PATTERN.test(trimmedInput)) {
 
       input.currentFeedback = 'valid';
 
     } else input.currentFeedback = 'invalid-email';
-
   }
 
 

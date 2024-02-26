@@ -37,7 +37,7 @@
 
             <div>
                 <input id="email" [(ngModel)]="inputs[1].value" (input)="handleInput(inputs[1])"
-                    (focusout)="testForEmailPattern(inputs[1], false); setUserFeedbackForInput(inputs[1]); colorSubmitButton()"
+                    (focusout)="testForEmailPattern(inputs[1]); setUserFeedbackForInput(inputs[1]); colorSubmitButton()"
                     [style]="inputs[1].style" type="email" placeholder="Your email" name="email" autocomplete="email"
                     maxlength="99">
                 <img id="email-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[1].alertIconStyle"
