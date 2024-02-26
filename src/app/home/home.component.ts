@@ -22,20 +22,29 @@ export class HomeComponent implements AfterViewInit {
   @ViewChild('portfolio', { read: ElementRef }) portfolioElementRef!: ElementRef;
 
 
-  ngAfterViewInit() {
+  /**
+   * Sets the scroll position for the first time when the page has been fully loaded.
+   */
+  ngAfterViewInit(): void {
 
     // this.updateScrollPosition();
   }
 
-  
+
+  /**
+   * Hosts a event listener that calls the function for updating the scroll position whenever the user scrolls the page.
+   */
   @HostListener('window:scroll', ['$event'])
-  onScroll() {
+  onScroll(): void {
 
     this.updateScrollPosition();
   }
 
 
-  updateScrollPosition() {
+  /**
+   * Determines the section that is currently visible in the first third of the window and passes it to the setNewScrollPosition() function as string. 
+   */
+  updateScrollPosition(): void {
 
     const topPosSkills = this.skillsElementRef.nativeElement.getBoundingClientRect().top;
     const topPosPortfolio = this.portfolioElementRef.nativeElement.getBoundingClientRect().top;
@@ -53,11 +62,14 @@ export class HomeComponent implements AfterViewInit {
   }
 
 
-  setNewScrollPosition(scrollPosition: string) {
+  /**
+   * Emits a new scroll position via the scrollLocation-Service. 
+   * @param scrollPosition name of the section that should be set as new scroll position
+   */
+  setNewScrollPosition(scrollPosition: string): void {
 
     this.scrollLocationService.currentScroll.next({
       section: scrollPosition
     });
   }
-
 }
