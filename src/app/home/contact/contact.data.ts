@@ -24,7 +24,7 @@ export let inputs: Input[] = [
         alertText: '',
         alertIconStyle: '',
         checkmarkIconStyle: '',
-        disallowedCharacters: /[A-Za-z0-9@_.-]/,
+        disallowedCharacters: /[^A-Za-z0-9@_.-]/,
         currentFeedback: 'default'
     },
     {

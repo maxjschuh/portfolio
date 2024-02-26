@@ -27,15 +27,14 @@ export class ContactComponent {
   /**
    * Is called when the user makes an input in one of the input fields.
    * @param input object with information about the input field where the input happened
+   * @param formSubmission always false except for email input on focusout
    */
-  handleInput(input: Input): void {
+  handleInput(input: Input, formSubmission: boolean): void {
 
-    this.validateInput(input, false);
-    this.colorSubmitButton();
-
-    if (input.id === 'email' && input.currentFeedback !== 'valid') return;
-
+    this.validateInput(input, formSubmission);
     this.setUserFeedbackForInput(input);
+    
+    this.colorSubmitButton();
   }
 
 
@@ -62,7 +61,7 @@ export class ContactComponent {
 
     } else if (input.id === 'email') {
 
-      this.testForEmailPattern(input);
+      this.testForEmailPattern(input, formSubmission);
 
     } else input.currentFeedback = 'valid';
   }
@@ -101,7 +100,13 @@ export class ContactComponent {
    * Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.
    * @param input object that contains information about the input field that should be validated
    */
-  testForEmailPattern(input: Input): void {
+
+  /**
+   * Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.
+   * @param input object that contains information about the input field that should be validated
+   * @param formSubmission true when the user submissed the form or focusout event occured, false for validation on input
+   */
+  testForEmailPattern(input: Input, formSubmission: boolean): void {
 
     const trimmedInput = input.value.trim();
 
@@ -109,7 +114,14 @@ export class ContactComponent {
 
       input.currentFeedback = 'valid';
 
-    } else input.currentFeedback = 'invalid-email';
+    } else if (!formSubmission) {
+
+      input.currentFeedback = 'default';
+
+    } else {
+
+      input.currentFeedback = 'invalid-email';
+    } 
   }
 
 
