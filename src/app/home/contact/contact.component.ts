@@ -94,7 +94,7 @@ export class ContactComponent {
 
     else this.submitButtonStyle = 'background: rgba(182, 182, 182, 1)';
   }
-  
+
 
   /**
    * Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.
@@ -248,6 +248,8 @@ export class ContactComponent {
     const response = await sendEmail(this.inputs);
 
     const requestDuration = Date.now() - startTime;
+
+    // await this.sleep(100000000)
 
     if (requestDuration < 1500) await this.sleep(1500 - requestDuration);
 

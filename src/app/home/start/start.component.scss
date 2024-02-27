@@ -188,15 +188,25 @@ h1 {
     position: absolute;
     width: var(--section-start-shadow-width);
     top: calc(50vh - (var(--section-start-shadow-width) / 2));
+
+
 }
 
 #shadow-left {
     left: calc(-0.54 * var(--section-start-shadow-width));
     rotate: 90deg;
+
+    @media (max-width: 1000px) {
+        top: calc((50vh - (var(--section-start-shadow-width) / 2)) + 100px);
+    }
 }
 
 #shadow-right {
     right: calc(-0.45 * var(--section-start-shadow-width));
+
+    @media (max-width: 1000px) {
+        top: calc((50vh - (var(--section-start-shadow-width) / 2)) - 100px);
+    }
 }
 
 a {

@@ -28,12 +28,20 @@ main {
     gap: 100px;
     z-index: 1;
 
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
+
     #contact-left-column {
         width: calc(50vw - 50px);
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         gap: 40px;
+
+        @media (max-width: 800px) {
+            width: calc(100vw - var(--responsive-vertical-side-padding));
+        }
 
         #contact-left-column-first-row {
             width: 100%;
@@ -47,7 +55,7 @@ main {
                 border-radius: 0 var(--bullet-line-height) var(--bullet-line-height) 0;
                 height: var(--bullet-line-height);
                 margin-right: 24px;
-            
+
                 @media (max-width: 1400px) {
                     width: calc(var(--responsive-vertical-side-padding) - 24px);
                 }
@@ -56,21 +64,32 @@ main {
         }
 
         #contact-left-column-second-row {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-size: 16px;
             width: calc(50vw - var(--responsive-vertical-side-padding) - 50px);
             max-width: 550px;
+
+            @media (max-width: 800px) {
+                width: calc(100vw - var(--responsive-vertical-main-padding));
+                max-width: unset;
+            }
         }
     }
-}
 
+    #contact-right-column {
+        width: calc(50vw - var(--responsive-vertical-side-padding) - 50px);
+        max-width: 550px;
+        padding-bottom: 40px;
+        position: relative;
 
-
-
-
-#contact-right-column {
-    width: calc(50vw - var(--responsive-vertical-side-padding) - 50px);
-    max-width: 550px;
-    padding-bottom: 80px;
-    position: relative;
+        @media (max-width: 800px) {
+            width: calc(100vw - var(--responsive-vertical-main-padding));
+            max-width: unset;
+            padding-left: var(--responsive-vertical-side-padding);
+        }
+    }
 }
 
 form {
@@ -222,7 +241,7 @@ textarea~.input-alert-icon {
 
 #go-up-button {
     position: absolute;
-    right: 8px;
+    right: 2px;
     bottom: 8px;
 
     &:hover {
@@ -237,6 +256,22 @@ textarea~.input-alert-icon {
             fill: #00BEE8;
         }
     }
+
+    @media (max-width: 1050px) {
+        bottom: 0px;
+    }
+
+    @media (max-width: 900px) {
+        bottom: -16px;
+    }
+
+    @media (max-width: 800px) {
+        bottom: 8px;
+    }
+
+    @media (max-width: 800px) {
+        bottom: -8px;
+    }
 }
 
 #shadow {
@@ -245,6 +280,18 @@ textarea~.input-alert-icon {
     left: 0;
     width: 375px;
     height: 450px;
+
+    @media (min-width: 1500px) {
+        width: calc(375px * 1.5);
+        height: calc(450px * 1.5);
+
+    }
+
+    @media (max-width: 800px) {
+        width: calc(375px * 0.65);
+        height: calc(450px * 0.65);
+
+    }
 }
 
 

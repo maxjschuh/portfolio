@@ -31,6 +31,10 @@ html {
 
     --bullet-line-height: 2px;
 
+    @media (max-width: 1000px) {
+        --section-start-shadow-width: 50vw;
+    }
+
     @media (max-width: 800px) {
         --responsive-vertical-main-padding: 100px;
         --responsive-vertical-side-padding: 50px;
@@ -60,8 +64,8 @@ button {
 
     &:hover {
         cursor: pointer;
-        padding: 20px 40px;
         margin: 10px 5px;
+        padding: 20px 40px;
         background: linear-gradient(#4B47FF, #00BEE8);
     }
 

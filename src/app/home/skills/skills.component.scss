@@ -8,12 +8,12 @@ app-skill-icon {
 
     width: 100px;
     height: 100px;
-    animation: fadeIn 5000ms;
-}
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    @media(max-width: 350px) {
+        width: 80px;
+        height: 80px;
+        font-size: 12px;
+    }
 }
 
 #skills-left-column {
@@ -30,6 +30,10 @@ app-skill-icon {
         width: calc(100vw - var(--responsive-vertical-main-padding));
         max-width: unset;
         justify-content: center;
+    }
+
+    @media (max-width: 350px) {
+        gap: 20px;
     }
 }
 
