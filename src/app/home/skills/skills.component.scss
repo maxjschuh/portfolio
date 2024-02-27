@@ -101,6 +101,11 @@ app-skill-icon {
     -webkit-transform: scaleY(-1);
     transform: scaleY(-1);
     left: -250px;
+
+    @media(min-width: 1000px) {
+
+        width: calc(430px * 1.3);
+    }
 }
 
 #button-responsive {

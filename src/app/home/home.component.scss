@@ -47,3 +47,12 @@ app-contact {
     position: relative;
     padding: var(--header-height) 0;
 }
+
+#separator {
+    position: absolute;
+    left: 0;
+    top: 35%;
+    width: 100vw;
+    height: 300px;
+    z-index: -2;
+}
