@@ -119,12 +119,12 @@ h1 {
         }
     }
 
-    @media (max-width: 1200px) {
-        right: 100px;
+    @media (max-width: 1400px) { //max-width = --main-content-width + --responsive-vertical-main-padding
+        right: var(--responsive-vertical-side-padding);
     }
 
-    @media (max-width: var(--main-content-width)) {
-        right: var(--responsive-vertical-side-padding);
+    @media (max-width: 500px) {
+        display: none;
     }
 
     @keyframes wiggle {

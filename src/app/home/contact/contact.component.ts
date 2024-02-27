@@ -94,12 +94,7 @@ export class ContactComponent {
 
     else this.submitButtonStyle = 'background: rgba(182, 182, 182, 1)';
   }
-
-
-  /**
-   * Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.
-   * @param input object that contains information about the input field that should be validated
-   */
+  
 
   /**
    * Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.
