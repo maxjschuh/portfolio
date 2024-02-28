@@ -25,7 +25,7 @@
         <form (ngSubmit)="submitContactForm()">
 
             <div>
-                <input id="name" [(ngModel)]="inputs[0].value" (input)="handleInput(inputs[0], false)" (focusout)="handleInput(inputs[0], true)"
+                <input id="name" [(ngModel)]="inputs[0].value" (input)="handleInput(inputs[0], false)"
                     [style]="inputs[0].style" type="text" placeholder="Your name" name="name" autocomplete="name"
                     maxlength="99">
                 <img id="name-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[0].alertIconStyle"
@@ -36,7 +36,7 @@
             </div>
 
             <div>
-                <input id="email" [(ngModel)]="inputs[1].value" (input)="handleInput(inputs[1], false)"(focusout)="handleInput(inputs[1], true)"
+                <input id="email" [(ngModel)]="inputs[1].value" (input)="handleInput(inputs[1], false)"
                     [style]="inputs[1].style" type="email" placeholder="Your email" name="email" autocomplete="email"
                     maxlength="99">
                 <img id="email-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[1].alertIconStyle"
@@ -47,7 +47,7 @@
             </div>
 
             <div>
-                <textarea id="message" [(ngModel)]="inputs[2].value" (input)="handleInput(inputs[2], false)" (focusout)="handleInput(inputs[2], true)"
+                <textarea id="message" [(ngModel)]="inputs[2].value" (input)="handleInput(inputs[2], false)"
                     [style]="inputs[2].style" type="text" placeholder="Your message" name="message" autocomplete="off"
                     maxlength="999"></textarea>
                 <img id="message-alert-icon" class="input-alert-icon" alt="input alert"

@@ -63,18 +63,24 @@ main {
 
 #shadow-purple {
     transform: scaleX(-1);
-    width: 630px;
-    height: 750px;
-    left: -200px;
+    width: 1260px;
+    height: 900px;
+    left: -650px;
     top: 5%;
+
+    // @media (min-width: 1500px) {
+    //     width: 43vw;
+    //     height: 50vw;
+    //     left: -13vw;
+    // }
 }
 
 #shadow-blue {
-    transform: scaleX(-1);
+    transform: scaleX(-1) rotate(30deg);
     width: 430;
     height: 950px;
     right: -400px;
-    bottom: 5%;
+    bottom: -80px;
 }
 
 .flex-row-reverse {

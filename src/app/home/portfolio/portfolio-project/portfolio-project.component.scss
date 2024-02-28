@@ -82,6 +82,7 @@
     align-items: center;
     width: calc((100vw - var(--responsive-vertical-main-padding)) / 2 - 50px);
     max-width: 550px;
+    position: relative;
 
     img {
         width: 100%;
@@ -91,4 +92,24 @@
         width: 100%;
         max-width: unset;
     }
+}
+
+.shadow {
+    position: absolute;
+    z-index: -1;
+}
+
+#shadow-purple {
+    transform: scaleX(-1);
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    object-fit: contain;
+
+    // @media (min-width: 1500px) {
+    //     width: 43vw;
+    //     height: 50vw;
+    //     left: -13vw;
+    // }
 }

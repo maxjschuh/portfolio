@@ -98,9 +98,8 @@ app-skill-icon {
 .shadow {
     position: absolute;
     width: 430px;
-    -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
-    left: -250px;
+    transform: rotate(-10deg) scaleY(-1);
+    left: -300px;
 
     @media(min-width: 1000px) {
 

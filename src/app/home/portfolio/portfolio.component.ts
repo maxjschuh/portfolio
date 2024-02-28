@@ -21,7 +21,9 @@ export class PortfolioComponent {
       image_alt: 'Join Mockup',
       class: '',
       test_link: 'https://join.mjschuh.com/',
-      github_link: 'https://github.com/maxjschuh/join-2.0'
+      github_link: 'https://github.com/maxjschuh/join-2.0',
+      background_shadow_path: 'shadow_purple_3_alt.svg',
+      background_shadow_class: ''
     },
     {
       title: 'El Pollo Loco',
@@ -31,7 +33,9 @@ export class PortfolioComponent {
       image_alt: 'El Pollo Loco Mockup',
       class: 'flex-row-reverse',
       test_link: 'https://el-pollo-loco.mjschuh.com/',
-      github_link: 'https://github.com/maxjschuh/el-pollo-loco'
+      github_link: 'https://github.com/maxjschuh/el-pollo-loco',
+      background_shadow_path: 'shadow_blue_1.svg',
+      background_shadow_class: ''
     }
   ];
 }
