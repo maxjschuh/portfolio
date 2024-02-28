@@ -15,12 +15,25 @@ main {
     color: white;
     width: calc(100vw - var(--responsive-vertical-main-padding));
     max-width: var(--main-content-width);
+    gap: 32px;
+
+    @media (max-width: 900px) {
+        gap: 12px;
+    }
+
+    @media (max-width: 610px) {
+        gap: 0;
+    }
+
+    @media (max-width: 550px) {
+        gap: 12px;
+    }
 }
 
 #eyecatcher-vertical {
     transform: rotate(-180deg);
     writing-mode: vertical-lr;
-    text-orientation: sideways; 
+    text-orientation: sideways;
     line-height: 90px;
     width: 80px;
     font-size: 90px;
@@ -35,6 +48,16 @@ main {
 
     @media (max-width: 650px) {
         font-size: 42px;
+    }
+
+    @media (max-width: 550px) {
+        font-size: 36px;
+        line-height: 40px;
+        width: 30px;
+    }
+
+    @media (max-width: 450px) {
+        font-size: 26px;
     }
 }
 
@@ -61,6 +84,14 @@ h1 {
     @media (max-width: 650px) {
         font-size: 60px;
     }
+
+    @media (max-width: 550px) {
+        font-size: 48px;
+    }
+
+    @media (max-width: 450px) {
+        font-size: 36px;
+    }
 }
 
 #eyecatcher-horizontal-profession {
@@ -80,6 +111,14 @@ h1 {
 
     @media (max-width: 650px) {
         font-size: 30px;
+    }
+
+    @media (max-width: 550px) {
+        font-size: 24px;
+    }
+
+    @media (max-width: 450px) {
+        font-size: 18px;
     }
 }
 
@@ -119,7 +158,8 @@ h1 {
         }
     }
 
-    @media (max-width: 1400px) { //max-width = --main-content-width + --responsive-vertical-main-padding
+    @media (max-width: 1400px) {
+        //max-width = --main-content-width + --responsive-vertical-main-padding
         right: var(--responsive-vertical-side-padding);
     }
 
@@ -156,10 +196,18 @@ h1 {
     gap: 42px;
     z-index: 2;
 
+    @media (max-width: 800px) {
+        gap: 20px;
+    }
+
     a {
         text-decoration: none;
         display: flex;
         align-items: center;
+
+        @media (max-width: 800px) {
+            margin-right: 22px;
+        }
     }
 
     img {
@@ -179,10 +227,12 @@ h1 {
         @media (max-width: 1400px) {
             width: calc(var(--responsive-vertical-side-padding) - 42px);
         }
+
+        @media (max-width: 800px) {
+            width: calc(var(--responsive-vertical-side-padding) - 20px);
+        }
     }
 }
-
-
 
 .shadow {
     position: absolute;

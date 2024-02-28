@@ -8,6 +8,7 @@ main {
     @media (max-width: 900px) {
         flex-direction: column-reverse;
         align-items: center;
+        gap: 40px;
     }
 }
 
@@ -18,9 +19,11 @@ main {
     align-items: flex-start;
     gap: 35px;
     width: calc(50% - 50px);
+    padding-bottom: 60px;
 
     @media (max-width: 900px) {
         width: 100%;
+        padding: 0;
     }
 }
 
@@ -51,27 +54,50 @@ main {
 
     @media (max-width: 900px) {
         width: 100%;
+        min-height: 80vw;
     }
 
     img {
-
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: -4;
         width: calc((100vw - var(--responsive-vertical-main-padding)) / 2 - 50px);
         max-width: 550px;
-        transform: scale(1.5);
+        transform: scale(1.2) translateX(-50px);
+        z-index: -4;
 
-        @media (max-width: 800px) {
-
+        @media (max-width: 900px) {
+            width: calc(100vw - var(--responsive-vertical-main-padding));
+            max-width: unset;
         }
     }
 }
 
 #profile-image {
     position: absolute;
-    top: 0;
     left: 0;
+    bottom: 0;
+    transform: unset;
+    z-index: -3;
 }
 
 #separator {
+    --separator-height: 100px;
+    left: unset;
+    bottom: calc( -1 * var(--separator-height) + 50px);
+    right: calc(-1 * (100vw - var(--main-content-width)) / 2);
     width: 100vw;
-    height: 300px;
+    max-width: unset;
+    height: var(--separator-height);
+    transform: unset;
+    z-index: -2;
+    
+    @media (max-width: 1400px) { //--main-content-width + --responsive-main-padding
+        right: calc( -1 * var(--responsive-vertical-side-padding));
+    }
+
+    @media (max-width: 900px) {
+        left: -var(--responsive-vertical-side-padding);
+    }
 }
