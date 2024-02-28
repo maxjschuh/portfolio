@@ -6,7 +6,7 @@
     position: relative;
     
     h2 {
-        padding: 0 48px;
+        padding: 0 24px;
         background-color: #141D2F;
     }
 
@@ -19,6 +19,14 @@
         right: 0;
         top: calc(50% - (var(--bullet-line-height) / 2));
         z-index: -1;
+
+        @media (max-width: 760px) {
+            width: calc(50vw + ((100vw - var(--responsive-vertical-main-padding)) / 2.5));
+        }
+
+        @media (max-width: 520px) {
+            width: calc(50vw + ((100vw - var(--responsive-vertical-main-padding)) / 2.2));
+        }
     }
 }
 

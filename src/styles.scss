@@ -146,7 +146,7 @@ app-home {
 
 app-privacy-policy {
     display: block;
-    width: calc(100vw - 200px);
+    width: calc(100vw - var(--responsive-vertical-main-padding));
     max-width: var(--main-content-width);
     margin: var(--header-height) 0;
     padding: 50px 0;
@@ -154,7 +154,7 @@ app-privacy-policy {
 
 app-imprint {
     display: block;
-    width: calc(100vw - 200px);
+    width: calc(100vw - var(--responsive-vertical-main-padding));
     max-width: var(--main-content-width);
     margin: var(--header-height) 0;
     padding: 50px 0;

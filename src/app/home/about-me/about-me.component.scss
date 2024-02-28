@@ -64,7 +64,7 @@ main {
         z-index: -4;
         width: calc((100vw - var(--responsive-vertical-main-padding)) / 2 - 50px);
         max-width: 550px;
-        transform: scale(1.2) translateX(-50px);
+        transform: scale(1.2) translateX(-20px);
         z-index: -4;
 
         @media (max-width: 900px) {
