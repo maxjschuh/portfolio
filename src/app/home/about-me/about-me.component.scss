@@ -75,12 +75,29 @@ main {
 }
 
 #profile-image {
-    position: absolute;
+    box-sizing: border-box;
+    padding: 0 40px;
     left: 0;
     bottom: 0;
     transform: unset;
     // transform: translateY(60px);
     z-index: -3;
+
+    @media (max-width: 1300px) {
+        padding: 0;
+    }
+
+    @media (max-width: 900px) {
+        padding: 0 80px;
+    }
+
+    @media (max-width: 650px) {
+        padding: 0 40px;
+    }
+
+    @media (max-width: 650px) {
+        padding: 0;
+    }
 }
 
 #separator {
