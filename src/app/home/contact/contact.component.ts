@@ -5,11 +5,12 @@ import { Input } from '../../interfaces/input.interface';
 import { Checkbox } from '../../interfaces/checkbox.interface';
 import { inputs, checkboxes, userFeedbacks, EMAIL_PATTERN } from "./contact.data"
 import { sendEmail } from './contact.send-mail';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgIf],
+  imports: [CommonModule, FormsModule, NgIf, TranslateModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
@@ -18,10 +19,12 @@ export class ContactComponent {
   inputs = inputs;
   checkboxes = checkboxes;
   userFeedbacks = userFeedbacks;
-  submitButtonText = 'Send message';
+  submitButtonText = this.translate.instant('send-mail-default');
   submitButtonStyle = 'background: rgba(182, 182, 182, 1)';
   submitButtonDisabled = false;
   currentlySendingMail = false;
+
+  constructor(public translate: TranslateService) { }
 
 
   /**
@@ -33,7 +36,7 @@ export class ContactComponent {
 
     this.validateInput(input, formSubmission);
     this.setUserFeedbackForInput(input);
-    
+
     this.colorSubmitButton();
   }
 
@@ -116,7 +119,7 @@ export class ContactComponent {
     } else {
 
       input.currentFeedback = 'invalid-email';
-    } 
+    }
   }
 
 
@@ -153,7 +156,7 @@ export class ContactComponent {
     }
 
     this.submitButtonDisabled = true;
-    this.submitButtonText = 'Sending mail';
+    this.submitButtonText = this.translate.instant('send-mail-working');
     this.currentlySendingMail = true;
     await this.handleFetchRequest();
 
@@ -249,22 +252,20 @@ export class ContactComponent {
 
     const requestDuration = Date.now() - startTime;
 
-    // await this.sleep(100000000)
-
     if (requestDuration < 1500) await this.sleep(1500 - requestDuration);
 
     if (!response.ok) {
 
-      this.submitButtonText = 'Server error! Please try again later.';
+      this.submitButtonText = this.translate.instant('send-mail-error');
 
     } else {
 
-      this.submitButtonText = '&#10004; Your message has been sent';
+      this.submitButtonText = this.translate.instant('send-mail-success');
     }
 
     this.currentlySendingMail = false;
     await this.sleep(5000);
-    this.submitButtonText = 'Send message';
+    this.submitButtonText = this.translate.instant('send-mail-default');
   }
 
 

@@ -5,7 +5,7 @@
 
 <main>
 
-    <section id="contact-left-column">
+    <section id="contact-left-column" data-aos="fade-up">
 
         <div id="contact-left-column-first-row">
             <div id="contact-left-column-bullet-line"></div>
@@ -84,7 +84,7 @@
 
             <button type="submit" [style]="submitButtonStyle" [disabled]="submitButtonDisabled">
                 <div *ngIf="currentlySendingMail" class="lds-dual-ring"></div>
-                <div [innerHTML]="submitButtonText"></div>
+                <div [innerHTML]="submitButtonText | translate"></div>
             </button>
         </form>
 

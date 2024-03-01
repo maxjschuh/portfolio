@@ -1,0 +1,14 @@
+{
+    "About me": "About me",
+    "Skills": "Skills",
+    "Portfolio": "Portfolio",
+    "Contact": "Contact",
+    "Imprint": "Imprint",
+    "about-me-details-first-paragraph": "Hi, I am a Frontend Developer based in Munich. My passion is creating dynamic websites and web-apps with high-end user experience.",
+    "about-me-details-second-paragraph": "My positions in adult education and e-learning technology have sharpened my understanding of human-computer interactions.",
+    "about-me-details-third-paragraph": "I'm convinced that software development is more than just coding. It must manage the interests of various stakeholders in a holistic approach. I learned this by working in interdisciplinary teams in the past.",
+    "about-me-details-headline": "About me",
+    "send-mail-default": "Send message",
+    "send-mail-success": "&#10004; Your message has been sent",
+    "send-mail-error": "Server error! Please try again later."
+}

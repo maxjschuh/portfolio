@@ -1,0 +1,19 @@
+{
+    "About me": "Über mich",
+    "Skills": "Skills",
+    "Portfolio": "Portfolio",
+    "Contact": "Contact",
+    "Imprint": "Imprint",
+    "about-me-details-first-paragraph": "Hi, I am a Frontend Developer based in Munich. My passion is creating dynamic websites and web-apps with high-end user experience.",
+    "about-me-details-second-paragraph": "My positions in adult education and e-learning technology have sharpened my understanding of human-computer interactions.",
+    "about-me-details-third-paragraph": "I'm convinced that software development is more than just coding. It must manage the interests of various stakeholders in a holistic approach. I learned this by working in interdisciplinary teams in the past.",
+    "about-me-details-headline": "About me",
+    "send-mail-default": "Nachricht senden",
+    "send-mail-success": "&#10004; Deine Nachricht wurde gesendet",
+    "send-mail-error": "Serverfehler! Bitte versuche es später erneut.",
+    "send-mail-working": "Nachricht wird gesendet",
+    "project-descriptions": {
+        "join": "Join is a CRUD-App in form of an easy to use project management tool. Its core function is a Kanban Board, on which users can switch tasks between columns by drag-and-drop. Tasks can be enriched with various additional data such as assignees, subtasks and labels. <br> <br> Join was created in a team of 4 web development trainees, in which I was responsible for the Kanban Board subpage.",
+        "el-pollo-loco": "El Pollo Loco is a 2D runner game in a wild west themed world. It features animated characters, a randomly generated level and random endboss behaviour. Players can use mouse, keyboard or touch controls. <br><br> I used object-oriented programming to allow for easier maintenance and modular expandability of the project."
+    }
+}

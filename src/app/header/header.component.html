@@ -7,15 +7,15 @@
     <nav id="nav-links-landscape-mode">
 
         <a href="#about">
-            About me
+            {{'About me' | translate}}
             <div [classList]="navlinks[0].classlist"></div>
         </a>
         <a href="#skills">
-            Skills
+            {{'Skills' | translate}}
             <div [classList]="navlinks[1].classlist"></div>
         </a>
         <a href="#portfolio">
-            Portfolio
+            {{'Portfolio' | translate}}
             <div [classList]="navlinks[2].classlist"></div>
         </a>
     </nav>
@@ -24,19 +24,19 @@
 
         <div>
             <a href="#about" (click)="setBurgerMenu()">
-                About me
+                {{'About me' | translate}}
                 <div class="inactive"></div>
             </a>
             <a href="#skills" (click)="setBurgerMenu()">
-                Skills
+                {{'Skills' | translate}}
                 <div class="inactive"></div>
             </a>
             <a href="#portfolio" (click)="setBurgerMenu()">
-                Portfolio
+                {{'Portfolio' | translate}}
                 <div class="inactive"></div>
             </a>
             <a href="#contact" (click)="setBurgerMenu()">
-                Contact
+                {{'Contact' | translate}}
                 <div class="inactive"></div>
             </a>
         </div>
