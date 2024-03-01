@@ -1,6 +1,7 @@
 import { Input } from '../../interfaces/input.interface';
 import { Checkbox } from '../../interfaces/checkbox.interface';
 import { userFeedback } from '../../interfaces/user-feedback.interface';
+import { TranslateService } from '@ngx-translate/core';
 
 
 export const EMAIL_PATTERN = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -50,47 +51,55 @@ export let checkboxes: Checkbox[] = [
 ];
 
 
-export let userFeedbacks: userFeedback[] = [
-    {
-        feedbackType: 'default',
-        borderStyle: '',
-        checkmarkIconStyle: '',
-        alertIconStyle: '',
-        feedbackText: () => ''
-    },
-    {
-        feedbackType: 'invalid',
-        borderStyle: 'border-color: #E61C40',
-        checkmarkIconStyle: '',
-        alertIconStyle: 'display: flex',
-        feedbackText: () => 'Contains disallowed characters!'
-    },
-    {
-        feedbackType: 'empty',
-        borderStyle: 'border-color: #E61C40',
-        checkmarkIconStyle: '',
-        alertIconStyle: 'display: flex',
-        feedbackText: (inputId) => `Your ${inputId} is required!`
-    },
-    {
-        feedbackType: 'invalid-email',
-        borderStyle: 'border-color: #E61C40',
-        checkmarkIconStyle: '',
-        alertIconStyle: 'display: flex',
-        feedbackText: () => 'Please enter a valid email!'
-    },
-    {
-        feedbackType: 'valid',
-        borderStyle: 'border-color: #70E61C',
-        checkmarkIconStyle: 'display: flex',
-        alertIconStyle: '',
-        feedbackText: () => ''
-    },
-    {
-        feedbackType: 'checkbox-unaccepted',
-        borderStyle: undefined,
-        checkmarkIconStyle: undefined,
-        alertIconStyle: undefined,
-        feedbackText: (checkboxId) => `Please accept the ${checkboxId}.`
-    }
-];
+export let userFeedbacks: userFeedback[];
+
+
+export function initializeUserFeedbacks(translate: TranslateService): void {
+
+    userFeedbacks = [
+        {
+            feedbackType: 'default',
+            borderStyle: '',
+            checkmarkIconStyle: '',
+            alertIconStyle: '',
+            feedbackText: () => ''
+        },
+        {
+            feedbackType: 'invalid',
+            borderStyle: 'border-color: #E61C40',
+            checkmarkIconStyle: '',
+            alertIconStyle: 'display: flex',
+            feedbackText: () => translate.instant('contact.form.feedback-texts.invalid')
+        },
+        {
+            feedbackType: 'empty',
+            borderStyle: 'border-color: #E61C40',
+            checkmarkIconStyle: '',
+            alertIconStyle: 'display: flex',
+            feedbackText: (inputId: string) => `Your ${inputId} is required!`
+        },
+        {
+            feedbackType: 'invalid-email',
+            borderStyle: 'border-color: #E61C40',
+            checkmarkIconStyle: '',
+            alertIconStyle: 'display: flex',
+            feedbackText: () => translate.instant('contact.form.feedback-texts.invalid-email')
+        },
+        {
+            feedbackType: 'valid',
+            borderStyle: 'border-color: #70E61C',
+            checkmarkIconStyle: 'display: flex',
+            alertIconStyle: '',
+            feedbackText: () => ''
+        },
+        {
+            feedbackType: 'checkbox-unaccepted',
+            borderStyle: undefined,
+            checkmarkIconStyle: undefined,
+            alertIconStyle: undefined,
+            feedbackText: (checkboxId: string) => translate.instant('contact.form.feedback-texts.checkbox-unaccepted', {
+                checkboxId: checkboxId
+            })
+        }
+    ];
+}

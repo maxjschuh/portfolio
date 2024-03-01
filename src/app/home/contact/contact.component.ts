@@ -3,9 +3,10 @@ import { CommonModule, NgIf } from '@angular/common';
 import { FormsModule } from "@angular/forms";
 import { Input } from '../../interfaces/input.interface';
 import { Checkbox } from '../../interfaces/checkbox.interface';
-import { inputs, checkboxes, userFeedbacks, EMAIL_PATTERN } from "./contact.data"
+import { EMAIL_PATTERN, inputs, checkboxes, initializeUserFeedbacks, userFeedbacks } from "./contact.data"
 import { sendEmail } from './contact.send-mail';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { userFeedback } from '../../interfaces/user-feedback.interface';
 
 @Component({
   selector: 'app-contact',
@@ -18,13 +19,17 @@ export class ContactComponent {
 
   inputs = inputs;
   checkboxes = checkboxes;
-  userFeedbacks = userFeedbacks;
-  submitButtonText = this.translate.instant('send-mail-default');
+  userFeedbacks: userFeedback[];
+  submitButtonText = this.translate.instant('contact.form.submit-button.default');
   submitButtonStyle = 'background: rgba(182, 182, 182, 1)';
   submitButtonDisabled = false;
   currentlySendingMail = false;
 
-  constructor(public translate: TranslateService) { }
+  constructor(public translate: TranslateService) {
+    initializeUserFeedbacks(this.translate);
+    this.userFeedbacks = userFeedbacks;
+
+   }
 
 
   /**
@@ -156,7 +161,7 @@ export class ContactComponent {
     }
 
     this.submitButtonDisabled = true;
-    this.submitButtonText = this.translate.instant('send-mail-working');
+    this.submitButtonText = this.translate.instant('contact.form.submit-button.working');
     this.currentlySendingMail = true;
     await this.handleFetchRequest();
 
@@ -256,16 +261,16 @@ export class ContactComponent {
 
     if (!response.ok) {
 
-      this.submitButtonText = this.translate.instant('send-mail-error');
+      this.submitButtonText = this.translate.instant('contact.form.submit-button.error');
 
     } else {
 
-      this.submitButtonText = this.translate.instant('send-mail-success');
+      this.submitButtonText = this.translate.instant('contact.form.submit-button.success');
     }
 
     this.currentlySendingMail = false;
     await this.sleep(5000);
-    this.submitButtonText = this.translate.instant('send-mail-default');
+    this.submitButtonText = this.translate.instant('contact.form.submit-button.default');
   }
 
 
