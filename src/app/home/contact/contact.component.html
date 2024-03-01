@@ -1,20 +1,18 @@
 <div id="contact-headline">
-    <h2>Contact</h2>
+    <h2>{{ "contact.headline" | translate }}</h2>
     <div id="contact-bullet-line"></div>
 </div>
 
 <main>
 
-    <section id="contact-left-column" data-aos="fade-up">
+    <section id="contact-left-column">
 
         <div id="contact-left-column-first-row">
             <div id="contact-left-column-bullet-line"></div>
-            <h3>I'm open to work!</h3>
+            <h3>{{ "contact.sub-headline" | translate }}</h3>
         </div>
 
-        <summary id="contact-left-column-second-row">
-            I'm keen for new challenges and currently seeking a position as web developer in southern Germany.
-            <strong>Looking forward to hearing from you!</strong>
+        <summary id="contact-left-column-second-row" [innerHTML]=" 'contact.summary' | translate ">
         </summary>
 
 
@@ -26,7 +24,8 @@
 
             <div>
                 <input id="name" [(ngModel)]="inputs[0].value" (input)="handleInput(inputs[0], false)"
-                    [style]="inputs[0].style" type="text" placeholder="Your name" name="name" autocomplete="name"
+                    [style]="inputs[0].style" type="text"
+                    placeholder="{{'contact.form.placeholders.input-name' | translate}}" name="name" autocomplete="name"
                     maxlength="99">
                 <img id="name-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[0].alertIconStyle"
                     src="./assets/img/input_alert.svg">
@@ -37,8 +36,9 @@
 
             <div>
                 <input id="email" [(ngModel)]="inputs[1].value" (input)="handleInput(inputs[1], false)"
-                    [style]="inputs[1].style" type="email" placeholder="Your email" name="email" autocomplete="email"
-                    maxlength="99">
+                    [style]="inputs[1].style" type="email"
+                    placeholder="{{'contact.form.placeholders.input-email' | translate}}" name="email"
+                    autocomplete="email" maxlength="99">
                 <img id="email-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[1].alertIconStyle"
                     src="./assets/img/input_alert.svg">
                 <img id="email-checkmark" class="input-alert-icon" src="./assets/img/input_checkmark.svg"
@@ -48,8 +48,9 @@
 
             <div>
                 <textarea id="message" [(ngModel)]="inputs[2].value" (input)="handleInput(inputs[2], false)"
-                    [style]="inputs[2].style" type="text" placeholder="Your message" name="message" autocomplete="off"
-                    maxlength="999"></textarea>
+                    [style]="inputs[2].style" type="text"
+                    placeholder="{{'contact.form.placeholders.textarea-message' | translate}}" name="message"
+                    autocomplete="off" maxlength="999"></textarea>
                 <img id="message-alert-icon" class="input-alert-icon" alt="input alert"
                     [style]="inputs[2].alertIconStyle" src="./assets/img/input_alert.svg">
                 <img id="message-checkmark" class="input-alert-icon" src="./assets/img/input_checkmark.svg"
@@ -71,10 +72,11 @@
                     </div>
 
                     <span>
-                        I've read the
-                        <a href="./privacy-policy" target="_blank" rel="noopener noreferrer">
-                            privacy policy</a>
-                        and agree to the processing of my data as outlined.
+                        {{ "contact.form.privacy-policy-notice.link-prefix" | translate }}
+                        <a href='./privacy-policy' target='_blank' rel='noopener noreferrer'>
+                            {{ "contact.form.privacy-policy-notice.link" | translate }}
+                        </a>
+                        {{ "contact.form.privacy-policy-notice.link-suffix" | translate }}
                     </span>
 
                 </div>

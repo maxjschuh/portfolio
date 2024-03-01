@@ -1,19 +1,17 @@
 <section id="portfolio-section-headline">
-    <h2>Portfolio</h2>
+    <h2>{{ "portfolio.headline" | translate }}</h2>
 
     <div id="portfolio-bullet-line"></div>
 
 </section>
 
-<summary>
-    These are samples of my work &mdash; please feel free to try them out.
-</summary>
+<summary [innerHTML]=" 'portfolio.summary' | translate"></summary>
 
 <main>
 
     @for (project of projects; track $index) {
-    
-        <app-portfolio-project [project]="projects[$index]" [ngClass]="projects[$index].class"></app-portfolio-project>
+
+    <app-portfolio-project [project]="projects[$index]" [ngClass]="projects[$index].class"></app-portfolio-project>
     }
 
 </main>

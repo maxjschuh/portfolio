@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { PortfolioProjectComponent } from './portfolio-project/portfolio-project.component';
 import { PortfolioProject } from '../../interfaces/portfolio-project.interface';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [CommonModule, PortfolioProjectComponent, NgFor],
+  imports: [CommonModule, PortfolioProjectComponent, NgFor, TranslateModule],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss'
 })
@@ -16,7 +16,6 @@ export class PortfolioComponent {
   projects: PortfolioProject[];
 
   constructor(public translate: TranslateService) {
-
 
     this.projects = [
       {
