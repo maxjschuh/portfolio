@@ -13,17 +13,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private scrollLocationService: ScrollLocationOnPageService, public translate: TranslateService) {
-
-  }
-
-  switchLanguage() {
-    const currentLang = this.translate.currentLang;
-
-    if (currentLang === 'en') this.translate.use('de');
-    
-    else this.translate.use('en');
-  }
+  constructor(private scrollLocationService: ScrollLocationOnPageService, public translate: TranslateService) { }
 
   burgerMenuClassList: any[] = [];
 
@@ -49,7 +39,6 @@ export class HeaderComponent implements OnInit {
 
       this.setNavLinks(newValue.section);
     });
-
   }
 
 
@@ -93,5 +82,17 @@ export class HeaderComponent implements OnInit {
         this.burgerMenuClassList.push('burger-menu-expanded');
       }, 1);
     }
+  }
+
+
+  /**
+  * Switches the site language between German and English using the TranslateService from ngx-translate.
+  */
+  switchLanguage() {
+    const currentLang = this.translate.currentLang;
+
+    if (currentLang === 'en') this.translate.use('de');
+
+    else this.translate.use('en');
   }
 }

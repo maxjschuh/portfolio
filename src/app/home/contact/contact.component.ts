@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
 import { FormsModule } from "@angular/forms";
 import { Input } from '../../interfaces/input.interface';
@@ -28,6 +28,11 @@ export class ContactComponent {
   submitButtonDisabled = false;
   currentlySendingMail = false;
 
+
+  /**
+   * Makes initializations that are necessary for the translation functionality.
+   * @param translate TranslateService from ngx-translate
+   */
   constructor(public translate: TranslateService) {
     initializeUserFeedbacks(this.translate);
     this.userFeedbacks = userFeedbacks;
@@ -38,6 +43,11 @@ export class ContactComponent {
 
   }
 
+
+  /**
+   * Sets the translation key for the submit text and loads the corresponding translation using the translation service from ngx-translate.
+   * @param translationKey translation key of the text that should be set in the inner html of the submit button
+   */
   updateSubmitButtonText(translationKey: string | null) {
 
     if (translationKey) this.submitButtonText.translationKey = translationKey;

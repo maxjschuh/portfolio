@@ -18,6 +18,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HomeComponent implements AfterViewInit {
 
+  
   constructor(private scrollLocationService: ScrollLocationOnPageService, public translate: TranslateService, private titleService: Title) {
 
     this.titleService.setTitle(this.translate.instant("titles.home"));
@@ -27,6 +28,7 @@ export class HomeComponent implements AfterViewInit {
     });
 
   }
+
 
   @ViewChild('skills', { read: ElementRef }) skillsElementRef!: ElementRef;
   @ViewChild('portfolio', { read: ElementRef }) portfolioElementRef!: ElementRef;
