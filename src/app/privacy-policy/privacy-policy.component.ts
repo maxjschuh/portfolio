@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { Title } from '@angular/platform-browser';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-privacy-policy',
@@ -10,5 +11,14 @@ import { TranslateModule } from '@ngx-translate/core';
   encapsulation: ViewEncapsulation.None
 })
 export class PrivacyPolicyComponent {
-  
+
+  constructor(public translate: TranslateService, private titleService: Title) {
+
+    this.titleService.setTitle(this.translate.instant("titles.privacy-policy"));
+
+    translate.onLangChange.subscribe(() => {
+      this.titleService.setTitle(this.translate.instant("titles.privacy-policy"));
+    });
+  }
+
 }

@@ -86,7 +86,7 @@
 
             <button type="submit" [style]="submitButtonStyle" [disabled]="submitButtonDisabled">
                 <div *ngIf="currentlySendingMail" class="lds-dual-ring"></div>
-                <div [innerHTML]="submitButtonText | translate"></div>
+                <div [innerHTML]="submitButtonText.text"></div>
             </button>
         </form>
 

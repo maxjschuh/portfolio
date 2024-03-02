@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { Title } from '@angular/platform-browser';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-imprint',
@@ -10,5 +11,14 @@ import { TranslateModule } from '@ngx-translate/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ImprintComponent {
+
+  constructor(public translate: TranslateService, private titleService: Title) {
+
+    this.titleService.setTitle(this.translate.instant("titles.imprint"));
+
+    translate.onLangChange.subscribe(() => {
+      this.titleService.setTitle(this.translate.instant("titles.imprint"));
+    });
+  }
 
 }

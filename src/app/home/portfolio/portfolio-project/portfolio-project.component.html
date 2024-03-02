@@ -3,14 +3,14 @@
 
     <img id="shadow-purple" class="shadow" src="./assets/img/shadows/{{ project.background_shadow_path }}"
         alt="background shadow">
-        
+
 </div>
 
 <div class="project-info">
 
     <h3 class="title">{{ project.title }}</h3>
     <span class="stack">{{ project.stack }}</span>
-    <span class="description" [innerHTML]="project.description"></span>
+    <span class="description" [innerHTML]="project.description | translate"></span>
 
     <div class="button-row">
 
@@ -19,7 +19,7 @@
         </a>
 
         <a href="{{ project.github_link }}" target="_blank" rel="noopener noreferrer">
-            <button class="button-github">Github</button>
+            <button class="button-github">GitHub</button>
         </a>
 
     </div>

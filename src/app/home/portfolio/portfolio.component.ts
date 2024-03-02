@@ -13,7 +13,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class PortfolioComponent {
 
-  projects: PortfolioProject[];
+  projects: PortfolioProject[] = [];
 
   constructor(public translate: TranslateService) {
 
@@ -21,7 +21,7 @@ export class PortfolioComponent {
       {
         title: 'Join',
         stack: 'JavaScript | HTML | CSS',
-        description: this.translate.instant('portfolio.project-descriptions.join'),
+        description: 'portfolio.project-descriptions.join',
         image_path: './assets/img/mockups/join_mockup_v1.png',
         image_alt: 'Join Mockup',
         class: '',
@@ -33,7 +33,7 @@ export class PortfolioComponent {
       {
         title: 'El Pollo Loco',
         stack: 'JavaScript | HTML | CSS',
-        description: this.translate.instant("portfolio.project-descriptions.el-pollo-loco"),
+        description: 'portfolio.project-descriptions.el-pollo-loco',
         image_path: './assets/img/mockups/pollo-loco_mockup_v1.png',
         image_alt: 'El Pollo Loco Mockup',
         class: 'flex-row-reverse',
@@ -43,8 +43,6 @@ export class PortfolioComponent {
         background_shadow_class: ''
       }
     ];
-  }
-
-
+   }
 
 }

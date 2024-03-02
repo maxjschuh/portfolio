@@ -6,6 +6,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ContactComponent } from './contact/contact.component';
 import { StartComponent } from './start/start.component';
 import { ScrollLocationOnPageService } from '../services/scroll-location-on-page/scroll-location-on-page.service';
+import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +18,15 @@ import { ScrollLocationOnPageService } from '../services/scroll-location-on-page
 })
 export class HomeComponent implements AfterViewInit {
 
-  constructor(private scrollLocationService: ScrollLocationOnPageService) { }
+  constructor(private scrollLocationService: ScrollLocationOnPageService, public translate: TranslateService, private titleService: Title) {
+
+    this.titleService.setTitle(this.translate.instant("titles.home"));
+
+    translate.onLangChange.subscribe(() => {
+      this.titleService.setTitle(this.translate.instant("titles.home"));
+    });
+
+  }
 
   @ViewChild('skills', { read: ElementRef }) skillsElementRef!: ElementRef;
   @ViewChild('portfolio', { read: ElementRef }) portfolioElementRef!: ElementRef;

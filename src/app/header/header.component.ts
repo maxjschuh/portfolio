@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LogoComponent } from '../logo/logo.component';
 import { ScrollLocationOnPageService } from '../services/scroll-location-on-page/scroll-location-on-page.service';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,17 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private scrollLocationService: ScrollLocationOnPageService) { }
+  constructor(private scrollLocationService: ScrollLocationOnPageService, public translate: TranslateService) {
+
+  }
+
+  switchLanguage() {
+    const currentLang = this.translate.currentLang;
+
+    if (currentLang === 'en') this.translate.use('de');
+    
+    else this.translate.use('en');
+  }
 
   burgerMenuClassList: any[] = [];
 

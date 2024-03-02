@@ -76,7 +76,9 @@ export function initializeUserFeedbacks(translate: TranslateService): void {
             borderStyle: 'border-color: #E61C40',
             checkmarkIconStyle: '',
             alertIconStyle: 'display: flex',
-            feedbackText: (inputId: string) => `Your ${inputId} is required!`
+            feedbackText: (inputId: string) => translate.instant('contact.form.feedback-texts.empty', {
+                inputId: inputId
+            })
         },
         {
             feedbackType: 'invalid-email',

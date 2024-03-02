@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { Router, NavigationEnd } from '@angular/router';
 
-// import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
@@ -38,11 +38,7 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 //   title = 'Max Schuh | Portfolio';
 
 //   constructor(public translate: TranslateService) {
-//     translate.addLangs(['en', 'de']);
-//     translate.setDefaultLang('en');
 
-//     const browserLang = translate.getBrowserLang();
-//     translate.use(browserLang?.match(/en|de/) ? browserLang : 'en');
 //   }
 // }
 
@@ -54,12 +50,12 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HomeComponent, PrivacyPolicyComponent, HeaderComponent, FooterComponent],
+  imports: [CommonModule, RouterOutlet, HomeComponent, PrivacyPolicyComponent, HeaderComponent, FooterComponent, TranslateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-// export class AppComponent implements AfterViewInit {
-export class AppComponent {
+export class AppComponent implements OnInit {
+  // export class AppComponent {
   title = 'Max Schuh | Portfolio';
 
   // constructor(public translate: TranslateService) {
@@ -70,15 +66,24 @@ export class AppComponent {
   //   translate.use(browserLang?.match(/de|en/) ? browserLang : 'en');
   // }
 
-  constructor(private router: Router) { }
-  
-  // ngAfterViewInit() {
-    
-  //   this.router.events.subscribe(event => {
-  //     AOS.refreshHard();
-  //     // if (event instanceof NavigationEnd) window.scrollTo(0, 0);
-  //   });
+  constructor(private router: Router, public translate: TranslateService) {
 
+    translate.addLangs(['en', 'de']);
+    translate.setDefaultLang('en');
+
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang?.match(/en|de/) ? browserLang : 'en');
+
+  }
+
+  ngOnInit() {
+
+    // this.router.events.subscribe(event => {
+    //   AOS.refreshHard();
+    //   // if (event instanceof NavigationEnd) window.scrollTo(0, 0);
+    // });
+
+  }
   //   AOS.init({
   //     // Global settings:
   //     disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
@@ -89,7 +94,7 @@ export class AppComponent {
   //     disableMutationObserver: false, // disables automatic mutations' detections (advanced)
   //     debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
   //     throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
-      
+
   //     // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
   //     offset: 120, // offset (in px) from the original trigger point
   //     delay: 0, // values from 0 to 3000, with step 50ms
