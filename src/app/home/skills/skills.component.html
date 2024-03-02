@@ -1,8 +1,8 @@
-<a href="#contact">
+<a href="#contact" data-aos="fade-up">
     <button id="button-responsive">{{ "skills.contact-button" | translate }}</button>
 </a>
 
-<section id="skills-left-column">
+<section id="skills-left-column" data-aos="fade-right">
 
     @for (skill of skills; track $index) {
 
@@ -10,7 +10,7 @@
     }
 </section>
 
-<section id="skills-right-column">
+<section id="skills-right-column" data-aos="fade-left">
 
     <div>
         <h2>{{ "skills.headline" | translate }}</h2>
@@ -26,4 +26,4 @@
     </a>
 </section>
 
-<img class="shadow" src="./assets/img/shadows/shadow_blue_1.svg" alt="blue shadow">
+<img class="shadow" src="./assets/img/shadows/shadow_blue_1.svg" alt="blue shadow" data-aos="fade-right">
