@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
@@ -18,7 +18,7 @@ import 'aos/dist/aos.css';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
 
   title = 'Max Schuh | Portfolio';
 
@@ -31,7 +31,8 @@ export class AppComponent implements OnInit {
     translate.use(browserLang?.match(/en|de/) ? browserLang : 'en');
   }
 
-  ngOnInit(): void {
+
+  async ngAfterViewInit(): Promise<void> {
 
     this.router.events.subscribe(() => {
       AOS.refreshHard();
@@ -58,5 +59,6 @@ export class AppComponent implements OnInit {
       mirror: false, // whether elements should animate out while scrolling past them
       anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
     });
+
   }
 }

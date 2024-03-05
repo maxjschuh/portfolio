@@ -30,6 +30,7 @@ main {
 
     @media (max-width: 800px) {
         flex-direction: column;
+        gap: 40px;
     }
 
     #contact-left-column {
