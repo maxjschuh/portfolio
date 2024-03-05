@@ -50,7 +50,7 @@
     .button-live-test {
         box-sizing: content-box;
         background: #4B47FF;
-        width: 86px;
+        width: 93px;
 
         &:hover {
             background: linear-gradient(#00BEE8, #4B47FF);
@@ -106,10 +106,4 @@
     top: -25%;
     left: -25%;
     object-fit: contain;
-
-    // @media (min-width: 1500px) {
-    //     width: 43vw;
-    //     height: 50vw;
-    //     left: -13vw;
-    // }
 }

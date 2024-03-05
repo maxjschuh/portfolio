@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
@@ -22,6 +22,12 @@ export class AppComponent implements AfterViewInit {
 
   title = 'Max Schuh | Portfolio';
 
+
+  /**
+   * Initializes the translation feature.
+   * @param router service from angular
+   * @param translate service from angular
+   */
   constructor(private router: Router, public translate: TranslateService) {
 
     translate.addLangs(['en', 'de']);
@@ -32,7 +38,10 @@ export class AppComponent implements AfterViewInit {
   }
 
 
-  async ngAfterViewInit(): Promise<void> {
+  /**
+   * Initializes the animate on scroll functionality
+   */
+  ngAfterViewInit(): void {
 
     this.router.events.subscribe(() => {
       AOS.refreshHard();
@@ -60,5 +69,6 @@ export class AppComponent implements AfterViewInit {
       anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
     });
 
+    AOS.refreshHard();
   }
 }

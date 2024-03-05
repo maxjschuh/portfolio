@@ -16,6 +16,38 @@ app-about-me {
     justify-content: center;
     padding-top: calc(290px + var(--header-height));
     color: white;
+
+    @media (max-width: 1200px) {
+        padding-top: calc(150px + var(--header-height));
+    }
+
+    @media (max-width: 1000px) {
+        padding-top: var(--header-height);
+    }
+
+    @media (max-width: 950px) {
+        padding-top: calc(290px + var(--header-height));
+    }
+
+    @media (max-width: 650px) {
+        padding-top: calc(450px + var(--header-height));
+    }
+
+    @media (max-width: 550px) {
+        padding-top: calc(350px + var(--header-height));
+    }
+
+    @media (max-width: 500px) {
+        padding-top: calc(300px + var(--header-height));
+    }
+
+    @media (max-width: 450px) {
+        padding-top: calc(320px + var(--header-height));
+    }
+
+    @media (max-width: 400px) {
+        padding-top: calc(260px + var(--header-height));
+    }
 }
 
 app-skills {

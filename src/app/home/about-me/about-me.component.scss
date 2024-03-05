@@ -5,7 +5,7 @@ main {
     align-items: flex-end;
     gap: 100px;
 
-    @media (max-width: 900px) {
+    @media (max-width: 950px) {
         flex-direction: column-reverse;
         align-items: center;
         gap: 40px;
@@ -21,7 +21,7 @@ main {
     width: calc(50% - 50px);
     padding-bottom: 60px;
 
-    @media (max-width: 900px) {
+    @media (max-width: 950px) {
         width: 100%;
         padding: 0;
     }
@@ -52,7 +52,7 @@ main {
     width: calc(50% - 50px);
     position: relative;
 
-    @media (max-width: 900px) {
+    @media (max-width: 950px) {
         width: 100%;
         min-height: 80vw;
     }
@@ -67,7 +67,7 @@ main {
         transform: scale(1.2) translateX(-20px);
         z-index: -4;
 
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
             width: calc(100vw - var(--responsive-vertical-main-padding));
             max-width: unset;
         }
@@ -80,14 +80,13 @@ main {
     left: 0;
     bottom: 0;
     transform: unset;
-    // transform: translateY(60px);
     z-index: -3;
 
     @media (max-width: 1300px) {
         padding: 0;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 950px) {
         padding: 0 80px;
     }
 
@@ -115,7 +114,7 @@ main {
         right: calc( -1 * var(--responsive-vertical-side-padding));
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 950px) {
         left: -var(--responsive-vertical-side-padding);
     }
 }

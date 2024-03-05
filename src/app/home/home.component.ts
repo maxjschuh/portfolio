@@ -39,7 +39,7 @@ export class HomeComponent implements AfterViewInit {
    */
   ngAfterViewInit(): void {
 
-    // this.updateScrollPosition();
+    this.updateScrollPosition();
   }
 
 
