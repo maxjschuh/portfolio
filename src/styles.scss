@@ -10,7 +10,6 @@
 
 * {
     transition: all 75ms;
-    // border: 1px solid red !important;
 }
 
 html {
@@ -169,6 +168,10 @@ app-page-not-found {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+app-start {
+    border-bottom: 1px solid red !important;
 }
 
 /* ----------------------------------
