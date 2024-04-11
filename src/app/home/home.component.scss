@@ -18,40 +18,72 @@ app-about-me {
     padding-top: calc(var(--additional-padding-for-image) + var(--header-height));
 
 
-    --additional-padding-for-image: 290px;
+    --additional-padding-for-image: 180px;
     
     @media (max-width: 1200px) {
-        --additional-padding-for-image: 150px;
+        --additional-padding-for-image: 130px;
     }
 
+    @media (max-width: 1050px) {
+        --additional-padding-for-image: 70px;
+    }
 
-    @media (max-width: 1000px) {
-        padding-top: var(--header-height);
+    @media (max-width: 1050px) {
+        --additional-padding-for-image: 40px;
     }
 
     @media (max-width: 950px) {
-        padding-top: calc(290px + var(--header-height));
+        --additional-padding-for-image: 0px;
+    }
+
+    @media (max-width: 800px) {
+        --additional-padding-for-image: 50px;
     }
 
     @media (max-width: 650px) {
-        padding-top: calc(450px + var(--header-height));
+        --additional-padding-for-image: 80px;
     }
 
     @media (max-width: 550px) {
-        padding-top: calc(350px + var(--header-height));
-    }
-
-    @media (max-width: 500px) {
-        padding-top: calc(300px + var(--header-height));
-    }
-
-    @media (max-width: 450px) {
-        padding-top: calc(320px + var(--header-height));
+        --additional-padding-for-image: 160px;
     }
 
     @media (max-width: 400px) {
-        padding-top: calc(260px + var(--header-height));
+        --additional-padding-for-image: 140px;
     }
+
+    @media (max-width: 350px) {
+        --additional-padding-for-image: 110px;
+    }
+
+
+    // @media (max-width: 1000px) {
+    //     padding-top: var(--header-height);
+    // }
+
+    // @media (max-width: 950px) {
+    //     padding-top: calc(290px + var(--header-height));
+    // }
+
+    // @media (max-width: 650px) {
+    //     padding-top: calc(450px + var(--header-height));
+    // }
+
+    // @media (max-width: 550px) {
+    //     padding-top: calc(350px + var(--header-height));
+    // }
+
+    // @media (max-width: 500px) {
+    //     padding-top: calc(300px + var(--header-height));
+    // }
+
+    // @media (max-width: 450px) {
+    //     padding-top: calc(320px + var(--header-height));
+    // }
+
+    // @media (max-width: 400px) {
+    //     padding-top: calc(260px + var(--header-height));
+    // }
 
 
 }
