@@ -208,6 +208,10 @@ h1 {
         @media (max-width: 800px) {
             margin-right: 22px;
         }
+
+        @media (max-width: 350px) {
+            margin-right: 0;
+        }
     }
 
     img {

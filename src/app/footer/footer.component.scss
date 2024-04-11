@@ -23,6 +23,10 @@ main {
             gap: 42px;
             text-decoration: none;
 
+            @media (max-width: 350px) {
+                gap: 20px;
+            }
+
             a {
                 display: flex;
                 align-items: center;
