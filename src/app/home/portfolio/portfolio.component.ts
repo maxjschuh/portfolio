@@ -31,14 +31,38 @@ export class PortfolioComponent {
         background_shadow_class: ''
       },
       {
+        title: 'Easy-CRM',
+        stack: 'Angular | Material | SCSS | Firebase',
+        description: 'portfolio.project-descriptions.crm',
+        image_path: './assets/img/mockups/easy-crm_mockup.png',
+        image_alt: 'Easy-CRM Mockup',
+        class: 'flex-row-reverse',
+        test_link: 'https://crm.mjschuh.com/dashboard',
+        github_link: 'https://github.com/maxjschuh/simple-crm',
+        background_shadow_path: 'shadow_blue_1.svg',
+        background_shadow_class: ''
+      },
+      {
         title: 'El Pollo Loco',
         stack: 'JavaScript | HTML | CSS',
         description: 'portfolio.project-descriptions.el-pollo-loco',
         image_path: './assets/img/mockups/pollo-loco_mockup_v1.png',
         image_alt: 'El Pollo Loco Mockup',
-        class: 'flex-row-reverse',
+        class: '',
         test_link: 'https://el-pollo-loco.mjschuh.com/',
         github_link: 'https://github.com/maxjschuh/el-pollo-loco',
+        background_shadow_path: 'shadow_purple_3_alt.svg',
+        background_shadow_class: ''
+      },
+      {
+        title: 'Pokedex',
+        stack: 'JavaScript | HTML | CSS',
+        description: 'portfolio.project-descriptions.pokedex',
+        image_path: './assets/img/mockups/pokedex_mockup.png',
+        image_alt: 'Pokedex Mockup',
+        class: 'flex-row-reverse',
+        test_link: 'https://pokedex.mjschuh.com/index.html',
+        github_link: 'https://github.com/maxjschuh/pokedex',
         background_shadow_path: 'shadow_blue_1.svg',
         background_shadow_class: ''
       }

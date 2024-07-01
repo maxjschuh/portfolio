@@ -33,7 +33,9 @@
         },
         "project-descriptions": {
             "join": "Join ist eine CRUD-App in Form eines einfach zu bedienenden Projektmanagement-Tools. Die Kernfunktion ist ein Kanban-Board, auf dem die Benutzer Task-Karten per Drag-and-Drop zwischen den Spalten verschieben können. Tasks können mit verschiedenen zusätzlichen Informationen wie z.B. Beauftragten, Unteraufgaben und Labels angereichert werden. <br> <br> Join wurde in einem Team von vier Frontend-Entwicklern erstellt, bei dem ich für das Kanban-Board verantwortlich war.",
-            "el-pollo-loco": "El Pollo Loco ist ein 2D-Runner-Spiel in einer Wildwest-Welt. Es bietet animierte Charaktere, ein zufällig generiertes Level und zufälliges Verhalten des Endbosses. Die Spieler können Maus, Tastatur oder Touch zur Steuerung verwenden. <br><br> Objektorientierte Programmierung ermöglicht eine einfachere Wartung und modulare Erweiterbarkeit des Projektes."
+            "el-pollo-loco": "El Pollo Loco ist ein 2D-Runner-Spiel in einer Wildwest-Welt. Es bietet animierte Charaktere, ein zufällig generiertes Level und zufälliges Verhalten des Endbosses. Die Spieler können Maus, Tastatur oder Touch zur Steuerung verwenden. <br><br> Objektorientierte Programmierung ermöglicht eine einfachere Wartung und modulare Erweiterbarkeit des Projektes.",
+            "crm": "Mit dem Easy-CRM können Unternehmen Sales-Daten nachverfolgen und analysieren. Dank dem Firebase-Backend arbeitet man ohne Ladeunterbrechungen immer mit den Daten auf dem neuesten Stand.",
+            "pokedex": "Der Pokedex ermöglicht eine intuitive Browsing-Experience durch die Monster-Datenbank aus dem Pokemon-Franchise. Die Daten kommen erstmalig von der RESTful PokeAPI und werden dann für schnelleren Zugriff im Local Storage gecached."
         }
     },
     "contact": {
