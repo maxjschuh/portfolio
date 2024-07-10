@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Full documentation can be found here:
 
-[crm.mjschuh.com/docs](https://mjschuh.com/docs/index.html)
+[mjschuh.com/docs](https://mjschuh.com/docs/index.html)
 
 ## Development server
 
