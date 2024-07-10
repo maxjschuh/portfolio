@@ -1,0 +1,377 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>portfolio documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">portfolio documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  StartComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/home/start/start.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-start</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>TranslateModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./start.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./start.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { TranslateModule } from &#x27;@ngx-translate/core&#x27;;
+
+@Component({
+  selector: &#x27;app-start&#x27;,
+  standalone: true,
+  imports: [TranslateModule],
+  templateUrl: &#x27;./start.component.html&#x27;,
+  styleUrl: &#x27;./start.component.scss&#x27;
+})
+export class StartComponent {
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;main&gt;
+    &lt;div id&#x3D;&quot;eyecatcher&quot; data-aos&#x3D;&quot;fade-down&quot;&gt;
+        &lt;div id&#x3D;&quot;eyecatcher-vertical&quot;&gt;{{ &quot;start.eyecatcher.vertical&quot; | translate }}&lt;/div&gt;
+        &lt;div id&#x3D;&quot;eyecatcher-horizontal&quot;&gt;
+            &lt;h1&gt;Max Schuh&lt;/h1&gt;
+            &lt;span id&#x3D;&quot;eyecatcher-horizontal-profession&quot;&gt;{{ &quot;start.eyecatcher.horizontal-profession&quot; | translate }}&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;a href&#x3D;&quot;#contact&quot; data-aos&#x3D;&quot;fade-up&quot;&gt;
+        &lt;button&gt;{{&quot;start.contact-button&quot; | translate }}&lt;/button&gt;
+    &lt;/a&gt;
+&lt;/main&gt;
+
+&lt;a id&#x3D;&quot;scroll-call-to-action&quot; href&#x3D;&quot;#about&quot; data-aos&#x3D;&quot;fade-down&quot; data-aos-anchor&#x3D;&quot;#eyecatcher&quot;&gt;
+
+    {{ &quot;start.scroll-call-to-action&quot; | translate }}
+
+    &lt;svg width&#x3D;&quot;24&quot; height&#x3D;&quot;24&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+        &lt;path
+            d&#x3D;&quot;M12.9999 16.172L17.6569 11.515C18.0474 11.1245 18.6805 11.1245 19.0709 11.515C19.4614 11.9055 19.4614 12.5385 19.0709 12.929L12.707 19.2929C12.3165 19.6834 11.6833 19.6834 11.2928 19.2929L4.92892 12.929C4.53846 12.5385 4.53846 11.9055 4.92892 11.515C5.31939 11.1245 5.95246 11.1245 6.34292 11.515L10.9999 16.172V5C10.9999 4.44772 11.4476 4 11.9999 4C12.5522 4 12.9999 4.44772 12.9999 5V16.172Z&quot;
+            fill&#x3D;&quot;white&quot; /&gt;
+    &lt;/svg&gt;
+
+&lt;/a&gt;
+
+&lt;div id&#x3D;&quot;social-media&quot; data-aos&#x3D;&quot;fade-right&quot; data-aos-anchor&#x3D;&quot;#eyecatcher&quot;&gt;
+
+    &lt;div id&#x3D;&quot;social-media-bullet-line&quot;&gt;&lt;/div&gt;
+
+    &lt;a href&#x3D;&quot;https://github.com/maxjschuh&quot; target&#x3D;&quot;_blank&quot; rel&#x3D;&quot;noopener noreferrer&quot;&gt;
+
+        &lt;img src&#x3D;&quot;./assets/img/social media/socials_github.svg&quot; alt&#x3D;&quot;icon github&quot;&gt;
+    &lt;/a&gt;
+    &lt;a href&#x3D;&quot;mailto: max@mjschuh.com&quot;&gt;
+
+        &lt;img src&#x3D;&quot;./assets/img/social media/socials_mail.svg&quot; alt&#x3D;&quot;icon e-mail&quot;&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;img id&#x3D;&quot;shadow-left&quot; class&#x3D;&quot;shadow&quot; src&#x3D;&quot;./assets/img/shadows/shadow_purple_1.svg&quot; alt&#x3D;&quot;blue shadow&quot; data-aos&#x3D;&quot;fade-up-right&quot;&gt;
+
+&lt;img id&#x3D;&quot;shadow-right&quot; class&#x3D;&quot;shadow&quot; src&#x3D;&quot;./assets/img/shadows/shadow_green_1.svg&quot; alt&#x3D;&quot;green shadow&quot; data-aos&#x3D;&quot;fade-up-left&quot;&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><main>    <div id="eyecatcher" data-aos="fade-down">        <div id="eyecatcher-vertical">{{ "start.eyecatcher.vertical" | translate }}</div>        <div id="eyecatcher-horizontal">            <h1>Max Schuh</h1>            <span id="eyecatcher-horizontal-profession">{{ "start.eyecatcher.horizontal-profession" | translate }}</span>        </div>    </div>    <a href="#contact" data-aos="fade-up">        <button>{{"start.contact-button" | translate }}</button>    </a></main><a id="scroll-call-to-action" href="#about" data-aos="fade-down" data-aos-anchor="#eyecatcher">    {{ "start.scroll-call-to-action" | translate }}    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">        <path            d="M12.9999 16.172L17.6569 11.515C18.0474 11.1245 18.6805 11.1245 19.0709 11.515C19.4614 11.9055 19.4614 12.5385 19.0709 12.929L12.707 19.2929C12.3165 19.6834 11.6833 19.6834 11.2928 19.2929L4.92892 12.929C4.53846 12.5385 4.53846 11.9055 4.92892 11.515C5.31939 11.1245 5.95246 11.1245 6.34292 11.515L10.9999 16.172V5C10.9999 4.44772 11.4476 4 11.9999 4C12.5522 4 12.9999 4.44772 12.9999 5V16.172Z"            fill="white" />    </svg></a><div id="social-media" data-aos="fade-right" data-aos-anchor="#eyecatcher">    <div id="social-media-bullet-line"></div>    <a href="https://github.com/maxjschuh" target="_blank" rel="noopener noreferrer">        <img src="./assets/img/social media/socials_github.svg" alt="icon github">    </a>    <a href="mailto: max@mjschuh.com">        <img src="./assets/img/social media/socials_mail.svg" alt="icon e-mail">    </a></div><img id="shadow-left" class="shadow" src="./assets/img/shadows/shadow_purple_1.svg" alt="blue shadow" data-aos="fade-up-right"><img id="shadow-right" class="shadow" src="./assets/img/shadows/shadow_green_1.svg" alt="green shadow" data-aos="fade-up-left"></div>'
+    var COMPONENTS = [{'name': 'AboutMeComponent', 'selector': 'app-about-me'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ContactComponent', 'selector': 'app-contact'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'LogoComponent', 'selector': 'app-logo'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PortfolioComponent', 'selector': 'app-portfolio'},{'name': 'PortfolioProjectComponent', 'selector': 'app-portfolio-project'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'SkillIconComponent', 'selector': 'app-skill-icon'},{'name': 'SkillsComponent', 'selector': 'app-skills'},{'name': 'StartComponent', 'selector': 'app-start'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'StartComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'StartComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,2496 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>portfolio documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">portfolio documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ContactComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/home/contact/contact.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-contact</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>NgIf</code>
+                            <code>TranslateModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./contact.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./contact.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkboxes" >checkboxes</a>
+                            </li>
+                            <li>
+                                <a href="#currentlySendingMail" >currentlySendingMail</a>
+                            </li>
+                            <li>
+                                <a href="#inputs" >inputs</a>
+                            </li>
+                            <li>
+                                <a href="#submitButtonDisabled" >submitButtonDisabled</a>
+                            </li>
+                            <li>
+                                <a href="#submitButtonStyle" >submitButtonStyle</a>
+                            </li>
+                            <li>
+                                <a href="#submitButtonText" >submitButtonText</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#translate" >translate</a>
+                            </li>
+                            <li>
+                                <a href="#userFeedbacks" >userFeedbacks</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#colorSubmitButton" >colorSubmitButton</a>
+                            </li>
+                            <li>
+                                <a href="#formReadyToSubmit" >formReadyToSubmit</a>
+                            </li>
+                            <li>
+                                <a href="#handleCheckboxMouseout" >handleCheckboxMouseout</a>
+                            </li>
+                            <li>
+                                <a href="#handleCheckboxMouseover" >handleCheckboxMouseover</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#handleFetchRequest" >handleFetchRequest</a>
+                            </li>
+                            <li>
+                                <a href="#handleInput" >handleInput</a>
+                            </li>
+                            <li>
+                                <a href="#resetForm" >resetForm</a>
+                            </li>
+                            <li>
+                                <a href="#setAllUserFeedbacks" >setAllUserFeedbacks</a>
+                            </li>
+                            <li>
+                                <a href="#setUserFeedbackForCheckbox" >setUserFeedbackForCheckbox</a>
+                            </li>
+                            <li>
+                                <a href="#setUserFeedbackForInput" >setUserFeedbackForInput</a>
+                            </li>
+                            <li>
+                                <a href="#sleep" >sleep</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#submitContactForm" >submitContactForm</a>
+                            </li>
+                            <li>
+                                <a href="#testForEmailPattern" >testForEmailPattern</a>
+                            </li>
+                            <li>
+                                <a href="#togglePrivacyPolicyAcceptance" >togglePrivacyPolicyAcceptance</a>
+                            </li>
+                            <li>
+                                <a href="#toggleVisibilityOfElements" >toggleVisibilityOfElements</a>
+                            </li>
+                            <li>
+                                <a href="#updateSubmitButtonText" >updateSubmitButtonText</a>
+                            </li>
+                            <li>
+                                <a href="#validateAllCheckboxes" >validateAllCheckboxes</a>
+                            </li>
+                            <li>
+                                <a href="#validateAllInputs" >validateAllInputs</a>
+                            </li>
+                            <li>
+                                <a href="#validateCheckbox" >validateCheckbox</a>
+                            </li>
+                            <li>
+                                <a href="#validateInput" >validateInput</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(translate: TranslateService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/home/contact/contact.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Makes initializations that are necessary for the translation functionality.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                    <code>TranslateService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>TranslateService from ngx-translate</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorSubmitButton"></a>
+                    <span class="name">
+                        <span ><b>colorSubmitButton</b></span>
+                        <a href="#colorSubmitButton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>colorSubmitButton()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>In case the form is ready to submit, the submit button background is colored in blue, otherwise in grey.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formReadyToSubmit"></a>
+                    <span class="name">
+                        <span ><b>formReadyToSubmit</b></span>
+                        <a href="#formReadyToSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formReadyToSubmit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="159"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:159</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Tests if the contact form is ready to be submitted, i.e. all input fields and checkboxes are valid.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>true if the contact form may be submitted, false if not</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleCheckboxMouseout"></a>
+                    <span class="name">
+                        <span ><b>handleCheckboxMouseout</b></span>
+                        <a href="#handleCheckboxMouseout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleCheckboxMouseout()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="351"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:351</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Event handler for when the mouse leaves the privacy policy checkbox.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleCheckboxMouseover"></a>
+                    <span class="name">
+                        <span ><b>handleCheckboxMouseover</b></span>
+                        <a href="#handleCheckboxMouseover"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleCheckboxMouseover()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="336"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:336</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Event handler for when the mouse hovers over the privacy policy checkbox.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleFetchRequest"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>handleFetchRequest</b></span>
+                        <a href="#handleFetchRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleFetchRequest()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="277"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:277</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the send mail request from the contact form. Gives feedback about success or failure via the text on the submit button.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleInput"></a>
+                    <span class="name">
+                        <span ><b>handleInput</b></span>
+                        <a href="#handleInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleInput(input: <a href="../interfaces/Input.html" target="_self">Input</a>, formSubmission: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Is called when the user makes an input in one of the input fields.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>input</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Input.html" target="_self" >Input</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>object with information about the input field where the input happened</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>formSubmission</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>always false except for email input on focusout</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetForm"></a>
+                    <span class="name">
+                        <span ><b>resetForm</b></span>
+                        <a href="#resetForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>resetForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="315"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:315</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Empties the input fields of the contact form and hides the feedback alerts.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setAllUserFeedbacks"></a>
+                    <span class="name">
+                        <span ><b>setAllUserFeedbacks</b></span>
+                        <a href="#setAllUserFeedbacks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setAllUserFeedbacks()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="247"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:247</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Iterates through the inputs and the checkboxes arrays and calls the corresponding function that updates the feedback styling for every item.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setUserFeedbackForCheckbox"></a>
+                    <span class="name">
+                        <span ><b>setUserFeedbackForCheckbox</b></span>
+                        <a href="#setUserFeedbackForCheckbox"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setUserFeedbackForCheckbox(checkbox: <a href="../interfaces/Checkbox.html" target="_self">Checkbox</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="263"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:263</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Adjusts the feedback text accordingly to the current feedback property of a specific checkbox that is passed as parameter.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>checkbox</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Checkbox.html" target="_self" >Checkbox</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>object that contains information about the checkbox for which the feedback should be set</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setUserFeedbackForInput"></a>
+                    <span class="name">
+                        <span ><b>setUserFeedbackForInput</b></span>
+                        <a href="#setUserFeedbackForInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setUserFeedbackForInput(input: <a href="../interfaces/Input.html" target="_self">Input</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="106"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:106</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Adjusts borders, icons and feedback text accordingly to the current feedback property of a specific input that is passed as parameter.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>input</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Input.html" target="_self" >Input</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>object that contains information about the input field for which the feedback should be set</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sleep"></a>
+                    <span class="name">
+                        <span ><b>sleep</b></span>
+                        <a href="#sleep"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sleep(ms: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="307"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:307</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lets the script execution pause for a desired time.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ms</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>time in milliseconds for which the pause should last</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Promise</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitContactForm"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>submitContactForm</b></span>
+                        <a href="#submitContactForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>submitContactForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="176"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:176</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Is called on submitting the contact form. Validates the input fields, waits for the email to be sent and afterwards resets the contact form.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="testForEmailPattern"></a>
+                    <span class="name">
+                        <span ><b>testForEmailPattern</b></span>
+                        <a href="#testForEmailPattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>testForEmailPattern(input: <a href="../interfaces/Input.html" target="_self">Input</a>, formSubmission: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>input</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Input.html" target="_self" >Input</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>object that contains information about the input field that should be validated</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>formSubmission</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>true when the user submissed the form or focusout event occured, false for validation on input</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="togglePrivacyPolicyAcceptance"></a>
+                    <span class="name">
+                        <span ><b>togglePrivacyPolicyAcceptance</b></span>
+                        <a href="#togglePrivacyPolicyAcceptance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>togglePrivacyPolicyAcceptance()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="368"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:368</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Toggles the checkmark in the privacy policy checkbox.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleVisibilityOfElements"></a>
+                    <span class="name">
+                        <span ><b>toggleVisibilityOfElements</b></span>
+                        <a href="#toggleVisibilityOfElements"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleVisibilityOfElements(ids: string[], showElements: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="395"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:395</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Toggles the visibilty of the elements with the passed ids.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ids</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>array of element ids</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>showElements</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>true for showing the elements, false for hiding them</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSubmitButtonText"></a>
+                    <span class="name">
+                        <span ><b>updateSubmitButtonText</b></span>
+                        <a href="#updateSubmitButtonText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateSubmitButtonText(translationKey: string | null)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Sets the translation key for the submit text and loads the corresponding translation using the translation service from ngx-translate.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>translationKey</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>translation key of the text that should be set in the inner html of the submit button</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateAllCheckboxes"></a>
+                    <span class="name">
+                        <span ><b>validateAllCheckboxes</b></span>
+                        <a href="#validateAllCheckboxes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateAllCheckboxes(formSubmission: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="200"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:200</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Iterates through the checkboxes array and calls the validateCheckbox() function for every item.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>formSubmission</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>true if the checkbox should be validated for a form submission, i.e. an unaccepted checkbox leads to the &quot;checkbox-unaccepted&quot; feedback instead of the &quot;default&quot; feedback</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateAllInputs"></a>
+                    <span class="name">
+                        <span ><b>validateAllInputs</b></span>
+                        <a href="#validateAllInputs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateAllInputs(formSubmission: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="235"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:235</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Iterates through the inputs array and calls the validateInput() function for every item.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>formSubmission</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>true if the input should be validated for a form submission, i.e. an empty input leads to the &quot;empty&quot; feedback instead of the &quot;default&quot; feedback</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateCheckbox"></a>
+                    <span class="name">
+                        <span ><b>validateCheckbox</b></span>
+                        <a href="#validateCheckbox"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateCheckbox(checkbox: <a href="../interfaces/Checkbox.html" target="_self">Checkbox</a>, formSubmission: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="214"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:214</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Tests if a checkbox is accepted and sets the feedback property accordingly.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>checkbox</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Checkbox.html" target="_self" >Checkbox</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>object that contains information about the checkbox that should be validated</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>formSubmission</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>true if the checkbox should be validated for a form submission, i.e. an unaccepted checkbox leads to the &quot;checkbox-unaccepted&quot; feedback instead of the &quot;default&quot; feedback</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateInput"></a>
+                    <span class="name">
+                        <span ><b>validateInput</b></span>
+                        <a href="#validateInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateInput(input: <a href="../interfaces/Input.html" target="_self">Input</a>, formSubmission: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">src/app/home/contact/contact.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Validates the value of a input field that is passed as parameter and sets the feedback variable accordingly.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>input</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Input.html" target="_self" >Input</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>object that contains information about the input field that should be validated</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>formSubmission</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>true when the user submissed the form, false for validation on input</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkboxes"></a>
+                    <span class="name">
+                        <span ><b>checkboxes</b></span>
+                        <a href="#checkboxes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>checkboxes</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/home/contact/contact.component.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentlySendingMail"></a>
+                    <span class="name">
+                        <span ><b>currentlySendingMail</b></span>
+                        <a href="#currentlySendingMail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/home/contact/contact.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inputs"></a>
+                    <span class="name">
+                        <span ><b>inputs</b></span>
+                        <a href="#inputs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inputs</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/home/contact/contact.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitButtonDisabled"></a>
+                    <span class="name">
+                        <span ><b>submitButtonDisabled</b></span>
+                        <a href="#submitButtonDisabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/home/contact/contact.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitButtonStyle"></a>
+                    <span class="name">
+                        <span ><b>submitButtonStyle</b></span>
+                        <a href="#submitButtonStyle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;background: rgba(182, 182, 182, 1)&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/home/contact/contact.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitButtonText"></a>
+                    <span class="name">
+                        <span ><b>submitButtonText</b></span>
+                        <a href="#submitButtonText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    translationKey: &#x27;contact.form.submit-button.default&#x27;,
+    text: &#x27;&#x27;
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/home/contact/contact.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="translate"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>translate</b></span>
+                        <a href="#translate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TranslateService</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/home/contact/contact.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">TranslateService from ngx-translate</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userFeedbacks"></a>
+                    <span class="name">
+                        <span ><b>userFeedbacks</b></span>
+                        <a href="#userFeedbacks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/userFeedback.html" target="_self" >userFeedback[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/home/contact/contact.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { CommonModule, NgIf } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &quot;@angular/forms&quot;;
+import { Input } from &#x27;../../interfaces/input.interface&#x27;;
+import { Checkbox } from &#x27;../../interfaces/checkbox.interface&#x27;;
+import { EMAIL_PATTERN, inputs, checkboxes, initializeUserFeedbacks, userFeedbacks } from &quot;./contact.data&quot;
+import { sendEmail } from &#x27;./contact.send-mail&#x27;;
+import { TranslateModule, TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { userFeedback } from &#x27;../../interfaces/user-feedback.interface&#x27;;
+
+@Component({
+  selector: &#x27;app-contact&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, NgIf, TranslateModule],
+  templateUrl: &#x27;./contact.component.html&#x27;,
+  styleUrl: &#x27;./contact.component.scss&#x27;,
+})
+export class ContactComponent {
+
+  inputs &#x3D; inputs;
+  checkboxes &#x3D; checkboxes;
+  userFeedbacks: userFeedback[];
+  submitButtonText &#x3D; {
+    translationKey: &#x27;contact.form.submit-button.default&#x27;,
+    text: &#x27;&#x27;
+  };
+  submitButtonStyle &#x3D; &#x27;background: rgba(182, 182, 182, 1)&#x27;;
+  submitButtonDisabled &#x3D; false;
+  currentlySendingMail &#x3D; false;
+
+
+  /**
+   * Makes initializations that are necessary for the translation functionality.
+   * @param translate TranslateService from ngx-translate
+   */
+  constructor(public translate: TranslateService) {
+    initializeUserFeedbacks(this.translate);
+    this.userFeedbacks &#x3D; userFeedbacks;
+
+    translate.onLangChange.subscribe(() &#x3D;&gt; {
+      this.updateSubmitButtonText(null);
+    });
+
+  }
+
+
+  /**
+   * Sets the translation key for the submit text and loads the corresponding translation using the translation service from ngx-translate.
+   * @param translationKey translation key of the text that should be set in the inner html of the submit button
+   */
+  updateSubmitButtonText(translationKey: string | null) {
+
+    if (translationKey) this.submitButtonText.translationKey &#x3D; translationKey;
+
+    this.submitButtonText.text &#x3D; this.translate.instant(this.submitButtonText.translationKey);
+  }
+
+
+  /**
+   * Is called when the user makes an input in one of the input fields.
+   * @param input object with information about the input field where the input happened
+   * @param formSubmission always false except for email input on focusout
+   */
+  handleInput(input: Input, formSubmission: boolean): void {
+
+    this.validateInput(input, formSubmission);
+    this.setUserFeedbackForInput(input);
+
+    this.colorSubmitButton();
+  }
+
+
+  /**
+  * Validates the value of a input field that is passed as parameter and sets the feedback variable accordingly.
+  * @param input object that contains information about the input field that should be validated
+  * @param formSubmission true when the user submissed the form, false for validation on input
+  */
+  validateInput(input: Input, formSubmission: boolean): void {
+
+    const trimmedInput &#x3D; input.value.trim();
+
+    if (!trimmedInput &amp;&amp; formSubmission) {
+
+      input.currentFeedback &#x3D; &#x27;empty&#x27;;
+
+    } else if (!trimmedInput) {
+
+      input.currentFeedback &#x3D; &#x27;default&#x27;;
+
+    } else if (input.disallowedCharacters.test(trimmedInput)) {
+
+      input.currentFeedback &#x3D; &#x27;invalid&#x27;;
+
+    } else if (input.id &#x3D;&#x3D;&#x3D; &#x27;email&#x27;) {
+
+      this.testForEmailPattern(input, formSubmission);
+
+    } else input.currentFeedback &#x3D; &#x27;valid&#x27;;
+  }
+
+
+  /**
+  * Adjusts borders, icons and feedback text accordingly to the current feedback property of a specific input that is passed as parameter.
+  * @param input object that contains information about the input field for which the feedback should be set
+  */
+  setUserFeedbackForInput(input: Input): void {
+
+    this.userFeedbacks.forEach(userFeedback &#x3D;&gt; {
+
+      if (userFeedback.feedbackType !&#x3D;&#x3D; input.currentFeedback) return;
+
+      input.alertText &#x3D; userFeedback.feedbackText(input.id);
+      input.style &#x3D; userFeedback.borderStyle;
+      input.checkmarkIconStyle &#x3D; userFeedback.checkmarkIconStyle;
+      input.alertIconStyle &#x3D; userFeedback.alertIconStyle;
+    });
+  }
+
+
+  /**
+   * In case the form is ready to submit, the submit button background is colored in blue, otherwise in grey.
+   */
+  colorSubmitButton(): void {
+
+    if (this.formReadyToSubmit()) this.submitButtonStyle &#x3D; &#x27;&#x27;;
+
+    else this.submitButtonStyle &#x3D; &#x27;background: rgba(182, 182, 182, 1)&#x27;;
+  }
+
+
+  /**
+   * Tests if an input, that is passed as parameter, has a valid email as pattern. Sets the feedback accordingly.
+   * @param input object that contains information about the input field that should be validated
+   * @param formSubmission true when the user submissed the form or focusout event occured, false for validation on input
+   */
+  testForEmailPattern(input: Input, formSubmission: boolean): void {
+
+    const trimmedInput &#x3D; input.value.trim();
+
+    if (EMAIL_PATTERN.test(trimmedInput)) {
+
+      input.currentFeedback &#x3D; &#x27;valid&#x27;;
+
+    } else if (!formSubmission) {
+
+      input.currentFeedback &#x3D; &#x27;default&#x27;;
+
+    } else {
+
+      input.currentFeedback &#x3D; &#x27;invalid-email&#x27;;
+    }
+  }
+
+
+  /**
+   * Tests if the contact form is ready to be submitted, i.e. all input fields and checkboxes are valid.
+   * @returns true if the contact form may be submitted, false if not
+   */
+  formReadyToSubmit(): boolean {
+
+    const requiredFields &#x3D; [...inputs, ...checkboxes];
+    let formReady &#x3D; true;
+
+    requiredFields.forEach(requiredField &#x3D;&gt; {
+
+      if (requiredField.currentFeedback !&#x3D;&#x3D; &#x27;valid&#x27;) formReady &#x3D; false;
+    });
+
+    return formReady;
+  }
+
+
+  /**
+  * Is called on submitting the contact form. Validates the input fields, waits for the email to be sent and afterwards resets the contact form.
+  */
+  async submitContactForm(): Promise&lt;void&gt; {
+
+    this.validateAllInputs(true);
+    this.validateAllCheckboxes(true);
+
+    if (!this.formReadyToSubmit()) {
+
+      this.setAllUserFeedbacks();
+      return;
+    }
+
+    this.submitButtonDisabled &#x3D; true;
+    this.updateSubmitButtonText(&#x27;contact.form.submit-button.working&#x27;);
+    this.currentlySendingMail &#x3D; true;
+    await this.handleFetchRequest();
+
+    this.resetForm();
+  }
+
+
+  /**
+   * Iterates through the checkboxes array and calls the validateCheckbox() function for every item.
+   * @param formSubmission true if the checkbox should be validated for a form submission, i.e. an unaccepted checkbox leads to the &quot;checkbox-unaccepted&quot; feedback instead of the &quot;default&quot; feedback
+   */
+  validateAllCheckboxes(formSubmission: boolean): void {
+
+    this.checkboxes.forEach(checkbox &#x3D;&gt; {
+
+      this.validateCheckbox(checkbox, formSubmission);
+    });
+  }
+
+
+  /**
+   * Tests if a checkbox is accepted and sets the feedback property accordingly.
+   * @param checkbox object that contains information about the checkbox that should be validated
+   * @param formSubmission true if the checkbox should be validated for a form submission, i.e. an unaccepted checkbox leads to the &quot;checkbox-unaccepted&quot; feedback instead of the &quot;default&quot; feedback
+   */
+  validateCheckbox(checkbox: Checkbox, formSubmission: boolean): void {
+
+    if (!checkbox.checkboxAccepted &amp;&amp; formSubmission) {
+
+      checkbox.currentFeedback &#x3D; &#x27;checkbox-unaccepted&#x27;;
+
+    } else if (!checkbox.checkboxAccepted) {
+
+      checkbox.currentFeedback &#x3D; &#x27;default&#x27;;
+
+    } else {
+
+      checkbox.currentFeedback &#x3D; &#x27;valid&#x27;;
+    }
+  }
+
+
+  /**
+   * Iterates through the inputs array and calls the validateInput() function for every item.
+   * @param formSubmission true if the input should be validated for a form submission, i.e. an empty input leads to the &quot;empty&quot; feedback instead of the &quot;default&quot; feedback
+   */
+  validateAllInputs(formSubmission: boolean): void {
+
+    this.inputs.forEach(input &#x3D;&gt; {
+
+      this.validateInput(input, formSubmission);
+    });
+  }
+
+
+  /**
+   * Iterates through the inputs and the checkboxes arrays and calls the corresponding function that updates the feedback styling for every item.
+   */
+  setAllUserFeedbacks(): void {
+
+    inputs.forEach(input &#x3D;&gt; {
+      this.setUserFeedbackForInput(input);
+    });
+
+    checkboxes.forEach(checkbox &#x3D;&gt; {
+      this.setUserFeedbackForCheckbox(checkbox);
+    });
+  }
+
+
+  /**
+   * Adjusts the feedback text accordingly to the current feedback property of a specific checkbox that is passed as parameter.
+   * @param checkbox object that contains information about the checkbox for which the feedback should be set
+   */
+  setUserFeedbackForCheckbox(checkbox: Checkbox): void {
+
+    this.userFeedbacks.forEach(userFeedback &#x3D;&gt; {
+
+      if (userFeedback.feedbackType !&#x3D;&#x3D; checkbox.currentFeedback) return;
+
+      checkbox.alertText &#x3D; userFeedback.feedbackText(checkbox.id);
+    });
+  }
+
+
+  /**
+   * Handles the send mail request from the contact form. Gives feedback about success or failure via the text on the submit button.
+   */
+  async handleFetchRequest(): Promise&lt;void&gt; {
+
+    const startTime &#x3D; Date.now();
+    const response &#x3D; await sendEmail(this.inputs);
+
+    const requestDuration &#x3D; Date.now() - startTime;
+
+    if (requestDuration &lt; 1500) await this.sleep(1500 - requestDuration);
+
+    if (!response.ok) {
+
+      this.updateSubmitButtonText(&#x27;contact.form.submit-button.error&#x27;);
+
+    } else {
+
+      this.updateSubmitButtonText(&#x27;contact.form.submit-button.success&#x27;);
+
+    }
+
+    this.currentlySendingMail &#x3D; false;
+    await this.sleep(5000);
+    this.updateSubmitButtonText(&#x27;contact.form.submit-button.default&#x27;);
+  }
+
+
+  /**
+  * Lets the script execution pause for a desired time.
+  * @param ms time in milliseconds for which the pause should last
+  * @returns Promise
+  */
+  sleep(ms: number): Promise&lt;void&gt; {
+    return new Promise(resolve &#x3D;&gt; setTimeout(resolve, ms));
+  }
+
+
+  /**
+   * Empties the input fields of the contact form and hides the feedback alerts.
+   */
+  resetForm(): void {
+
+    this.inputs.forEach(input &#x3D;&gt; {
+
+      input.value &#x3D; &#x27;&#x27;;
+      input.currentFeedback &#x3D; &#x27;default&#x27;;
+      this.setUserFeedbackForInput(input);
+    });
+
+    this.checkboxes[0].checkboxAccepted &#x3D; false;
+    this.toggleVisibilityOfElements([&#x27;checkbox-selected&#x27;], false);
+    this.toggleVisibilityOfElements([&#x27;checkbox-default&#x27;], true);
+
+    this.colorSubmitButton();
+    this.submitButtonDisabled &#x3D; false;
+  }
+
+
+  /**
+   * Event handler for when the mouse hovers over the privacy policy checkbox.
+   */
+  handleCheckboxMouseover(): void {
+
+    this.toggleVisibilityOfElements([&#x27;checkbox-selected&#x27;, &#x27;checkbox-default&#x27;], false);
+
+    if (this.checkboxes[0].checkboxAccepted) {
+
+      this.toggleVisibilityOfElements([&#x27;checkbox-selected-hover&#x27;], true);
+
+    } else this.toggleVisibilityOfElements([&#x27;checkbox-hover&#x27;], true);
+  }
+
+
+  /**
+   * Event handler for when the mouse leaves the privacy policy checkbox.
+   */
+  handleCheckboxMouseout(): void {
+
+    this.toggleVisibilityOfElements([&#x27;checkbox-hover&#x27;, &#x27;checkbox-selected-hover&#x27;], false);
+
+    if (this.checkboxes[0].checkboxAccepted) {
+
+      this.toggleVisibilityOfElements([&#x27;checkbox-selected&#x27;], true);
+    } else {
+
+      this.toggleVisibilityOfElements([&#x27;checkbox-default&#x27;], true);
+    }
+  }
+
+
+  /**
+   * Toggles the checkmark in the privacy policy checkbox.
+   */
+  togglePrivacyPolicyAcceptance(): void {
+
+    let checkbox &#x3D; checkboxes[0];
+
+    if (checkbox.checkboxAccepted) {
+
+      this.toggleVisibilityOfElements([&#x27;checkbox-selected-hover&#x27;], false);
+      this.toggleVisibilityOfElements([&#x27;checkbox-hover&#x27;], true);
+
+    } else {
+
+      this.toggleVisibilityOfElements([&#x27;checkbox-hover&#x27;], false);
+      this.toggleVisibilityOfElements([&#x27;checkbox-selected-hover&#x27;], true);
+    }
+
+    checkbox.checkboxAccepted &#x3D; !checkbox.checkboxAccepted;
+    this.validateCheckbox(checkbox, false);
+    this.setUserFeedbackForCheckbox(checkbox);
+    this.colorSubmitButton();
+  }
+
+
+  /**
+   * Toggles the visibilty of the elements with the passed ids.
+   * @param ids array of element ids
+   * @param showElements true for showing the elements, false for hiding them
+   */
+  toggleVisibilityOfElements(ids: string[], showElements: boolean): void {
+
+    ids.forEach(id &#x3D;&gt; {
+
+      document.getElementById(id)?.classList.toggle(&#x27;d-flex-important&#x27;, showElements);
+    });
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div id&#x3D;&quot;contact-headline&quot; data-aos&#x3D;&quot;fade-left&quot;&gt;
+    &lt;h2&gt;{{ &quot;contact.headline&quot; | translate }}&lt;/h2&gt;
+    &lt;div id&#x3D;&quot;contact-bullet-line&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;main&gt;
+
+    &lt;section id&#x3D;&quot;contact-left-column&quot; data-aos&#x3D;&quot;fade-right&quot;&gt;
+
+        &lt;div id&#x3D;&quot;contact-left-column-first-row&quot;&gt;
+            &lt;div id&#x3D;&quot;contact-left-column-bullet-line&quot;&gt;&lt;/div&gt;
+            &lt;h3&gt;{{ &quot;contact.sub-headline&quot; | translate }}&lt;/h3&gt;
+        &lt;/div&gt;
+
+        &lt;summary id&#x3D;&quot;contact-left-column-second-row&quot; [innerHTML]&#x3D;&quot; &#x27;contact.summary&#x27; | translate &quot;&gt;
+        &lt;/summary&gt;
+
+
+    &lt;/section&gt;
+
+    &lt;section id&#x3D;&quot;contact-right-column&quot; data-aos&#x3D;&quot;fade-left&quot;&gt;
+
+        &lt;form (ngSubmit)&#x3D;&quot;submitContactForm()&quot;&gt;
+
+            &lt;div&gt;
+                &lt;input id&#x3D;&quot;name&quot; [(ngModel)]&#x3D;&quot;inputs[0].value&quot; (input)&#x3D;&quot;handleInput(inputs[0], false)&quot;
+                    [style]&#x3D;&quot;inputs[0].style&quot; type&#x3D;&quot;text&quot;
+                    placeholder&#x3D;&quot;{{&#x27;contact.form.placeholders.input-name&#x27; | translate}}&quot; name&#x3D;&quot;name&quot; autocomplete&#x3D;&quot;name&quot;
+                    maxlength&#x3D;&quot;99&quot;&gt;
+                &lt;img id&#x3D;&quot;name-alert-icon&quot; class&#x3D;&quot;input-alert-icon&quot; alt&#x3D;&quot;input alert&quot; [style]&#x3D;&quot;inputs[0].alertIconStyle&quot;
+                    src&#x3D;&quot;./assets/img/input_alert.svg&quot;&gt;
+                &lt;img id&#x3D;&quot;name-checkmark&quot; class&#x3D;&quot;input-alert-icon&quot; src&#x3D;&quot;./assets/img/input_checkmark.svg&quot;
+                    alt&#x3D;&quot;input checkmark&quot; [style]&#x3D;&quot;inputs[0].checkmarkIconStyle&quot;&gt;
+                &lt;span id&#x3D;&quot;name-alert-text&quot; class&#x3D;&quot;alert-text&quot; [innerText]&#x3D;&quot;inputs[0].alertText&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div&gt;
+                &lt;input id&#x3D;&quot;email&quot; [(ngModel)]&#x3D;&quot;inputs[1].value&quot; (input)&#x3D;&quot;handleInput(inputs[1], false)&quot;
+                    [style]&#x3D;&quot;inputs[1].style&quot; type&#x3D;&quot;email&quot;
+                    placeholder&#x3D;&quot;{{&#x27;contact.form.placeholders.input-email&#x27; | translate}}&quot; name&#x3D;&quot;email&quot;
+                    autocomplete&#x3D;&quot;email&quot; maxlength&#x3D;&quot;99&quot;&gt;
+                &lt;img id&#x3D;&quot;email-alert-icon&quot; class&#x3D;&quot;input-alert-icon&quot; alt&#x3D;&quot;input alert&quot; [style]&#x3D;&quot;inputs[1].alertIconStyle&quot;
+                    src&#x3D;&quot;./assets/img/input_alert.svg&quot;&gt;
+                &lt;img id&#x3D;&quot;email-checkmark&quot; class&#x3D;&quot;input-alert-icon&quot; src&#x3D;&quot;./assets/img/input_checkmark.svg&quot;
+                    alt&#x3D;&quot;input checkmark&quot; [style]&#x3D;&quot;inputs[1].checkmarkIconStyle&quot;&gt;
+                &lt;span id&#x3D;&quot;email-alert-text&quot; class&#x3D;&quot;alert-text&quot; [innerText]&#x3D;&quot;inputs[1].alertText&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div&gt;
+                &lt;textarea id&#x3D;&quot;message&quot; [(ngModel)]&#x3D;&quot;inputs[2].value&quot; (input)&#x3D;&quot;handleInput(inputs[2], false)&quot;
+                    [style]&#x3D;&quot;inputs[2].style&quot; type&#x3D;&quot;text&quot;
+                    placeholder&#x3D;&quot;{{&#x27;contact.form.placeholders.textarea-message&#x27; | translate}}&quot; name&#x3D;&quot;message&quot;
+                    autocomplete&#x3D;&quot;off&quot; maxlength&#x3D;&quot;999&quot;&gt;&lt;/textarea&gt;
+                &lt;img id&#x3D;&quot;message-alert-icon&quot; class&#x3D;&quot;input-alert-icon&quot; alt&#x3D;&quot;input alert&quot;
+                    [style]&#x3D;&quot;inputs[2].alertIconStyle&quot; src&#x3D;&quot;./assets/img/input_alert.svg&quot;&gt;
+                &lt;img id&#x3D;&quot;message-checkmark&quot; class&#x3D;&quot;input-alert-icon&quot; src&#x3D;&quot;./assets/img/input_checkmark.svg&quot;
+                    alt&#x3D;&quot;input checkmark&quot; [style]&#x3D;&quot;inputs[2].checkmarkIconStyle&quot;&gt;
+                &lt;span id&#x3D;&quot;message-alert-text&quot; class&#x3D;&quot;alert-text&quot; [innerText]&#x3D;&quot;inputs[2].alertText&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div id&#x3D;&quot;privacy-policy&quot;&gt;
+                &lt;div&gt;
+                    &lt;div id&#x3D;&quot;checkbox&quot; (click)&#x3D;&quot;togglePrivacyPolicyAcceptance()&quot; (mouseover)&#x3D;&quot;handleCheckboxMouseover()&quot;
+                        (mouseout)&#x3D;&quot;handleCheckboxMouseout()&quot;&gt;
+                        &lt;img id&#x3D;&quot;checkbox-default&quot; src&#x3D;&quot;./assets/img/check_button_blue.svg&quot; alt&#x3D;&quot;checkbox&quot;
+                            class&#x3D;&quot;d-flex-important&quot;&gt;
+                        &lt;img id&#x3D;&quot;checkbox-hover&quot; src&#x3D;&quot;./assets/img/check_button_blue_hover.svg&quot; alt&#x3D;&quot;checkbox hovering&quot;&gt;
+                        &lt;img id&#x3D;&quot;checkbox-selected&quot; src&#x3D;&quot;./assets/img/check_button_blue_selected.svg&quot;
+                            alt&#x3D;&quot;checkbox selected&quot;&gt;
+                        &lt;img id&#x3D;&quot;checkbox-selected-hover&quot; src&#x3D;&quot;./assets/img/check_button_blue_selected_hover.svg&quot;
+                            alt&#x3D;&quot;checkbox selected hovering&quot;&gt;
+                    &lt;/div&gt;
+
+                    &lt;span&gt;
+                        {{ &quot;contact.form.privacy-policy-notice.link-prefix&quot; | translate }}
+                        &lt;a href&#x3D;&#x27;./privacy-policy&#x27; target&#x3D;&#x27;_blank&#x27; rel&#x3D;&#x27;noopener noreferrer&#x27;&gt;
+                            {{ &quot;contact.form.privacy-policy-notice.link&quot; | translate }}
+                        &lt;/a&gt;
+                        {{ &quot;contact.form.privacy-policy-notice.link-suffix&quot; | translate }}
+                    &lt;/span&gt;
+
+                &lt;/div&gt;
+                &lt;span id&#x3D;&quot;checkbox-alert-text&quot; name&#x3D;&quot;checkbox-alert-text&quot; class&#x3D;&quot;alert-text&quot;
+                    [innerText]&#x3D;&quot;checkboxes[0].alertText&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;button type&#x3D;&quot;submit&quot; [style]&#x3D;&quot;submitButtonStyle&quot; [disabled]&#x3D;&quot;submitButtonDisabled&quot;&gt;
+                &lt;div *ngIf&#x3D;&quot;currentlySendingMail&quot; class&#x3D;&quot;lds-dual-ring&quot;&gt;&lt;/div&gt;
+                &lt;div [innerHTML]&#x3D;&quot;submitButtonText.text&quot;&gt;&lt;/div&gt;
+            &lt;/button&gt;
+        &lt;/form&gt;
+
+        &lt;a href&#x3D;&quot;#start&quot;&gt;
+            &lt;svg id&#x3D;&quot;go-up-button&quot; width&#x3D;&quot;39&quot; height&#x3D;&quot;39&quot; viewBox&#x3D;&quot;0 0 39 39&quot; fill&#x3D;&quot;none&quot;
+                xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                &lt;rect x&#x3D;&quot;1&quot; y&#x3D;&quot;1&quot; width&#x3D;&quot;37&quot; height&#x3D;&quot;37&quot; rx&#x3D;&quot;18.5&quot; stroke&#x3D;&quot;white&quot; stroke-width&#x3D;&quot;2&quot; /&gt;
+                &lt;path
+                    d&#x3D;&quot;M18 15.828L13.343 20.485C12.9525 20.8755 12.3194 20.8755 11.929 20.485C11.5385 20.0945 11.5385 19.4615 11.929 19.071L18.2928 12.7071C18.6834 12.3166 19.3165 12.3166 19.7071 12.7071L26.071 19.071C26.4614 19.4615 26.4614 20.0945 26.071 20.485C25.6805 20.8755 25.0474 20.8755 24.657 20.485L20 15.828L20 27C20 27.5523 19.5522 28 19 28C18.4477 28 18 27.5523 18 27L18 15.828Z&quot;
+                    fill&#x3D;&quot;white&quot; /&gt;
+            &lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/section&gt;
+
+&lt;/main&gt;
+
+&lt;img id&#x3D;&quot;shadow&quot; src&#x3D;&quot;./assets/img/shadows/shadow_purple_contact.svg&quot; alt&#x3D;&quot;shadow purple&quot;&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div id="contact-headline" data-aos="fade-left">    <h2>{{ "contact.headline" | translate }}</h2>    <div id="contact-bullet-line"></div></div><main>    <section id="contact-left-column" data-aos="fade-right">        <div id="contact-left-column-first-row">            <div id="contact-left-column-bullet-line"></div>            <h3>{{ "contact.sub-headline" | translate }}</h3>        </div>        <summary id="contact-left-column-second-row" [innerHTML]=" \'contact.summary\' | translate ">        </summary>    </section>    <section id="contact-right-column" data-aos="fade-left">        <form (ngSubmit)="submitContactForm()">            <div>                <input id="name" [(ngModel)]="inputs[0].value" (input)="handleInput(inputs[0], false)"                    [style]="inputs[0].style" type="text"                    placeholder="{{\'contact.form.placeholders.input-name\' | translate}}" name="name" autocomplete="name"                    maxlength="99">                <img id="name-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[0].alertIconStyle"                    src="./assets/img/input_alert.svg">                <img id="name-checkmark" class="input-alert-icon" src="./assets/img/input_checkmark.svg"                    alt="input checkmark" [style]="inputs[0].checkmarkIconStyle">                <span id="name-alert-text" class="alert-text" [innerText]="inputs[0].alertText"></span>            </div>            <div>                <input id="email" [(ngModel)]="inputs[1].value" (input)="handleInput(inputs[1], false)"                    [style]="inputs[1].style" type="email"                    placeholder="{{\'contact.form.placeholders.input-email\' | translate}}" name="email"                    autocomplete="email" maxlength="99">                <img id="email-alert-icon" class="input-alert-icon" alt="input alert" [style]="inputs[1].alertIconStyle"                    src="./assets/img/input_alert.svg">                <img id="email-checkmark" class="input-alert-icon" src="./assets/img/input_checkmark.svg"                    alt="input checkmark" [style]="inputs[1].checkmarkIconStyle">                <span id="email-alert-text" class="alert-text" [innerText]="inputs[1].alertText"></span>            </div>            <div>                <textarea id="message" [(ngModel)]="inputs[2].value" (input)="handleInput(inputs[2], false)"                    [style]="inputs[2].style" type="text"                    placeholder="{{\'contact.form.placeholders.textarea-message\' | translate}}" name="message"                    autocomplete="off" maxlength="999"></textarea>                <img id="message-alert-icon" class="input-alert-icon" alt="input alert"                    [style]="inputs[2].alertIconStyle" src="./assets/img/input_alert.svg">                <img id="message-checkmark" class="input-alert-icon" src="./assets/img/input_checkmark.svg"                    alt="input checkmark" [style]="inputs[2].checkmarkIconStyle">                <span id="message-alert-text" class="alert-text" [innerText]="inputs[2].alertText"></span>            </div>            <div id="privacy-policy">                <div>                    <div id="checkbox" (click)="togglePrivacyPolicyAcceptance()" (mouseover)="handleCheckboxMouseover()"                        (mouseout)="handleCheckboxMouseout()">                        <img id="checkbox-default" src="./assets/img/check_button_blue.svg" alt="checkbox"                            class="d-flex-important">                        <img id="checkbox-hover" src="./assets/img/check_button_blue_hover.svg" alt="checkbox hovering">                        <img id="checkbox-selected" src="./assets/img/check_button_blue_selected.svg"                            alt="checkbox selected">                        <img id="checkbox-selected-hover" src="./assets/img/check_button_blue_selected_hover.svg"                            alt="checkbox selected hovering">                    </div>                    <span>                        {{ "contact.form.privacy-policy-notice.link-prefix" | translate }}                        <a href=\'./privacy-policy\' target=\'_blank\' rel=\'noopener noreferrer\'>                            {{ "contact.form.privacy-policy-notice.link" | translate }}                        </a>                        {{ "contact.form.privacy-policy-notice.link-suffix" | translate }}                    </span>                </div>                <span id="checkbox-alert-text" name="checkbox-alert-text" class="alert-text"                    [innerText]="checkboxes[0].alertText"></span>            </div>            <button type="submit" [style]="submitButtonStyle" [disabled]="submitButtonDisabled">                <div *ngIf="currentlySendingMail" class="lds-dual-ring"></div>                <div [innerHTML]="submitButtonText.text"></div>            </button>        </form>        <a href="#start">            <svg id="go-up-button" width="39" height="39" viewBox="0 0 39 39" fill="none"                xmlns="http://www.w3.org/2000/svg">                <rect x="1" y="1" width="37" height="37" rx="18.5" stroke="white" stroke-width="2" />                <path                    d="M18 15.828L13.343 20.485C12.9525 20.8755 12.3194 20.8755 11.929 20.485C11.5385 20.0945 11.5385 19.4615 11.929 19.071L18.2928 12.7071C18.6834 12.3166 19.3165 12.3166 19.7071 12.7071L26.071 19.071C26.4614 19.4615 26.4614 20.0945 26.071 20.485C25.6805 20.8755 25.0474 20.8755 24.657 20.485L20 15.828L20 27C20 27.5523 19.5522 28 19 28C18.4477 28 18 27.5523 18 27L18 15.828Z"                    fill="white" />            </svg>        </a>    </section></main><img id="shadow" src="./assets/img/shadows/shadow_purple_contact.svg" alt="shadow purple"></div>'
+    var COMPONENTS = [{'name': 'AboutMeComponent', 'selector': 'app-about-me'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ContactComponent', 'selector': 'app-contact'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ImprintComponent', 'selector': 'app-imprint'},{'name': 'LogoComponent', 'selector': 'app-logo'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PortfolioComponent', 'selector': 'app-portfolio'},{'name': 'PortfolioProjectComponent', 'selector': 'app-portfolio-project'},{'name': 'PrivacyPolicyComponent', 'selector': 'app-privacy-policy'},{'name': 'SkillIconComponent', 'selector': 'app-skill-icon'},{'name': 'SkillsComponent', 'selector': 'app-skills'},{'name': 'StartComponent', 'selector': 'app-start'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ContactComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ContactComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
