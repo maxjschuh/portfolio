@@ -40,8 +40,8 @@
     },
     "contact": {
         "headline": "Contact",
-        "sub-headline": "I'm open to work!",
-        "summary": "I'm keen for new challenges and currently seeking a position as web developer in southern Germany.<strong>Looking forward to hearing from you!</strong>",
+        "sub-headline": "Let's get in touch!",
+        "summary": "",
         "form": {
             "placeholders": {
                 "input-name": "Your name",

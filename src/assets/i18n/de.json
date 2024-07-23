@@ -40,8 +40,8 @@
     },
     "contact": {
         "headline": "Kontakt",
-        "sub-headline": "Ich bin auf Jobsuche!",
-        "summary": "Ich möchte meine berufliche Laufbahn weiterentwickeln und suche derzeit nach einer Stelle als Frontend-Developer in Süddeutschland..<strong>Ich freue mich auf Ihre Nachricht!</strong>",
+        "sub-headline": "Ich freue mich auf Ihre Nachricht!",
+        "summary": "",
         "form": {
             "placeholders": {
                 "input-name": "Ihr Name",
